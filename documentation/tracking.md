@@ -1,6 +1,6 @@
-## Work hour tracking
+# Work hour tracking
 
 | date       | hours  | description                                    |
 | ---------- | -----: | ---------------------------------------------- |
-| YYYY-MM-DD |      X |                                                |
-| total      |      Y |                                                |
+| 2022-03-29 |      1 | planning, writing the srs document             |
+| total      |      1 |                                                |
