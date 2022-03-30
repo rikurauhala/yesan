@@ -27,3 +27,9 @@ $ poetry install
 # Run the application
 $ poetry run invoke start
 ```
+
+### Testing
+```bash
+# Run tests
+$ poetry run invoke test
+```
