@@ -3,4 +3,5 @@
 | date       | hours  | description                                    |
 | ---------- | -----: | ---------------------------------------------- |
 | 2022-03-29 |      1 | planning, writing the srs document             |
-| total      |      1 |                                                |
+| 2022-03-30 |      1 | planning, setting up the project               |
+| total      |      2 |                                                |
