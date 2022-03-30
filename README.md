@@ -32,4 +32,7 @@ $ poetry run invoke start
 ```bash
 # Run tests
 $ poetry run invoke test
+
+# Create a test coverage report
+$ poetry run invoke coverage-report
 ```
