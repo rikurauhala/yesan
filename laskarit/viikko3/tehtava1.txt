@@ -1,0 +1,8 @@
+[Monopoli]1-2..8[Pelaaja]
+[Monopoli]1-2[Noppa]
+[Pelaaja]1-1[Pelinappula]
+[Pelaaja]1-.-2[Noppa]
+[Monopoli]1-1[Pelilauta]
+[Pelilauta]1-40[Ruutu]
+[Pelinappula]1-1[Ruutu]
+[Ruutu]1-1[Seuraava ruutu]
