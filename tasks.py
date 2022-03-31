@@ -23,3 +23,9 @@ def coverage(ctx):
 def coverage_report(ctx):
     """Generate a test coverage report."""
     ctx.run("coverage html")
+
+
+@task
+def lint(ctx):
+    """Check the quality of source code."""
+    ctx.run("pylint src")
