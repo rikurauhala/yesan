@@ -35,4 +35,7 @@ $ poetry run invoke test
 
 # Create a test coverage report
 $ poetry run invoke coverage-report
+
+# Check quality of the code
+$ poetry run invoke lint
 ```
