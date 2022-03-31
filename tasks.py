@@ -29,3 +29,10 @@ def coverage_report(ctx):
 def lint(ctx):
     """Check the quality of source code."""
     ctx.run("pylint src")
+
+
+@task
+def format(ctx):
+    """Format the code according to the PEP8 style guide."""
+    ctx.run("autopep8 --in-place --recursive src")
+
