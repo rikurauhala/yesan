@@ -2,7 +2,7 @@
 name = "yesan"
 version = "0.1.0"
 description = ""
-authors = ["Riku Rauhala <52216889+rikurauhala@users.noreply.github.com>"]
+authors = ["Riku Rauhala <riku@rauhala.io>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
