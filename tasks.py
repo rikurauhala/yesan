@@ -2,6 +2,12 @@ from invoke import task
 
 
 @task
+def init(ctx):
+    """Initialize the database."""
+    ctx.run("python3 src/database/database_operations.py")
+
+
+@task
 def start(ctx):
     """Run the application."""
     ctx.run("python3 src/index.py")
