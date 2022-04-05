@@ -1,0 +1,17 @@
+Table accounts {
+  id INTEGER [pk, increment]
+  name TEXT [unique]
+  type TEXT
+}
+
+Table transactions {
+  id INTEGER [pk, increment]
+  timestamp INTEGER
+  amount INTEGER
+  category TEXT
+  description TEXT
+  account_id INTEGER
+  party TEXT
+}
+
+Ref: "accounts"."id" < "transactions"."account_id"
