@@ -14,14 +14,18 @@ class TransactionRepository:
         transactions = []
 
         for row in rows:
-            transaction = Transaction()
-            transaction.id = row["id"]
-            transaction.timestamp = row["timestamp"]
-            transaction.amount = row["amount"]
-            transaction.category = row["category"]
-            transaction.description = row["description"]
-            transaction.account_id = row["account_id"]
-            transaction.party = row["party"]
+            transaction_id = row["id"]
+            timestamp = row["timestamp"]
+            amount = row["amount"]
+            category = row["category"]
+            description = row["description"]
+            account_id = row["account_id"]
+            party = row["party"]
+
+            transaction = Transaction(
+                transaction_id, timestamp, amount, category, description, account_id, party
+            )
+
             transactions.append(transaction)
 
         return transactions

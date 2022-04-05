@@ -1,7 +1,7 @@
 class Transaction:
 
-    def __init__(self, id, timestamp, amount, category, description, account_id, party):
-        self.id = id
+    def __init__(self, transaction_id, timestamp, amount, category, description, account_id, party):
+        self.id = transaction_id
         self.timestamp = timestamp
         self.amount = amount
         self.category = category
