@@ -21,6 +21,9 @@ $ cd yesan
 
 # Install dependencies
 $ poetry install
+
+# Initialize the database
+$ poetry run invoke init
 ```
 
 ### Running
