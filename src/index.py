@@ -9,8 +9,8 @@ def main():
     title = "Yesan"
     window.title(title)
 
-    ui = UserInterface(window)
-    ui.start()
+    user_interface = UserInterface(window)
+    user_interface.start()
 
     window.mainloop()
 
