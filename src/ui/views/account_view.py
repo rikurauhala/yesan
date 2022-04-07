@@ -16,25 +16,25 @@ class AccountView:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
-        text = "Add new account"
-        label_title = ttk.Label(master=self._frame, text=text)
-        label_title.grid(row=0, column=0)
+        txt_title = "Add new account"
+        lbl_title = ttk.Label(master=self._frame, text=txt_title)
+        lbl_title.grid(row=0, column=0)
 
-        text = "Name"
-        label_name = ttk.Label(master=self._frame, text=text)
-        label_name.grid(row=1, column=0)
+        txt_name = "Name"
+        lbl_name = ttk.Label(master=self._frame, text=txt_name)
+        lbl_name.grid(row=1, column=0)
 
-        entry_name = ttk.Entry(master=self._frame)
-        entry_name.grid(row=1, column=1)
+        ent_name = ttk.Entry(master=self._frame)
+        ent_name.grid(row=1, column=1)
 
-        text = "Type"
-        label_type = ttk.Label(master=self._frame, text=text)
-        label_type.grid(row=2, column=0)
+        txt_type = "Type"
+        lbl_type = ttk.Label(master=self._frame, text=txt_type)
+        lbl_type.grid(row=2, column=0)
 
-        entry_type = ttk.Entry(master=self._frame)
-        entry_type.grid(row=2, column=1)
+        ent_type = ttk.Entry(master=self._frame)
+        ent_type.grid(row=2, column=1)
 
-        text = "Submit"
-        button = ttk.Button(master=self._frame, text=text)
-        button.grid(row=3, column=0)
+        txt_submit = "Submit"
+        btn_submit = ttk.Button(master=self._frame, text=txt_submit)
+        btn_submit.grid(row=3, column=0)
 
