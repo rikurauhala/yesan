@@ -7,8 +7,8 @@ class UserInterface:
         self._current_view = None
 
     def start(self):
-        self._show_account_view()
+        self._show_new_account_view()
 
-    def _show_account_view(self):
+    def _show_new_account_view(self):
         self._current_view = NewAccountView(self._root)
         self._current_view.pack()
