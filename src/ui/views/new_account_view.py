@@ -1,7 +1,7 @@
 from tkinter import ttk, constants
 
 
-class AccountView:
+class NewAccountView:
     def __init__(self, root):
         self._root = root
         self._frame = None
