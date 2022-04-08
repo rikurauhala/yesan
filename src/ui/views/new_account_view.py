@@ -18,7 +18,10 @@ class NewAccountView:
     def destroy(self):
         self._frame.destroy()
 
-    def _handle_account_creation(self):
+    def _handle_cancel(self):
+        pass
+
+    def _handle_submit(self):
         name = self._ent_name.get()
         type = self._ent_type.get()
         self._account_service.create_account(name, type)
@@ -46,8 +49,13 @@ class NewAccountView:
         self._ent_type = ttk.Entry(master=self._frame)
         self._ent_type.grid(row=2, column=1, padx=padx, pady=pady)
 
+        txt_cancel = "Cancel"
+        btn_cancel = ttk.Button(master=self._frame, text=txt_cancel, 
+                                command=self._handle_cancel)
+        btn_cancel.grid(row=3, column=0, padx=padx, pady=pady, sticky=constants.EW)
+
         txt_submit = "Submit"
         btn_submit = ttk.Button(master=self._frame, text=txt_submit, 
-                                command=self._handle_account_creation)
-        btn_submit.grid(row=3, column=0, padx=padx, pady=pady, columnspan=2, sticky=constants.EW)
+                                command=self._handle_submit)
+        btn_submit.grid(row=3, column=1, padx=padx, pady=pady, sticky=constants.EW)
 
