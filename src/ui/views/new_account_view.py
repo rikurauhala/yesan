@@ -1,3 +1,4 @@
+from queue import Empty
 from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
@@ -26,6 +27,24 @@ class NewAccountView:
         if self._lbl_message:
             self._lbl_message.destroy()
 
+    def _display_message(self, mode):
+        self._var_message = StringVar(self._frame)
+        if mode == "error":
+            self._var_message.set("Please enter name and type!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground="red"
+            )
+        if mode == "success":
+            self._var_message.set("New account added!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground="green"
+            )
+        self._lbl_message.grid(columnspan=2, padx=self._padx, pady=self._pady)
+
     def _handle_cancel(self):
         pass
 
@@ -33,17 +52,13 @@ class NewAccountView:
         self._clear_message()
         name = self._ent_name.get()
         type = self._ent_type.get()
-        self._account_service.create_account(name, type)
-        self._var_message = StringVar(self._frame)
-        self._var_message.set("New account added!")
-        self._lbl_message = ttk.Label(
-            master=self._frame,
-            textvariable=self._var_message,
-            foreground="green"
-        )
-        self._lbl_message.grid(columnspan=2, padx=self._padx, pady=self._pady)
-        self._ent_name.delete(0, END)
-        self._ent_type.delete(0, END)
+        if not name or not type:
+            self._display_message("error")
+        else:
+            self._account_service.create_account(name, type)
+            self._display_message("success")
+            self._ent_name.delete(0, END)
+            self._ent_type.delete(0, END)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
