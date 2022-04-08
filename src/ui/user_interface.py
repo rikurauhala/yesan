@@ -10,10 +10,24 @@ class UserInterface:
     def start(self):
         self._show_account_view()
 
+    def _hide_current_view(self):
+        if self._current_view:
+            self._current_view.destroy()
+
+        self._current_view = None
+
+    def _handle_new_account(self):
+        self._show_new_account_view()
+
+    def _handle_back(self):
+        self._show_account_view()
+
     def _show_account_view(self):
-        self._current_view = AccountView(self._root)
+        self._hide_current_view()
+        self._current_view = AccountView(self._root, self._handle_new_account)
         self._current_view.pack()
 
     def _show_new_account_view(self):
-        self._current_view = NewAccountView(self._root)
+        self._hide_current_view()
+        self._current_view = NewAccountView(self._root, self._handle_back)
         self._current_view.pack()

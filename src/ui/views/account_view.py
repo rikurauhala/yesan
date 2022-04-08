@@ -4,9 +4,10 @@ from services.account_service import AccountService
 
 
 class AccountView:
-    def __init__(self, root):
+    def __init__(self, root, handle_new_account):
         self._root = root
         self._frame = None
+        self._handle_new_account = handle_new_account
         self._padx = 7
         self._pady = 7
         self._account_service = AccountService()
@@ -17,9 +18,6 @@ class AccountView:
 
     def destroy(self):
         self._frame.destroy()
-
-    def _handle_button(self):
-        pass
 
     def _initialize_title_label(self):
         txt_title = "Accounts"
@@ -66,3 +64,9 @@ class AccountView:
             lbl_balance = ttk.Label(master=self._frame, text=txt_balance)
             lbl_balance.grid(row=i+2, column=2, padx=self._padx,
                              pady=self._pady, sticky=constants.E)
+
+        txt_new_account = "New account"
+        btn_new_account = ttk.Button(master=self._frame, text=txt_new_account,
+                                command=self._handle_new_account)
+        btn_new_account.grid(row=(len(accounts)+2), column=0, padx=self._padx,
+                        pady=self._pady, sticky=constants.EW)

@@ -4,9 +4,10 @@ from services.account_service import AccountService
 
 
 class NewAccountView:
-    def __init__(self, root):
+    def __init__(self, root, handle_back):
         self._root = root
         self._frame = None
+        self._handle_back = handle_back
         self._padx = 7
         self._pady = 7
         self._ent_name = None
@@ -43,9 +44,6 @@ class NewAccountView:
                 foreground="green"
             )
         self._lbl_message.grid(columnspan=2, padx=self._padx, pady=self._pady)
-
-    def _handle_cancel(self):
-        pass
 
     def _handle_submit(self):
         self._clear_message()
@@ -85,11 +83,11 @@ class NewAccountView:
         self._ent_type = ttk.Entry(master=self._frame)
         self._ent_type.grid(row=2, column=1, padx=self._padx, pady=self._pady)
 
-    def _initialize_cancel_button(self):
-        txt_cancel = "Cancel"
-        btn_cancel = ttk.Button(master=self._frame, text=txt_cancel,
-                                command=self._handle_cancel)
-        btn_cancel.grid(row=3, column=0, padx=self._padx,
+    def _initialize_back_button(self):
+        txt_back = "Back"
+        btn_back = ttk.Button(master=self._frame, text=txt_back,
+                                command=self._handle_back)
+        btn_back.grid(row=3, column=0, padx=self._padx,
                         pady=self._pady, sticky=constants.EW)
 
     def _initialize_submit_button(self):
@@ -107,5 +105,5 @@ class NewAccountView:
         self._initialize_name_entry()
         self._initialize_type_label()
         self._initialize_type_entry()
-        self._initialize_cancel_button()
+        self._initialize_back_button()
         self._initialize_submit_button()
