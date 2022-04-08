@@ -17,7 +17,7 @@ class NewAccountView:
         self._initialize()
 
     def pack(self):
-        self._frame.pack()
+        self._frame.pack(padx=10, pady=10)
 
     def destroy(self):
         self._frame.destroy()
