@@ -86,9 +86,9 @@ class NewAccountView:
     def _initialize_back_button(self):
         txt_back = "Back"
         btn_back = ttk.Button(master=self._frame, text=txt_back,
-                                command=self._handle_back)
+                              command=self._handle_back)
         btn_back.grid(row=3, column=0, padx=self._padx,
-                        pady=self._pady, sticky=constants.EW)
+                      pady=self._pady, sticky=constants.EW)
 
     def _initialize_submit_button(self):
         txt_submit = "Submit"

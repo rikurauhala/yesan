@@ -26,11 +26,7 @@ class AccountView:
         lbl_title.grid(row=0, column=0, columnspan=2,
                        padx=self._padx, pady=self._pady, sticky=constants.W)
 
-    def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-
-        self._initialize_title_label()
-
+    def _initialize_subtitles(self):
         font = ("Helvetica", 12, "bold")
 
         txt_name = "Name"
@@ -44,10 +40,12 @@ class AccountView:
                       pady=self._pady, sticky=constants.W)
 
         txt_balance = "Balance"
-        lbl_balance = ttk.Label(master=self._frame, text=txt_balance, font=font)
+        lbl_balance = ttk.Label(
+            master=self._frame, text=txt_balance, font=font)
         lbl_balance.grid(row=1, column=2, padx=self._padx,
                          pady=self._pady, sticky=constants.W)
 
+    def _initialize_account_information(self):
         accounts = self._account_service.find_all()
         for i in range(len(accounts)):
             txt_name = accounts[i].name
@@ -65,8 +63,17 @@ class AccountView:
             lbl_balance.grid(row=i+2, column=2, padx=self._padx,
                              pady=self._pady, sticky=constants.E)
 
+    def _initialize_new_account_button(self):
         txt_new_account = "New account"
         btn_new_account = ttk.Button(master=self._frame, text=txt_new_account,
-                                command=self._handle_new_account)
-        btn_new_account.grid(row=(len(accounts)+2), column=0, padx=self._padx,
-                        pady=self._pady, sticky=constants.EW)
+                                     command=self._handle_new_account)
+        btn_new_account.grid(padx=self._padx, pady=self._pady,
+                             sticky=constants.EW)
+
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+
+        self._initialize_title_label()
+        self._initialize_subtitles()
+        self._initialize_account_information()
+        self._initialize_new_account_button()
