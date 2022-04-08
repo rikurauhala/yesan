@@ -1,4 +1,3 @@
-from queue import Empty
 from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
