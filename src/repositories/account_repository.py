@@ -15,8 +15,8 @@ class AccountRepository:
 
     def find_all(self):
         cursor = self._connection.cursor()
-        cursor.execute("SELECT * FROM accounts")
+        cursor.execute("SELECT * FROM accounts ORDER BY name")
 
         rows = cursor.fetchall()
 
-        return [Account(row["id"], row["name"], row["type"]) for row in rows]
+        return [Account(row["name"], row["type"]) for row in rows]

@@ -11,3 +11,6 @@ class AccountService:
     def create_account(self, name, type):
         new_account = Account(name, type)
         return self._account_repository.create(new_account)
+
+    def find_all(self):
+        return self._account_repository.find_all()
