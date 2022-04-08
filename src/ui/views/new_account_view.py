@@ -46,7 +46,8 @@ class NewAccountView:
 
         txt_title = "Add new account"
         lbl_title = ttk.Label(master=self._frame, text=txt_title)
-        lbl_title.grid(row=0, column=0, columnspan=2, padx=self._padx, pady=self._pady, sticky=constants.W)
+        lbl_title.grid(row=0, column=0, columnspan=2,
+                       padx=self._padx, pady=self._pady, sticky=constants.W)
 
         txt_name = "Name"
         lbl_name = ttk.Label(master=self._frame, text=txt_name)
@@ -63,12 +64,13 @@ class NewAccountView:
         self._ent_type.grid(row=2, column=1, padx=self._padx, pady=self._pady)
 
         txt_cancel = "Cancel"
-        btn_cancel = ttk.Button(master=self._frame, text=txt_cancel, 
+        btn_cancel = ttk.Button(master=self._frame, text=txt_cancel,
                                 command=self._handle_cancel)
-        btn_cancel.grid(row=3, column=0, padx=self._padx, pady=self._pady, sticky=constants.EW)
+        btn_cancel.grid(row=3, column=0, padx=self._padx,
+                        pady=self._pady, sticky=constants.EW)
 
         txt_submit = "Submit"
-        btn_submit = ttk.Button(master=self._frame, text=txt_submit, 
+        btn_submit = ttk.Button(master=self._frame, text=txt_submit,
                                 command=self._handle_submit)
-        btn_submit.grid(row=3, column=1, padx=self._padx, pady=self._pady, sticky=constants.EW)
-
+        btn_submit.grid(row=3, column=1, padx=self._padx,
+                        pady=self._pady, sticky=constants.EW)
