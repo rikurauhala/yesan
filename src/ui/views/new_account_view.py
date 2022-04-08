@@ -1,5 +1,4 @@
-from time import sleep
-from tkinter import constants, StringVar, ttk
+from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
 
@@ -23,15 +22,18 @@ class NewAccountView:
     def destroy(self):
         self._frame.destroy()
 
+    def _clear_message(self):
+        if self._lbl_message:
+            self._lbl_message.destroy()
+
     def _handle_cancel(self):
         pass
 
     def _handle_submit(self):
+        self._clear_message()
         name = self._ent_name.get()
         type = self._ent_type.get()
         self._account_service.create_account(name, type)
-        self._ent_name.delete(0, "end")
-        self._ent_type.delete(0, "end")
         self._var_message = StringVar(self._frame)
         self._var_message.set("New account added!")
         self._lbl_message = ttk.Label(
@@ -40,6 +42,8 @@ class NewAccountView:
             foreground="green"
         )
         self._lbl_message.grid(columnspan=2, padx=self._padx, pady=self._pady)
+        self._ent_name.delete(0, END)
+        self._ent_type.delete(0, END)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
