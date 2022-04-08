@@ -14,7 +14,6 @@ class TransactionRepository:
         transactions = []
 
         for row in rows:
-            transaction_id = row["id"]
             timestamp = row["timestamp"]
             amount = row["amount"]
             category = row["category"]
@@ -23,7 +22,7 @@ class TransactionRepository:
             party = row["party"]
 
             transaction = Transaction(
-                transaction_id, timestamp, amount, category, description, account_id, party
+                timestamp, amount, category, description, account_id, party
             )
 
             transactions.append(transaction)
