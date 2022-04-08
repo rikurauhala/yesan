@@ -23,7 +23,8 @@ class AccountView:
 
     def _initialize_title_label(self):
         txt_title = "Accounts"
-        lbl_title = ttk.Label(master=self._frame, text=txt_title)
+        lbl_title = ttk.Label(master=self._frame,
+                              text=txt_title, font=("Helvetica", 16, "bold"))
         lbl_title.grid(row=0, column=0, columnspan=2,
                        padx=self._padx, pady=self._pady, sticky=constants.W)
 
@@ -32,15 +33,36 @@ class AccountView:
 
         self._initialize_title_label()
 
+        font = ("Helvetica", 12, "bold")
+
+        txt_name = "Name"
+        lbl_name = ttk.Label(master=self._frame, text=txt_name, font=font)
+        lbl_name.grid(row=1, column=0, padx=self._padx,
+                      pady=self._pady, sticky=constants.W)
+
+        txt_type = "Type"
+        lbl_type = ttk.Label(master=self._frame, text=txt_type, font=font)
+        lbl_type.grid(row=1, column=1, padx=self._padx,
+                      pady=self._pady, sticky=constants.W)
+
+        txt_balance = "Balance"
+        lbl_balance = ttk.Label(master=self._frame, text=txt_balance, font=font)
+        lbl_balance.grid(row=1, column=2, padx=self._padx,
+                         pady=self._pady, sticky=constants.W)
+
         accounts = self._account_service.find_all()
         for i in range(len(accounts)):
             txt_name = accounts[i].name
             lbl_name = ttk.Label(master=self._frame, text=txt_name)
-            lbl_name.grid(row=i+1, column=0, padx=self._padx,
+            lbl_name.grid(row=i+2, column=0, padx=self._padx,
                           pady=self._pady, sticky=constants.W)
 
             txt_type = accounts[i].type
             lbl_type = ttk.Label(master=self._frame, text=txt_type)
-            lbl_type.grid(row=i+1, column=1, padx=self._padx,
+            lbl_type.grid(row=i+2, column=1, padx=self._padx,
                           pady=self._pady, sticky=constants.W)
 
+            txt_balance = "0.00 €"
+            lbl_balance = ttk.Label(master=self._frame, text=txt_balance)
+            lbl_balance.grid(row=i+2, column=2, padx=self._padx,
+                             pady=self._pady, sticky=constants.E)
