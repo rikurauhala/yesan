@@ -67,13 +67,15 @@ class AccountView:
         txt_back = "Back"
         btn_back = ttk.Button(master=self._frame, text=txt_back,
                               command=self._go_to_main_view)
-        btn_back.grid(row=total+2, column=0, padx=self._padx, pady=self._pady, sticky=constants.EW)
+        btn_back.grid(row=total+2, column=0,
+                      padx=self._padx, pady=self._pady, sticky=constants.EW)
 
     def _initialize_new_account_button(self, total):
         txt_new_account = "New account"
         btn_new_account = ttk.Button(master=self._frame, text=txt_new_account,
                                      command=self._go_to_new_account_view)
-        btn_new_account.grid(row=total+2, column=1, padx=self._padx, pady=self._pady, sticky=constants.EW)
+        btn_new_account.grid(row=total+2, column=1,
+                             padx=self._padx, pady=self._pady, sticky=constants.EW)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
