@@ -5,6 +5,16 @@ class TransactionRepository:
     def __init__(self, connection):
         self._connection = connection
 
+    def create(self, transaction):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            """INSERT INTO transactions(timestamp, amount, category, description, account_id, party)
+            VALUES (?, ?, ?, ?, ?, ?)""",
+            (transaction.timestamp, transaction.amount, transaction.category,
+             transaction.description, transaction.account_id, transaction.party)
+        )
+        self._connection.commit()
+
     def find_all(self):
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM transactions")

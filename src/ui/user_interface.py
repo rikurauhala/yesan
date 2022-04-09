@@ -1,6 +1,7 @@
 from ui.views.main_view import MainView
 from ui.views.account_view import AccountView
 from ui.views.new_account_view import NewAccountView
+from ui.views.new_transaction_view import NewTransactionView
 
 
 class UserInterface:
@@ -25,11 +26,15 @@ class UserInterface:
     def _go_to_account_view(self):
         self._show_account_view()
 
+    def _go_to_new_transaction_view(self):
+        self._show_new_transaction_view()
+
     def _show_main_view(self):
         self._hide_current_view()
         self._current_view = MainView(
             self._root,
-            self._go_to_account_view
+            self._go_to_account_view,
+            self._go_to_new_transaction_view
         )
         self._current_view.pack()
 
@@ -47,5 +52,13 @@ class UserInterface:
         self._current_view = NewAccountView(
             self._root,
             self._go_to_account_view
+        )
+        self._current_view.pack()
+
+    def _show_new_transaction_view(self):
+        self._hide_current_view()
+        self._current_view = NewTransactionView(
+            self._root,
+            self._go_to_main_view
         )
         self._current_view.pack()
