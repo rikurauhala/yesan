@@ -19,12 +19,15 @@ The application has a graphical user interface created with the Tkinter library.
     - Monthly income
     - Monthly expenses
     - Net worth
+  - Contains buttons for adding new accounts and transactions
+- Account view
+  - Contains a list of accounts and their balance
+  - New account view
+    - Used to add a new account to the database
+  - An "account" (for lack of a better term) can be anything from a checking account to a wallet to cryptocurrency or other assets
 - Transaction view
   - Adding transactions
   - Deleting/editing transactions
-- Account view
-  - Creating/deleting/editing accounts
-  - An "account" (for lack of a better term) can be anything from a checking account to a wallet to cryptocurrency or other assets
 
 ### Secondary
 
