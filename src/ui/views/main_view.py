@@ -1,5 +1,6 @@
 from tkinter import constants, ttk
 
+import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
 
@@ -25,7 +26,7 @@ class MainView:
         lbl_title = ttk.Label(
             master=self._frame,
             text=txt_title,
-            font=styles.FONT_TITLE
+            font=fonts.TITLE
         )
         lbl_title.grid(
             row=0,

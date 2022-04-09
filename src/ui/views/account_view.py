@@ -1,6 +1,8 @@
 from tkinter import constants, ttk
 
 from services.account_service import AccountService
+
+import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
 
@@ -27,7 +29,7 @@ class AccountView:
         lbl_title = ttk.Label(
             master=self._frame,
             text=txt_title,
-            font=styles.FONT_TITLE
+            font=fonts.TITLE
         )
         lbl_title.grid(
             row=0,
@@ -43,7 +45,7 @@ class AccountView:
         lbl_name = ttk.Label(
             master=self._frame,
             text=txt_name,
-            font=styles.FONT_SUBTITLE
+            font=fonts.SUBTITLE
         )
         lbl_name.grid(
             row=1,
@@ -57,7 +59,7 @@ class AccountView:
         lbl_type = ttk.Label(
             master=self._frame,
             text=txt_type,
-            font=styles.FONT_SUBTITLE
+            font=fonts.SUBTITLE
         )
         lbl_type.grid(
             row=1,
@@ -71,7 +73,7 @@ class AccountView:
         lbl_balance = ttk.Label(
             master=self._frame,
             text=txt_balance,
-            font=styles.FONT_SUBTITLE
+            font=fonts.SUBTITLE
         )
         lbl_balance.grid(
             row=1, 

@@ -1,6 +1,7 @@
 from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
+import ui.styles.colors as colors
 import ui.styles.styles as styles
 
 
@@ -36,14 +37,14 @@ class NewAccountView:
             self._lbl_message = ttk.Label(
                 master=self._frame,
                 textvariable=self._var_message,
-                foreground="red"
+                foreground=colors.ERROR
             )
         if mode == "success":
             self._var_message.set("New account added!")
             self._lbl_message = ttk.Label(
                 master=self._frame,
                 textvariable=self._var_message,
-                foreground="green"
+                foreground=colors.SUCCESS
             )
         self._lbl_message.grid(
             columnspan=2,
