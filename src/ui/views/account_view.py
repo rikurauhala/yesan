@@ -4,9 +4,10 @@ from services.account_service import AccountService
 
 
 class AccountView:
-    def __init__(self, root, go_to_new_account_view):
+    def __init__(self, root, go_to_main_view, go_to_new_account_view):
         self._root = root
         self._frame = None
+        self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
         self._padx = 7
         self._pady = 7
@@ -45,9 +46,8 @@ class AccountView:
         lbl_balance.grid(row=1, column=2, padx=self._padx,
                          pady=self._pady, sticky=constants.W)
 
-    def _initialize_account_information(self):
-        accounts = self._account_service.find_all()
-        for i in range(len(accounts)):
+    def _initialize_account_information(self, accounts, total):
+        for i in range(total):
             txt_name = accounts[i].name
             lbl_name = ttk.Label(master=self._frame, text=txt_name)
             lbl_name.grid(row=i+2, column=0, padx=self._padx,
@@ -63,17 +63,25 @@ class AccountView:
             lbl_balance.grid(row=i+2, column=2, padx=self._padx,
                              pady=self._pady, sticky=constants.E)
 
-    def _initialize_new_account_button(self):
+    def _initialize_back_button(self, total):
+        txt_back = "Back"
+        btn_back = ttk.Button(master=self._frame, text=txt_back,
+                              command=self._go_to_main_view)
+        btn_back.grid(row=total+2, column=0, padx=self._padx, pady=self._pady, sticky=constants.EW)
+
+    def _initialize_new_account_button(self, total):
         txt_new_account = "New account"
         btn_new_account = ttk.Button(master=self._frame, text=txt_new_account,
                                      command=self._go_to_new_account_view)
-        btn_new_account.grid(padx=self._padx, pady=self._pady,
-                             sticky=constants.EW)
+        btn_new_account.grid(row=total+2, column=1, padx=self._padx, pady=self._pady, sticky=constants.EW)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
         self._initialize_title_label()
         self._initialize_subtitles()
-        self._initialize_account_information()
-        self._initialize_new_account_button()
+        accounts = self._account_service.find_all()
+        total = len(accounts)
+        self._initialize_account_information(accounts, total)
+        self._initialize_back_button(total)
+        self._initialize_new_account_button(total)
