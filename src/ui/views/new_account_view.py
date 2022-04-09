@@ -4,10 +4,10 @@ from services.account_service import AccountService
 
 
 class NewAccountView:
-    def __init__(self, root, handle_back):
+    def __init__(self, root, go_to_account_view):
         self._root = root
         self._frame = None
-        self._handle_back = handle_back
+        self._go_to_account_view = go_to_account_view
         self._padx = 7
         self._pady = 7
         self._ent_name = None
@@ -86,7 +86,7 @@ class NewAccountView:
     def _initialize_back_button(self):
         txt_back = "Back"
         btn_back = ttk.Button(master=self._frame, text=txt_back,
-                              command=self._handle_back)
+                              command=self._go_to_account_view)
         btn_back.grid(row=3, column=0, padx=self._padx,
                       pady=self._pady, sticky=constants.EW)
 

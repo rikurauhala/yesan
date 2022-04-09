@@ -4,10 +4,10 @@ from services.account_service import AccountService
 
 
 class AccountView:
-    def __init__(self, root, handle_new_account):
+    def __init__(self, root, go_to_new_account_view):
         self._root = root
         self._frame = None
-        self._handle_new_account = handle_new_account
+        self._go_to_new_account_view = go_to_new_account_view
         self._padx = 7
         self._pady = 7
         self._account_service = AccountService()
@@ -66,7 +66,7 @@ class AccountView:
     def _initialize_new_account_button(self):
         txt_new_account = "New account"
         btn_new_account = ttk.Button(master=self._frame, text=txt_new_account,
-                                     command=self._handle_new_account)
+                                     command=self._go_to_new_account_view)
         btn_new_account.grid(padx=self._padx, pady=self._pady,
                              sticky=constants.EW)
 
