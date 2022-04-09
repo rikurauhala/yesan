@@ -25,7 +25,7 @@ class UserInterface:
 
     def _show_main_view(self):
         self._hide_current_view()
-        self._current_view = MainView(self._root)
+        self._current_view = MainView(self._root, self._handle_back)
         self._current_view.pack()
 
     def _show_account_view(self):
