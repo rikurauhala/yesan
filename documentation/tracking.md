@@ -8,4 +8,5 @@
 | 2022-04-05 |      6 | creating entities, repositories, user interface and database connection |
 | 2022-04-07 |      2 | learning tkinter, improving user interface                              |
 | 2022-04-08 |      5 | creating account view, improving new account view                       |
-| total      |     16 |                                                                         |
+| 2022-04-09 |      6 | creating main view, creating new transaction view, refactoring code     |
+| total      |     22 |                                                                         |
