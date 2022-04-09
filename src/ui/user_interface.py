@@ -1,3 +1,4 @@
+from ui.views.main_view import MainView
 from ui.views.account_view import AccountView
 from ui.views.new_account_view import NewAccountView
 
@@ -8,7 +9,7 @@ class UserInterface:
         self._current_view = None
 
     def start(self):
-        self._show_account_view()
+        self._show_main_view()
 
     def _hide_current_view(self):
         if self._current_view:
@@ -21,6 +22,11 @@ class UserInterface:
 
     def _handle_back(self):
         self._show_account_view()
+
+    def _show_main_view(self):
+        self._hide_current_view()
+        self._current_view = MainView(self._root)
+        self._current_view.pack()
 
     def _show_account_view(self):
         self._hide_current_view()
