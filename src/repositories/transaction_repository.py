@@ -7,8 +7,8 @@ class TransactionRepository:
 
     def create(self, transaction):
         cursor = self._connection.cursor()
-        cursor.execute(
-            """INSERT INTO transactions(timestamp, amount, category, description, account_id, party)
+        cursor.execute("""
+            INSERT INTO transactions(timestamp, amount, category, description, account_id, party)
             VALUES (?, ?, ?, ?, ?, ?)""",
             (transaction.timestamp, transaction.amount, transaction.category,
              transaction.description, transaction.account_id, transaction.party)
@@ -17,7 +17,12 @@ class TransactionRepository:
 
     def find_all(self):
         cursor = self._connection.cursor()
-        cursor.execute("SELECT * FROM transactions")
+        cursor.execute("""
+            SELECT t.id, t.timestamp, t.amount, t.category, 
+                   t.description, a.name, t.party
+            FROM transactions AS t, accounts AS a
+            WHERE t.account_id = a.id"""
+        )
 
         rows = cursor.fetchall()
 
@@ -28,13 +33,11 @@ class TransactionRepository:
             amount = row["amount"]
             category = row["category"]
             description = row["description"]
-            account_id = row["account_id"]
+            account_name = row["name"]
             party = row["party"]
-
             transaction = Transaction(
-                timestamp, amount, category, description, account_id, party
+                timestamp, amount, category, description, account_name, party
             )
-
             transactions.append(transaction)
 
         return transactions
