@@ -2,6 +2,7 @@ from tkinter import constants, ttk
 
 from services.transaction_service import TransactionService
 
+import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
@@ -141,10 +142,18 @@ class TransactionView:
             )
 
             txt_amount = "{:.2f} €".format(transactions[i].amount/100)
-            lbl_amount = ttk.Label(
-                master=self._frame,
-                text=txt_amount
-            )
+            lbl_amount = None
+            if txt_amount[0] == "-":
+                lbl_amount = ttk.Label(
+                    master=self._frame,
+                    text=txt_amount,
+                    foreground=colors.NEGATIVE
+                )
+            else:
+                lbl_amount = ttk.Label(
+                    master=self._frame,
+                    text=txt_amount
+                )
             lbl_amount.grid(
                 row=i+2,
                 column=1,
@@ -206,7 +215,7 @@ class TransactionView:
             )
 
     def _initialize_back_button(self, total):
-        txt_back = "Back"
+        txt_back = "« Back"
         btn_back = ttk.Button(
             master=self._frame,
             text=txt_back,
