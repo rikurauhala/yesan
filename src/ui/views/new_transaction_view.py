@@ -187,11 +187,11 @@ class NewTransactionView:
     def _initialize_account_option_menu(self):
         self._accounts = self._account_service.get_list()
         self._var_account = StringVar(master=self._frame)
-        txt_choose_an_account = "Choose an account"
+        txt_select_an_account = "Select an account"
         self._opt_account = ttk.OptionMenu(
             self._frame,
             self._var_account,
-            txt_choose_an_account,
+            txt_select_an_account,
             *self._accounts
         )
         self._opt_account.grid(
