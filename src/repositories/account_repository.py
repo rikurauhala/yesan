@@ -16,7 +16,11 @@ class AccountRepository:
     def find_all(self):
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM accounts ORDER BY name")
-
         rows = cursor.fetchall()
+        return [Account(row["id"], row["name"], row["type"]) for row in rows]
 
-        return [Account(row["name"], row["type"]) for row in rows]
+    def get_list(self):
+        cursor = self._connection.cursor()
+        cursor.execute("SELECT name FROM accounts ORDER BY name")
+        rows = cursor.fetchall()
+        return [row["name"] for row in rows]

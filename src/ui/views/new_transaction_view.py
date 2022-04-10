@@ -1,6 +1,8 @@
 from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
+from services.transaction_service import TransactionService
+
 import ui.styles.colors as colors
 import ui.styles.styles as styles
 
@@ -13,11 +15,14 @@ class NewTransactionView:
         self._ent_amount = None
         self._ent_category = None
         self._ent_description = None
-        self._ent_account_id = None
+        self._opt_account = None
+        self._var_account = None
         self._ent_party = None
         self._var_message = None
         self._lbl_message = None
+        self._accounts = None
         self._account_service = AccountService()
+        self._transaction_service = TransactionService()
         self._initialize()
 
     def pack(self):
@@ -57,6 +62,26 @@ class NewTransactionView:
 
     def _handle_submit(self):
         self._clear_message()
+        amount = self._ent_amount.get()
+        category = self._ent_category.get()
+        description = self._ent_description.get()
+        account = self._var_account.get()
+        party = self._ent_party.get()
+        if not amount or not category or not description or not account or not party:
+            self._display_message("error")
+        else:
+            self._transaction_service.create_transaction(
+                amount,
+                category,
+                description,
+                account,
+                party
+            )
+            self._display_message("success")
+            self._ent_amount.delete(0, END)
+            self._ent_category.delete(0, END)
+            self._ent_description.delete(0, END)
+            self._ent_party.delete(0, END)
 
     def _initialize_title_label(self):
         txt_title = "Add new transaction"
@@ -92,7 +117,8 @@ class NewTransactionView:
             row=1,
             column=1,
             padx=styles.PADDING,
-            pady=styles.PADDING
+            pady=styles.PADDING,
+            sticky=constants.EW
         )
 
     def _initialize_category_label(self):
@@ -115,7 +141,8 @@ class NewTransactionView:
             row=2,
             column=1,
             padx=styles.PADDING,
-            pady=styles.PADDING
+            pady=styles.PADDING,
+            sticky=constants.EW
         )
 
     def _initialize_description_label(self):
@@ -138,7 +165,8 @@ class NewTransactionView:
             row=3,
             column=1,
             padx=styles.PADDING,
-            pady=styles.PADDING
+            pady=styles.PADDING,
+            sticky=constants.EW
         )
 
     def _initialize_account_label(self):
@@ -155,13 +183,22 @@ class NewTransactionView:
             sticky=constants.E
         )
 
-    def _initialize_account_entry(self):
-        self._ent_account = ttk.Entry(master=self._frame)
-        self._ent_account.grid(
+    def _initialize_account_option_menu(self):
+        self._accounts = self._account_service.get_list()
+        self._var_account = StringVar(master=self._frame)
+        txt_choose_an_account = "Choose an account"
+        self._opt_account = ttk.OptionMenu(
+            self._frame,
+            self._var_account,
+            txt_choose_an_account,
+            *self._accounts
+        )
+        self._opt_account.grid(
             row=4,
             column=1,
             padx=styles.PADDING,
-            pady=styles.PADDING
+            pady=styles.PADDING,
+            sticky=constants.EW
         )
 
     def _initialize_party_label(self):
@@ -184,7 +221,8 @@ class NewTransactionView:
             row=5,
             column=1,
             padx=styles.PADDING,
-            pady=styles.PADDING
+            pady=styles.PADDING,
+            sticky=constants.EW
         )
 
     def _initialize_back_button(self):
@@ -226,7 +264,7 @@ class NewTransactionView:
         self._initialize_description_label()
         self._initialize_description_entry()
         self._initialize_account_label()
-        self._initialize_account_entry()
+        self._initialize_account_option_menu()
         self._initialize_party_label()
         self._initialize_party_entry()
         self._initialize_back_button()

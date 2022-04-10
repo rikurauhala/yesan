@@ -76,7 +76,7 @@ class AccountView:
             font=fonts.SUBTITLE
         )
         lbl_balance.grid(
-            row=1, 
+            row=1,
             column=2,
             padx=styles.PADDING,
             pady=styles.PADDING,

@@ -9,8 +9,11 @@ class AccountService:
         self._account_repository = AccountRepository(get_database_connection())
 
     def create_account(self, name, type):
-        new_account = Account(name, type)
+        new_account = Account(None, name, type)
         return self._account_repository.create(new_account)
 
     def find_all(self):
         return self._account_repository.find_all()
+
+    def get_list(self):
+        return self._account_repository.get_list()
