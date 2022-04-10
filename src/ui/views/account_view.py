@@ -125,7 +125,7 @@ class AccountView:
             )
 
     def _initialize_back_button(self, total):
-        txt_back = "Back"
+        txt_back = "« Back"
         btn_back = ttk.Button(
             master=self._frame,
             text=txt_back,
@@ -140,7 +140,7 @@ class AccountView:
         )
 
     def _initialize_new_account_button(self, total):
-        txt_new_account = "New account"
+        txt_new_account = "+ New account"
         btn_new_account = ttk.Button(
             master=self._frame,
             text=txt_new_account,

@@ -126,7 +126,7 @@ class NewAccountView:
         )
 
     def _initialize_back_button(self):
-        txt_back = "Back"
+        txt_back = "« Back"
         btn_back = ttk.Button(
             master=self._frame,
             text=txt_back,
@@ -141,7 +141,7 @@ class NewAccountView:
         )
 
     def _initialize_submit_button(self):
-        txt_submit = "Submit"
+        txt_submit = "✔ Submit"
         btn_submit = ttk.Button(
             master=self._frame,
             text=txt_submit,

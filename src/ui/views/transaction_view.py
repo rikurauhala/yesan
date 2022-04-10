@@ -230,7 +230,7 @@ class TransactionView:
         )
 
     def _initialize_new_transaction_button(self, total):
-        txt_new_transaction = "New transaction"
+        txt_new_transaction = "+ New transaction"
         btn_new_transaction = ttk.Button(
             master=self._frame,
             text=txt_new_transaction,
