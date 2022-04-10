@@ -10,9 +10,9 @@ class TransactionRepository:
         cursor.execute("""
             INSERT INTO transactions(timestamp, amount, category, description, account_id, party)
             VALUES (?, ?, ?, ?, ?, ?)""",
-            (transaction.timestamp, transaction.amount, transaction.category,
-             transaction.description, transaction.account_id, transaction.party)
-        )
+                       (transaction.timestamp, transaction.amount, transaction.category,
+                        transaction.description, transaction.account_id, transaction.party)
+                       )
         self._connection.commit()
 
     def find_all(self):
@@ -22,7 +22,7 @@ class TransactionRepository:
                    t.description, a.name, t.party
             FROM transactions AS t, accounts AS a
             WHERE t.account_id = a.id"""
-        )
+                       )
 
         rows = cursor.fetchall()
 

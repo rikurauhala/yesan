@@ -55,7 +55,7 @@ class TransactionView:
             pady=styles.PADDING,
             sticky=constants.W
         )
-        
+
         txt_amount = "Amount"
         lbl_amount = ttk.Label(
             master=self._frame,
