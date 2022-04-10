@@ -9,4 +9,5 @@
 | 2022-04-07 |      2 | learning tkinter, improving user interface                              |
 | 2022-04-08 |      5 | creating account view, improving new account view                       |
 | 2022-04-09 |      6 | creating main view, creating new transaction view, refactoring code     |
-| total      |     22 |                                                                         |
+| 2022-04-10 |      3 | creating transaction view, improving new transaction view               |
+| total      |     25 |                                                                         |
