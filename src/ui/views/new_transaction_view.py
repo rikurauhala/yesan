@@ -65,16 +65,17 @@ class NewTransactionView:
         amount = self._ent_amount.get()
         category = self._ent_category.get()
         description = self._ent_description.get()
-        account = self._var_account.get()
+        account_name = self._var_account.get()
         party = self._ent_party.get()
-        if not amount or not category or not description or not account or not party:
+        if not amount or not category or not description or not account_name or not party:
             self._display_message("error")
         else:
+            account_id = self._account_service.get_id_by_name(account_name)
             self._transaction_service.create_transaction(
                 amount,
                 category,
                 description,
-                account,
+                account_id,
                 party
             )
             self._display_message("success")

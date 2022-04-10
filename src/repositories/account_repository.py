@@ -24,3 +24,8 @@ class AccountRepository:
         cursor.execute("SELECT name FROM accounts ORDER BY name")
         rows = cursor.fetchall()
         return [row["name"] for row in rows]
+
+    def get_id_by_name(self, name):
+        cursor = self._connection.cursor()
+        cursor.execute("SELECT id FROM accounts WHERE name=(?)", (name, ))
+        return cursor.fetchone()[0]

@@ -17,3 +17,6 @@ class AccountService:
 
     def get_list(self):
         return self._account_repository.get_list()
+
+    def get_id_by_name(self, name):
+        return self._account_repository.get_id_by_name(name)
