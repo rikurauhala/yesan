@@ -1,3 +1,5 @@
+from datetime import date
+
 from database.database_connection import get_database_connection
 from entities.transaction import Transaction
 from repositories.transaction_repository import TransactionRepository
@@ -10,7 +12,7 @@ class TransactionService:
         )
 
     def create_transaction(self, amount, category, description, account_id, party):
-        timestamp = 0
+        timestamp = date.today()
         new_transaction = Transaction(
             timestamp,
             amount,

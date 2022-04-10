@@ -4,7 +4,9 @@ import sqlite3
 dirname = os.path.dirname(__file__)
 
 connection = sqlite3.connect(os.path.join(
-    dirname, "..", "data", "database.sqlite"))
+    dirname, "..", "data", "database.sqlite"),
+    detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES
+)
 connection.row_factory = sqlite3.Row
 
 
