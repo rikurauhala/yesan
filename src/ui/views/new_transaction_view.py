@@ -8,10 +8,10 @@ import ui.styles.styles as styles
 
 
 class NewTransactionView:
-    def __init__(self, root, go_to_main_view):
+    def __init__(self, root, go_to_transaction_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
-        self._go_to_main_view = go_to_main_view
+        self._go_to_transaction_view = go_to_transaction_view
         self._ent_amount = None
         self._ent_category = None
         self._ent_description = None
@@ -231,7 +231,7 @@ class NewTransactionView:
         btn_back = ttk.Button(
             master=self._frame,
             text=txt_back,
-            command=self._go_to_main_view
+            command=self._go_to_transaction_view
         )
         btn_back.grid(
             row=6,

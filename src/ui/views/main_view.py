@@ -5,11 +5,11 @@ import ui.styles.styles as styles
 
 
 class MainView:
-    def __init__(self, root, go_to_accounts_view, go_to_new_transaction_view):
+    def __init__(self, root, go_to_accounts_view, go_to_transaction_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._go_to_accounts_view = go_to_accounts_view
-        self._go_to_new_transaction_view = go_to_new_transaction_view
+        self._go_to_transaction_view = go_to_transaction_view
         self._initialize()
 
     def pack(self):
@@ -49,14 +49,14 @@ class MainView:
             sticky=constants.EW
         )
 
-    def _initialize_new_transaction_button(self):
-        txt_new_transaction = "New transaction"
-        btn_new_transaction = ttk.Button(
+    def _initialize_transactions_button(self):
+        txt_transactions = "Transactions"
+        btn_transactions = ttk.Button(
             master=self._frame,
-            text=txt_new_transaction,
-            command=self._go_to_new_transaction_view
+            text=txt_transactions,
+            command=self._go_to_transaction_view
         )
-        btn_new_transaction.grid(
+        btn_transactions.grid(
             padx=styles.PADDING,
             pady=styles.PADDING,
             sticky=constants.EW
@@ -65,4 +65,4 @@ class MainView:
     def _initialize(self):
         self._initialize_title_label()
         self._initialize_accounts_button()
-        self._initialize_new_transaction_button()
+        self._initialize_transactions_button()
