@@ -2,9 +2,9 @@
 
 ## Purpose
 
-The application is called *Yesan*, (예산, Korean for *budget*). Yesan is an application to help its users to track their personal finances and see where their money is going. The user interface is only available in English. The programming language used is Python and user data will be stored in an SQLite database.
+The application is called **Yesan**, (예산, Korean for *budget*). Its purpose is to help its users to keep track of their personal finances and see where their money is going. The user interface is only available in English. The programming language used is Python and user data is stored in an SQLite database.
 
-No more spreadsheets!
+"No more spreadsheets!"
 
 ## User interface
 
