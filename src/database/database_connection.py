@@ -2,7 +2,7 @@ import os
 import sqlite3
 
 dirname = os.path.dirname(__file__)
-os.mkdir(os.path.join(dirname, "..", "data"))
+os.makedirs(os.path.join(dirname, "..", "data"), exist_ok=True)
 
 connection = sqlite3.connect(os.path.join(
     dirname, "..", "data", "database.sqlite"),
