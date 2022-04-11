@@ -10,4 +10,5 @@
 | 2022-04-08 |      5 | creating account view, improving new account view                       |
 | 2022-04-09 |      6 | creating main view, creating new transaction view, refactoring code     |
 | 2022-04-10 |      4 | creating transaction view, improving new transaction view               |
-| total      |     26 |                                                                         |
+| 2022-04-11 |      2 | adding tkcalendar to new transaction view, fixing errors                |
+| total      |     28 |                                                                         |
