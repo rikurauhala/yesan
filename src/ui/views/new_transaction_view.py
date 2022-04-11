@@ -115,7 +115,7 @@ class NewTransactionView:
             pady=styles.PADDING,
             sticky=constants.E
         )
-        
+
     def _initialize_date_entry(self):
         current_year = date.today().year
         calendar = DateEntry(
