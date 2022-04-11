@@ -1,4 +1,8 @@
+from datetime import date
+
 from tkinter import constants, END, StringVar, ttk
+
+from tkcalendar import DateEntry
 
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
@@ -96,7 +100,38 @@ class NewTransactionView:
             columnspan=2,
             padx=styles.PADDING,
             pady=styles.PADDING,
-            sticky=constants.W)
+            sticky=constants.W
+        )
+
+    def _initialize_date_label(self):
+        txt_date = "Date"
+        lbl_date = ttk.Label(
+            master=self._frame,
+            text=txt_date)
+        lbl_date.grid(
+            row=1,
+            column=0,
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.E
+        )
+        
+    def _initialize_date_entry(self):
+        current_year = date.today().year
+        calendar = DateEntry(
+            master=self._frame,
+            background=colors.DARK_BLUE,
+            foreground=colors.WHITE,
+            borderwidth=2,
+            year=current_year
+        )
+        calendar.grid(
+            row=1,
+            column=1,
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.EW
+        )
 
     def _initialize_amount_label(self):
         txt_amount = "Amount"
@@ -105,7 +140,7 @@ class NewTransactionView:
             text=txt_amount
         )
         lbl_amount.grid(
-            row=1,
+            row=2,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -115,7 +150,7 @@ class NewTransactionView:
     def _initialize_amount_entry(self):
         self._ent_amount = ttk.Entry(master=self._frame)
         self._ent_amount.grid(
-            row=1,
+            row=2,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -129,7 +164,7 @@ class NewTransactionView:
             text=txt_category
         )
         lbl_category.grid(
-            row=2,
+            row=3,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -139,7 +174,7 @@ class NewTransactionView:
     def _initialize_category_entry(self):
         self._ent_category = ttk.Entry(master=self._frame)
         self._ent_category.grid(
-            row=2,
+            row=3,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -153,7 +188,7 @@ class NewTransactionView:
             text=txt_description
         )
         lbl_description.grid(
-            row=3,
+            row=4,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -163,7 +198,7 @@ class NewTransactionView:
     def _initialize_description_entry(self):
         self._ent_description = ttk.Entry(master=self._frame)
         self._ent_description.grid(
-            row=3,
+            row=4,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -177,7 +212,7 @@ class NewTransactionView:
             text=txt_account
         )
         lbl_description.grid(
-            row=4,
+            row=5,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -195,7 +230,7 @@ class NewTransactionView:
             *self._accounts
         )
         self._opt_account.grid(
-            row=4,
+            row=5,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -209,7 +244,7 @@ class NewTransactionView:
             text=txt_party
         )
         lbl_party.grid(
-            row=5,
+            row=6,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -219,7 +254,7 @@ class NewTransactionView:
     def _initialize_party_entry(self):
         self._ent_party = ttk.Entry(master=self._frame)
         self._ent_party.grid(
-            row=5,
+            row=6,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -234,7 +269,7 @@ class NewTransactionView:
             command=self._go_to_transaction_view
         )
         btn_back.grid(
-            row=6,
+            row=7,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -249,7 +284,7 @@ class NewTransactionView:
             command=self._handle_submit
         )
         btn_submit.grid(
-            row=6,
+            row=7,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -258,6 +293,8 @@ class NewTransactionView:
 
     def _initialize(self):
         self._initialize_title_label()
+        self._initialize_date_label()
+        self._initialize_date_entry()
         self._initialize_amount_label()
         self._initialize_amount_entry()
         self._initialize_category_label()

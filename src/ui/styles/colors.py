@@ -1,3 +1,5 @@
 ERROR = "red"
+DARK_BLUE = "darkblue"
 NEGATIVE = "red"
 SUCCESS = "green"
+WHITE = "white"
