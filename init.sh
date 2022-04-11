@@ -1,4 +1,9 @@
 #!/bin/bash
 
-mkdir ./src/data
-touch ./src/data/database.sqlite
+dir="./src/data"
+mkdir $dir
+echo "Database directory created at $dir"
+
+file="./src/data/database.sqlite"
+touch $file
+echo "Database file created at $file"
