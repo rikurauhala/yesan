@@ -1,6 +1,6 @@
 import unittest
 
-from database.database_connection import connection
+from database.database_operations import connection
 
 
 class TestDatabase(unittest.TestCase):
