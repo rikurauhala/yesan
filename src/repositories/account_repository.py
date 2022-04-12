@@ -29,3 +29,8 @@ class AccountRepository:
         cursor = self._connection.cursor()
         cursor.execute("SELECT id FROM accounts WHERE name=(?)", (name, ))
         return cursor.fetchone()[0]
+
+    def delete_all(self):
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM accounts")
+        self._connection.commit()
