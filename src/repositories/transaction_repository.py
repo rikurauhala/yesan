@@ -21,8 +21,9 @@ class TransactionRepository:
             SELECT t.id, t.timestamp, t.amount, t.category, 
                    t.description, a.name, t.party
             FROM transactions AS t, accounts AS a
-            WHERE t.account_id = a.id"""
-                       )
+            WHERE t.account_id = a.id
+            ORDER BY t.timestamp DESC
+        """)
 
         rows = cursor.fetchall()
 
