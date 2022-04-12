@@ -1,6 +1,6 @@
 import unittest
 
-from database.database_operations import connection
+from database.database_operations import database_connection
 
 
 class TestDatabase(unittest.TestCase):
@@ -8,12 +8,12 @@ class TestDatabase(unittest.TestCase):
         pass
 
     def test_accounts_table(self):
-        cursor = connection.cursor()
+        cursor = database_connection.cursor()
         cursor.execute("""
             INSERT INTO accounts (id, name, type)
             VALUES (0, 'test-name', 'test-type')
         """)
-        connection.commit()
+        database_connection.commit()
 
         cursor.execute("""
             SELECT * FROM accounts WHERE name='test-name';
