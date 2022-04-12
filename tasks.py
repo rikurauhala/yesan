@@ -16,13 +16,13 @@ def start(ctx):
 @task
 def test(ctx):
     """Run automated tests."""
-    ctx.run("pytest src")
+    ctx.run("pytest src", pty=True)
 
 
 @task
 def coverage(ctx):
     """Check the coverage of the automated tests."""
-    ctx.run("coverage run --branch -m pytest src")
+    ctx.run("coverage run --branch -m pytest src", pty=True)
 
 
 @task(coverage)
