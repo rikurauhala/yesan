@@ -4,6 +4,7 @@
 
 ## Documentation
 
+- [Architecture](/documentation/architecture.md)
 - [Changelog](/documentation/changelog.md)
 - [Software requirements specification](documentation/srs.md)
 - [Work hour tracking](documentation/tracking.md)
