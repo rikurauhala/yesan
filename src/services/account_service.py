@@ -8,8 +8,8 @@ class AccountService:
     def __init__(self):
         self._account_repository = AccountRepository(get_database_connection())
 
-    def create_account(self, name, type):
-        new_account = Account(None, name, type)
+    def create_account(self, account_name, account_type):
+        new_account = Account(None, account_name, account_type)
         return self._account_repository.create(new_account)
 
     def find_all(self):
