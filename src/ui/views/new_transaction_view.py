@@ -16,6 +16,7 @@ class NewTransactionView:
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._go_to_transaction_view = go_to_transaction_view
+        self._ent_date = None
         self._ent_amount = None
         self._ent_category = None
         self._ent_description = None
@@ -66,6 +67,7 @@ class NewTransactionView:
 
     def _handle_submit(self):
         self._clear_message()
+        date = self._ent_date.get_date()
         amount = self._ent_amount.get()
         category = self._ent_category.get()
         description = self._ent_description.get()
@@ -76,6 +78,7 @@ class NewTransactionView:
         else:
             account_id = self._account_service.get_id_by_name(account_name)
             self._transaction_service.create_transaction(
+                date,
                 amount,
                 category,
                 description,
@@ -118,14 +121,15 @@ class NewTransactionView:
 
     def _initialize_date_entry(self):
         current_year = date.today().year
-        calendar = DateEntry(
+        self._ent_date = DateEntry(
             master=self._frame,
             background=colors.DARK_BLUE,
             foreground=colors.WHITE,
             borderwidth=2,
+            date_pattern="YYYY-MM-DD",
             year=current_year
         )
-        calendar.grid(
+        self._ent_date.grid(
             row=1,
             column=1,
             padx=styles.PADDING,
