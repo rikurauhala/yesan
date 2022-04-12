@@ -9,7 +9,18 @@ class TransactionService:
             get_database_connection()
         )
 
+    def _convert_to_int(self, amount):
+        euro = amount.split(".")[0]
+        cents = amount.split(".")[1]
+
+        if len(cents) == 1:
+            cents = cents + "0"
+
+        return int(euro + cents)
+
     def create_transaction(self, date, amount, category, description, account_id, party):
+        amount = self._convert_to_int(amount)
+
         new_transaction = Transaction(
             date,
             amount,

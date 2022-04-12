@@ -18,8 +18,7 @@ class TransactionRepository:
     def find_all(self):
         cursor = self._connection.cursor()
         cursor.execute("""
-            SELECT t.id, t.timestamp, t.amount, t.category, 
-                   t.description, a.name, t.party
+            SELECT t.id, t.timestamp, t.amount, t.category, t.description, a.name, t.party
             FROM transactions AS t, accounts AS a
             WHERE t.account_id = a.id
             ORDER BY t.timestamp DESC
