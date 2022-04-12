@@ -12,21 +12,25 @@ The application has a graphical user interface created with the Tkinter library.
 
 ## Functionality
 
+[ ✔ ] = ready  
+[ / ] = working on it
+
 ### Basic
 
-- Main view
+- [ / ] Main view
   - Relevant information about user's personal finances
     - Monthly income
     - Monthly expenses
     - Net worth
-  - Contains buttons for adding new accounts and transactions
-- Account view
-  - Contains a list of accounts and their balance
-  - New account view
+  - [ ✔ ] Contains buttons for adding new accounts and transactions
+- [ / ] Account view
+  - [ / ] Contains a list of accounts and their balance
+  - [ ✔ ] New account view
     - Used to add a new account to the database
   - An "account" (for lack of a better term) can be anything from a checking account to a wallet to cryptocurrency or other assets
-- Transaction view
-  - Adding transactions
+- [ / ] Transaction view
+  - [ ✔ ] Lists recent transactions
+  - [ ✔ ] Adding transactions
   - Deleting/editing transactions
 
 ### Secondary
