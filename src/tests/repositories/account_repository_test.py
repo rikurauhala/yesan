@@ -37,3 +37,10 @@ class TestAccountRepository(unittest.TestCase):
 
         self.assertEqual(account_list[1], self.account_checking_account.name)
         self.assertEqual(account_list[0], self.account_bitcoin.name)
+
+    def test_get_id_by_name(self):
+        self._account_repository.create(self.account_bitcoin)
+
+        account_id = self._account_repository.get_id_by_name(self.account_bitcoin.name)
+
+        self.assertEqual(account_id, 1)
