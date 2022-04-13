@@ -41,3 +41,8 @@ class TransactionRepository:
             transactions.append(transaction)
 
         return transactions
+
+    def delete_all(self):
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM transactions")
+        self._connection.commit()
