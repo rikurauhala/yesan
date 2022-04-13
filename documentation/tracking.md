@@ -12,4 +12,5 @@
 | 2022-04-10 |      4 | creating transaction view, improving new transaction view                                                 |
 | 2022-04-11 |      2 | adding tkcalendar to new transaction view, fixing errors                                                  |
 | 2022-04-12 |      5 | improving functionality for adding a new transaction, maintaining project files, creating more unit tests |
-| total      |     33 |                                                                                                           |
+| 2022-04-13 |      1 | creating more unit tests                                                                                  |
+| total      |     34 |                                                                                                           |
