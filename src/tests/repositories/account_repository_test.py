@@ -14,33 +14,33 @@ class TestAccountRepository(unittest.TestCase):
 
         name_account_a = "Checking account"
         type_account_a = "Bank account"
-        self.account_a = Account(None, name_account_a, type_account_a)
+        self._account_a = Account(None, name_account_a, type_account_a)
 
         name_account_b = "Bitcoin"
         type_account_b = "Crypto currency"
-        self.account_b = Account(None, name_account_b, type_account_b)
+        self._account_b = Account(None, name_account_b, type_account_b)
 
     def test_create(self):
-        self._account_repository.create(self.account_b)
+        self._account_repository.create(self._account_b)
         accounts = self._account_repository.find_all()
 
         self.assertEqual(len(accounts), 1)
         self.assertEqual(accounts[0].id, 1)
-        self.assertEqual(accounts[0].name, self.account_b.name)
-        self.assertEqual(accounts[0].type, self.account_b.type)
+        self.assertEqual(accounts[0].name, self._account_b.name)
+        self.assertEqual(accounts[0].type, self._account_b.type)
 
     def test_get_list(self):
-        self._account_repository.create(self.account_a)
-        self._account_repository.create(self.account_b)
+        self._account_repository.create(self._account_a)
+        self._account_repository.create(self._account_b)
 
         account_list = self._account_repository.get_list()
 
-        self.assertEqual(account_list[1], self.account_a.name)
-        self.assertEqual(account_list[0], self.account_b.name)
+        self.assertEqual(account_list[1], self._account_a.name)
+        self.assertEqual(account_list[0], self._account_b.name)
 
     def test_get_id_by_name(self):
-        self._account_repository.create(self.account_b)
+        self._account_repository.create(self._account_b)
 
-        account_id = self._account_repository.get_id_by_name(self.account_b.name)
+        account_id = self._account_repository.get_id_by_name(self._account_b.name)
 
         self.assertEqual(account_id, 1)
