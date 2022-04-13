@@ -28,3 +28,12 @@ class TestAccountRepository(unittest.TestCase):
         self.assertEqual(accounts[0].id, 1)
         self.assertEqual(accounts[0].name, self.account_bitcoin.name)
         self.assertEqual(accounts[0].type, self.account_bitcoin.type)
+
+    def test_get_list(self):
+        self._account_repository.create(self.account_checking_account)
+        self._account_repository.create(self.account_bitcoin)
+
+        account_list = self._account_repository.get_list()
+
+        self.assertEqual(account_list[1], self.account_checking_account.name)
+        self.assertEqual(account_list[0], self.account_bitcoin.name)
