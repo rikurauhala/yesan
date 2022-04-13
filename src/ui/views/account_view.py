@@ -1,7 +1,9 @@
 from tkinter import constants, ttk
 
 from services.account_service import AccountService
+from services.transaction_service import TransactionService
 
+import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
@@ -13,6 +15,7 @@ class AccountView:
         self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
         self._account_service = AccountService()
+        self._transaction_service = TransactionService()
         self._initialize()
 
     def pack(self):
@@ -111,11 +114,25 @@ class AccountView:
                 sticky=constants.W
             )
 
-            txt_balance = "0.00 €"
-            lbl_balance = ttk.Label(
-                master=self._frame,
-                text=txt_balance
-            )
+            txt_balance = self._transaction_service.get_balance_by_id(i+1)
+            if not txt_balance:
+                txt_balance = "0.00 €"
+            else:
+                euro = str(int(txt_balance/100))
+                cents = str(txt_balance)[-2:]
+                txt_balance = euro + "." + cents + " €"
+            lbl_balance = None
+            if txt_balance[0] == "-":
+                lbl_balance = ttk.Label(
+                    master=self._frame,
+                    text=txt_balance,
+                    foreground=colors.NEGATIVE
+                )
+            else:
+                lbl_balance = ttk.Label(
+                    master=self._frame,
+                    text=txt_balance
+                )
             lbl_balance.grid(
                 row=i+2,
                 column=2,

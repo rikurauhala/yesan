@@ -33,3 +33,6 @@ class TransactionService:
 
     def find_all(self):
         return self._transaction_repository.find_all()
+
+    def get_balance_by_id(self, account_id):
+        return self._transaction_repository.get_balance_by_id(account_id)
