@@ -12,35 +12,35 @@ class TestAccountRepository(unittest.TestCase):
         self._account_repository = AccountRepository(database_connection)
         self._account_repository.delete_all()
 
-        name_checking_account = "Checking account"
-        type_checking_account = "Bank account"
-        self.account_checking_account = Account(None, name_checking_account, type_checking_account)
+        name_account_a = "Checking account"
+        type_account_a = "Bank account"
+        self.account_a = Account(None, name_account_a, type_account_a)
 
-        name_bitcoin = "Bitcoin"
-        type_bitcoin= "Crypto currency"
-        self.account_bitcoin = Account(None, name_bitcoin, type_bitcoin)
+        name_account_b = "Bitcoin"
+        type_account_b = "Crypto currency"
+        self.account_b = Account(None, name_account_b, type_account_b)
 
     def test_create(self):
-        self._account_repository.create(self.account_bitcoin)
+        self._account_repository.create(self.account_b)
         accounts = self._account_repository.find_all()
 
         self.assertEqual(len(accounts), 1)
         self.assertEqual(accounts[0].id, 1)
-        self.assertEqual(accounts[0].name, self.account_bitcoin.name)
-        self.assertEqual(accounts[0].type, self.account_bitcoin.type)
+        self.assertEqual(accounts[0].name, self.account_b.name)
+        self.assertEqual(accounts[0].type, self.account_b.type)
 
     def test_get_list(self):
-        self._account_repository.create(self.account_checking_account)
-        self._account_repository.create(self.account_bitcoin)
+        self._account_repository.create(self.account_a)
+        self._account_repository.create(self.account_b)
 
         account_list = self._account_repository.get_list()
 
-        self.assertEqual(account_list[1], self.account_checking_account.name)
-        self.assertEqual(account_list[0], self.account_bitcoin.name)
+        self.assertEqual(account_list[1], self.account_a.name)
+        self.assertEqual(account_list[0], self.account_b.name)
 
     def test_get_id_by_name(self):
-        self._account_repository.create(self.account_bitcoin)
+        self._account_repository.create(self.account_b)
 
-        account_id = self._account_repository.get_id_by_name(self.account_bitcoin.name)
+        account_id = self._account_repository.get_id_by_name(self.account_b.name)
 
         self.assertEqual(account_id, 1)
