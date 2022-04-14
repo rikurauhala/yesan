@@ -8,6 +8,7 @@ authors = ["Riku Rauhala <riku@rauhala.io>"]
 python = "^3.8"
 invoke = "^1.7.0"
 tkcalendar = "^1.6.1"
+python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.1"
