@@ -114,7 +114,8 @@ class AccountView:
                 sticky=constants.W
             )
 
-            txt_balance = self._transaction_service.get_balance_by_id(i+1)
+            account_id = self._account_service.get_id_by_name(accounts[i].name)
+            txt_balance = self._transaction_service.get_balance_by_id(account_id)
             if not txt_balance:
                 txt_balance = "0.00 €"
             else:
