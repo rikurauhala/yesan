@@ -5,16 +5,16 @@ description = ""
 authors = ["Riku Rauhala <riku@rauhala.io>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
 invoke = "^1.7.0"
-tkcalendar = "^1.6.1"
+python = "^3.8"
 python-dotenv = "^0.20.0"
+tkcalendar = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1.1"
+autopep8 = "^1.6.0"
 coverage = "^6.3.2"
 pylint = "^2.13.4"
-autopep8 = "^1.6.0"
+pytest = "^7.1.1"
 pytest-dotenv = "^0.5.2"
 
 [build-system]
