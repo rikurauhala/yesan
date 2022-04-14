@@ -12,6 +12,7 @@ class AccountView:
     def __init__(self, root, go_to_main_view, go_to_new_account_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._net_worth = 0
         self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
         self._account_service = AccountService()
@@ -119,6 +120,7 @@ class AccountView:
             if not txt_balance:
                 txt_balance = "0.00 €"
             else:
+                self._net_worth = self._net_worth + int(txt_balance)
                 euro = str(int(txt_balance/100))
                 cents = str(txt_balance)[-2:]
                 txt_balance = euro + "." + cents + " €"
@@ -142,6 +144,38 @@ class AccountView:
                 sticky=constants.E
             )
 
+    def _initialize_net_worth_label(self, total):
+        txt_net_worth = "Net worth"
+        lbl_net_worth = ttk.Label(
+            master=self._frame,
+            text=txt_net_worth,
+            font=fonts.BOLD
+        )
+        lbl_net_worth.grid(
+            row=total+2,
+            column=1,
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.E
+        )
+
+    def _initialize_net_worth_info(self, total):
+        euro = str(int(self._net_worth/100))
+        cents = str(self._net_worth)[-2:]
+        txt_net_worth = euro + "." + cents + " €"
+        lbl_net_worth = ttk.Label(
+            master=self._frame,
+            text=txt_net_worth,
+            font=fonts.BOLD
+        )
+        lbl_net_worth.grid(
+            row=total+2,
+            column=2,
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.E
+        )
+
     def _initialize_back_button(self, total):
         txt_back = "« Back"
         btn_back = ttk.Button(
@@ -150,7 +184,7 @@ class AccountView:
             command=self._go_to_main_view
         )
         btn_back.grid(
-            row=total+2,
+            row=total+3,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -165,7 +199,7 @@ class AccountView:
             command=self._go_to_new_account_view
         )
         btn_new_account.grid(
-            row=total+2,
+            row=total+3,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -178,5 +212,7 @@ class AccountView:
         accounts = self._account_service.find_all()
         total = len(accounts)
         self._initialize_account_information(accounts, total)
+        self._initialize_net_worth_label(total)
+        self._initialize_net_worth_info(total)
         self._initialize_back_button(total)
         self._initialize_new_account_button(total)
