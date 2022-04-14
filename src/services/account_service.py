@@ -1,4 +1,4 @@
-from database.database_operations import get_database_connection
+from database_operations import get_database_connection
 from entities.account import Account
 from repositories.account_repository import AccountRepository
 

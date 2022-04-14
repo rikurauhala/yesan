@@ -2,7 +2,7 @@ import unittest
 
 from entities.account import Account
 
-from database.database_operations import database_connection
+from database_operations import database_connection
 
 from repositories.account_repository import AccountRepository
 
@@ -41,6 +41,7 @@ class TestAccountRepository(unittest.TestCase):
     def test_get_id_by_name(self):
         self._account_repository.create(self._account_b)
 
-        account_id = self._account_repository.get_id_by_name(self._account_b.name)
+        account_id = self._account_repository.get_id_by_name(
+            self._account_b.name)
 
         self.assertEqual(account_id, 1)

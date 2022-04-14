@@ -49,5 +49,6 @@ class TransactionRepository:
 
     def get_balance_by_id(self, account_id):
         cursor = self._connection.cursor()
-        cursor.execute("SELECT SUM(amount) FROM transactions WHERE account_id=(?)", (account_id, ))
+        cursor.execute(
+            "SELECT SUM(amount) FROM transactions WHERE account_id=(?)", (account_id, ))
         return cursor.fetchone()[0]

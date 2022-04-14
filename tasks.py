@@ -4,7 +4,7 @@ from invoke import task
 @task
 def init(ctx):
     """Initialize the database."""
-    ctx.run("python3 src/database/database_operations.py")
+    ctx.run("python3 src/database_operations.py")
 
 
 @task
