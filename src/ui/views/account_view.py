@@ -144,6 +144,17 @@ class AccountView:
                 sticky=constants.E
             )
 
+    def _initialize_net_worth_separator(self, total):
+        separator = ttk.Separator(master=self._frame, orient="horizontal")
+        separator.grid(
+            row=total+2,
+            column=0,
+            columnspan=3,
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.EW
+        )
+
     def _initialize_net_worth_label(self, total):
         txt_net_worth = "Net worth"
         lbl_net_worth = ttk.Label(
@@ -152,7 +163,7 @@ class AccountView:
             font=fonts.BOLD
         )
         lbl_net_worth.grid(
-            row=total+2,
+            row=total+3,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -169,7 +180,7 @@ class AccountView:
             font=fonts.BOLD
         )
         lbl_net_worth.grid(
-            row=total+2,
+            row=total+3,
             column=2,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -184,7 +195,7 @@ class AccountView:
             command=self._go_to_main_view
         )
         btn_back.grid(
-            row=total+3,
+            row=total+4,
             column=0,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -199,7 +210,7 @@ class AccountView:
             command=self._go_to_new_account_view
         )
         btn_new_account.grid(
-            row=total+3,
+            row=total+4,
             column=1,
             padx=styles.PADDING,
             pady=styles.PADDING,
@@ -212,6 +223,7 @@ class AccountView:
         accounts = self._account_service.find_all()
         total = len(accounts)
         self._initialize_account_information(accounts, total)
+        self._initialize_net_worth_separator(total)
         self._initialize_net_worth_label(total)
         self._initialize_net_worth_info(total)
         self._initialize_back_button(total)
