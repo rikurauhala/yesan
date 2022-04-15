@@ -14,4 +14,5 @@
 | 2022-04-12 |      5 | improving functionality for adding a new transaction, maintaining project files, creating more unit tests |
 | 2022-04-13 |      2 | creating more unit tests, adding functionality for calculating the balance of each account                |
 | 2022-04-14 |      3 | creating more unit tests, refactoring, calculating net worth in account view                              |
-| total      |     38 |                                                                                                           |
+| 2022-04-15 |      1 | improving ui, experimenting with charts                                                                   |
+| total      |     39 |                                                                                                           |
