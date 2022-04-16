@@ -20,3 +20,6 @@ class AccountService:
 
     def get_id_by_name(self, name):
         return self._account_repository.get_id_by_name(name)
+
+    def delete_all(self):
+        return self._account_repository.delete_all()
