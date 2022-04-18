@@ -16,4 +16,5 @@
 | 2022-04-14 |      3 | creating more unit tests, refactoring, calculating net worth in account view                              |
 | 2022-04-15 |      1 | improving ui, experimenting with charts                                                                   |
 | 2022-04-16 |      1 | creating more unit tests, experimenting                                                                   |
-| total      |     40 |                                                                                                           |
+| 2022-04-18 |      1 | tweaking, experimenting                                                                                   |
+| total      |     41 |                                                                                                           |
