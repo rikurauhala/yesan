@@ -12,6 +12,7 @@ class AccountView:
     def __init__(self, root, go_to_main_view, go_to_new_account_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._buttons = ttk.Frame(master=self._frame)
         self._net_worth = 0
         self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
@@ -187,34 +188,67 @@ class AccountView:
             sticky=constants.E
         )
 
-    def _initialize_back_button(self, total):
+    def _initialize_back_button(self):
         txt_back = "« Back"
         btn_back = ttk.Button(
-            master=self._frame,
+            master=self._buttons,
             text=txt_back,
             command=self._go_to_main_view
         )
         btn_back.grid(
-            row=total+4,
+            row=0,
             column=0,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.EW
+            padx=styles.PADDING_RIGHT
         )
 
-    def _initialize_new_account_button(self, total):
+    def _initialize_new_account_button(self):
         txt_new_account = "+ New account"
         btn_new_account = ttk.Button(
-            master=self._frame,
+            master=self._buttons,
             text=txt_new_account,
             command=self._go_to_new_account_view
         )
         btn_new_account.grid(
-            row=total+4,
+            row=0,
             column=1,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.EW
+            padx=styles.PADDING_RIGHT
+        )
+
+    def _initialize_import_button(self):
+        txt_import = "↓ Import"
+        btn_import = ttk.Button(
+            master=self._buttons,
+            text=txt_import,
+            command=None
+        )
+        btn_import.grid(
+            row=0,
+            column=2,
+            padx=styles.PADDING_RIGHT
+        )
+
+    def _initialize_export_button(self):
+        txt_export = "↑ Export"
+        btn_export = ttk.Button(
+            master=self._buttons,
+            text=txt_export,
+            command=None
+        )
+        btn_export.grid(
+            row=0,
+            column=3,
+            padx=styles.PADDING_RIGHT
+        )    
+
+    def _initialize_buttons(self):
+        self._initialize_back_button()
+        self._initialize_new_account_button()
+        self._initialize_import_button()
+        self._initialize_export_button()
+        self._buttons.grid(
+            columnspan=3,
+            padx=styles.PADDING_MAIN,
+            pady=styles.PADDING_MAIN
         )
 
     def _initialize(self):
@@ -226,5 +260,4 @@ class AccountView:
         self._initialize_net_worth_separator(total)
         self._initialize_net_worth_label(total)
         self._initialize_net_worth_info(total)
-        self._initialize_back_button(total)
-        self._initialize_new_account_button(total)
+        self._initialize_buttons()
