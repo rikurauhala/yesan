@@ -1,4 +1,3 @@
-# Padding
 PADDING = 7
 PADDING_MAIN = 10
 PADDING_RIGHT = (0, 10)
