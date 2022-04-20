@@ -17,4 +17,5 @@
 | 2022-04-15 |      1 | improving ui, experimenting with charts                                                                   |
 | 2022-04-16 |      1 | creating more unit tests, experimenting                                                                   |
 | 2022-04-18 |      1 | tweaking, experimenting                                                                                   |
-| total      |     41 |                                                                                                           |
+| 2022-04-20 |      2 | creating functionality for exporting account details into a csv                                           |
+| total      |     43 |                                                                                                           |
