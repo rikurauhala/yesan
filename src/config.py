@@ -9,5 +9,10 @@ try:
 except FileNotFoundError:
     pass
 
+DATA_FOLDER_PATH = os.path.join(dirname, "..", "data")
+
 DATABASE_FILENAME = os.getenv("DATABASE_FILENAME") or "database.sqlite"
-DATABASE_FILE_PATH = os.path.join(dirname, "..", "data", DATABASE_FILENAME)
+DATABASE_FILE_PATH = os.path.join(DATA_FOLDER_PATH, DATABASE_FILENAME)
+
+ACCOUNTS_FILENAME = os.getenv("ACCOUNTS_FILENAME") or "accounts.csv"
+ACCOUNTS_FILE_PATH = os.path.join(DATA_FOLDER_PATH, ACCOUNTS_FILENAME)
