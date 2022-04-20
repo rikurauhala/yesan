@@ -232,7 +232,7 @@ class AccountView:
         btn_export = ttk.Button(
             master=self._buttons,
             text=txt_export,
-            command=None
+            command=lambda : self._account_service.export()
         )
         btn_export.grid(
             row=0,
