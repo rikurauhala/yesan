@@ -1,5 +1,11 @@
+import csv
+
+from config import ACCOUNTS_FILE_PATH
+
 from database_operations import get_database_connection
+
 from entities.account import Account
+
 from repositories.account_repository import AccountRepository
 
 
@@ -23,3 +29,14 @@ class AccountService:
 
     def delete_all(self):
         return self._account_repository.delete_all()
+
+    def export(self):
+        accounts = self.find_all()
+
+        with open(ACCOUNTS_FILE_PATH, "w", encoding="UTF8") as file:
+            writer = csv.writer(file)
+            for account in accounts:
+                details = []
+                details.append(account.name)
+                details.append(account.type)
+                writer.writerow(details)
