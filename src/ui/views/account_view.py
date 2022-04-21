@@ -117,7 +117,8 @@ class AccountView:
             )
 
             account_id = self._account_service.get_id_by_name(accounts[i].name)
-            txt_balance = self._transaction_service.get_balance_by_id(account_id)
+            txt_balance = self._transaction_service.get_balance_by_id(
+                account_id)
             if not txt_balance:
                 txt_balance = "0.00 €"
             else:
@@ -232,13 +233,13 @@ class AccountView:
         btn_export = ttk.Button(
             master=self._buttons,
             text=txt_export,
-            command=lambda : self._account_service.export()
+            command=lambda: self._account_service.export()
         )
         btn_export.grid(
             row=0,
             column=3,
             padx=styles.PADDING_RIGHT
-        )    
+        )
 
     def _initialize_buttons(self):
         self._initialize_back_button()
