@@ -21,7 +21,10 @@ class TestAccountService(unittest.TestCase):
         self._account_b = Account(None, name_account_b, type_account_b)
 
     def test_create_account(self):
-        self._account_service.create_account(self._account_b.name, self._account_b.type)
+        self._account_service.create_account(
+            self._account_b.name, 
+            self._account_b.type
+        )
         accounts = self._account_service.find_all()
 
         self.assertEqual(len(accounts), 1)
@@ -30,8 +33,14 @@ class TestAccountService(unittest.TestCase):
         self.assertEqual(accounts[0].type, self._account_b.type)
 
     def test_get_list(self):
-        self._account_service.create_account(self._account_a.name, self._account_a.type)
-        self._account_service.create_account(self._account_b.name, self._account_b.type)
+        self._account_service.create_account(
+            self._account_a.name,
+            self._account_a.type
+        )
+        self._account_service.create_account(
+            self._account_b.name,
+            self._account_b.type
+        )
 
         account_list = self._account_service.get_list()
 
