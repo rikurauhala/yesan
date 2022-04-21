@@ -1,4 +1,4 @@
-from tkinter import constants, ttk
+from tkinter import constants, StringVar, ttk
 
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
@@ -14,6 +14,7 @@ class AccountView:
         self._frame = ttk.Frame(master=self._root)
         self._buttons = ttk.Frame(master=self._frame)
         self._net_worth = 0
+        self._lbl_message = None
         self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
         self._account_service = AccountService()
@@ -215,6 +216,40 @@ class AccountView:
             padx=styles.PADDING_RIGHT
         )
 
+    def _clear_message(self):
+        if self._lbl_message:
+            self._lbl_message.destroy()
+
+    def _display_message(self, mode):
+        self._var_message = StringVar(self._frame)
+        if mode == "error":
+            self._var_message.set("Exporting accounts failed!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.ERROR
+            )
+        if mode == "success":
+            self._var_message.set("Accounts exported successfully!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.SUCCESS
+            )
+        self._lbl_message.grid(
+            columnspan=3,
+            padx=styles.PADDING,
+            pady=styles.PADDING
+        )
+
+    def _handle_export(self):
+        self._clear_message()
+        success = self._account_service.export()
+        if not success:
+            self._display_message("error")
+        else:
+            self._display_message("success")
+
     def _initialize_import_button(self):
         txt_import = "↓ Import"
         btn_import = ttk.Button(
@@ -233,7 +268,7 @@ class AccountView:
         btn_export = ttk.Button(
             master=self._buttons,
             text=txt_export,
-            command=lambda: self._account_service.export()
+            command=lambda: self._handle_export()
         )
         btn_export.grid(
             row=0,

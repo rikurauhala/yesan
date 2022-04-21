@@ -40,3 +40,5 @@ class AccountService:
                 details.append(account.name)
                 details.append(account.type)
                 writer.writerow(details)
+        
+        return True
