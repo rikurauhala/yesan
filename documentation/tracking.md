@@ -17,6 +17,7 @@
 | 2022-04-15 |      1 | improving ui, experimenting with charts                                                                   |
 | 2022-04-16 |      1 | creating more unit tests, experimenting                                                                   |
 | 2022-04-18 |      1 | tweaking, experimenting                                                                                   |
-| 2022-04-20 |      2 | creating functionality for exporting account details into a csv                                           |
+| 2022-04-20 |      2 | creating functionality for exporting account details into a csv file                                      |
 | 2022-04-21 |      1 | adding error/success message for account exports, formatting source code                                  |
-| total      |     44 |                                                                                                           |
+| 2022-04-20 |      2 | creating functionality for exporting transaction details into a csv file                                  |
+| total      |     46 |                                                                                                           |
