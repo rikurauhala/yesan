@@ -62,7 +62,21 @@ class MainView:
             sticky=constants.EW
         )
 
+    def _initialize_quit_button(self):
+        txt_quit = "Quit"
+        btn_quit = ttk.Button(
+            master=self._frame,
+            text=txt_quit,
+            command=lambda: self._root.destroy()
+        )
+        btn_quit.grid(
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.EW
+        )
+
     def _initialize(self):
         self._initialize_title_label()
         self._initialize_accounts_button()
         self._initialize_transactions_button()
+        self._initialize_quit_button()
