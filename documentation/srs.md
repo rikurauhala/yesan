@@ -2,15 +2,17 @@
 
 ## Purpose
 
-The application is called **Yesan**, (예산, Korean for *budget*). Its purpose is to help its users to keep track of their personal finances and see where their money is going. The user interface is only available in English. The programming language used is Python and user data is stored in an SQLite database.
+The application is called **Yesan**, (예산, Korean for *budget*). Its purpose is to help its users to keep track of their personal finances and see where their money is going. The application offers an alternative to the tedious task of managing personal finance data with software such as Microsoft Excel or LibreOffice Calc.
 
-"No more spreadsheets!"
+» "No more spreadsheets!"
 
 ## User interface
 
-The application has a graphical user interface created with the Tkinter library.
+The application has a graphical user interface created with the `Tkinter` library. The user interface is only available in English.
 
 ## Functionality
+
+ The programming language used is Python and user data is stored in an SQLite database via the `sqlite3` module. The application contains the following functionality. *Basic* functionality forms the core of the application and *secondary* features are ideas for further development.
 
 [ X ] = ready  
 [ / ] = working on it
@@ -22,16 +24,18 @@ The application has a graphical user interface created with the Tkinter library.
     - Monthly income
     - Monthly expenses
     - Net worth
-  - [ X ] Contains buttons for adding new accounts and transactions
+  - [ X ] Contains a button for showing the account view
+  - [ X ] Contains a button for showing the transaction view
+  - [ X ] Contains a button for exiting the application
 - [ / ] Account view
   - [ X ] Contains a list of accounts and their balance
   - [ X ] Displays net worth
-  - [ X ] Adding new accounts
+  - [ X ] Contains a button for adding new accounts
   - [ / ] Importing data from a csv file
   - [ X ] Exporting data into a csv file
 - [ / ] Transaction view
-  - [ X ] Lists recent transactions
-  - [ X ] Adding transactions
+  - [ X ] Contains a list of recent transactions
+  - [ X ] Contains a button for adding new transactions
   - [ / ] Importing data from a csv file
   - [ X ] Exporting data into a csv file
 
@@ -45,3 +49,4 @@ The application has a graphical user interface created with the Tkinter library.
   - Creating a budget and comparing monthly expenses
 - Reports
   - Generating monthly/yearly reports in txt/html/pdf etc. form
+- Support for other languages and currencies
