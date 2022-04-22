@@ -26,14 +26,14 @@ class MainView:
         lbl_title = ttk.Label(
             master=self._frame,
             text=txt_title,
-            font=fonts.TITLE
+            font=fonts.TITLE,
+            justify=constants.CENTER
         )
         lbl_title.grid(
             row=0,
             column=0,
             padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
+            pady=styles.PADDING
         )
 
     def _initialize_accounts_button(self):
