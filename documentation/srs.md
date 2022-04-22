@@ -27,13 +27,13 @@ The application has a graphical user interface created with the Tkinter library.
   - [ X ] Contains a list of accounts and their balance
   - [ X ] Displays net worth
   - [ X ] Adding new accounts
-  - [ X ] Importing data into a csv file
-  - [ / ] Exporting data from a csv file
+  - [ / ] Importing data from a csv file
+  - [ X ] Exporting data into a csv file
 - [ / ] Transaction view
   - [ X ] Lists recent transactions
   - [ X ] Adding transactions
-  - Importing data into a csv file
-  - Exporting data from a csv file
+  - [ / ] Importing data from a csv file
+  - [ / ] Exporting data into a csv file
 
 ### Secondary
 
