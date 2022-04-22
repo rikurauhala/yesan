@@ -23,7 +23,7 @@ The application has a graphical user interface created with the Tkinter library.
     - Monthly expenses
     - Net worth
   - [ X ] Contains buttons for adding new accounts and transactions
-- [ X ] Account view
+- [ / ] Account view
   - [ X ] Contains a list of accounts and their balance
   - [ X ] Displays net worth
   - [ X ] Adding new accounts
@@ -33,7 +33,7 @@ The application has a graphical user interface created with the Tkinter library.
   - [ X ] Lists recent transactions
   - [ X ] Adding transactions
   - [ / ] Importing data from a csv file
-  - [ / ] Exporting data into a csv file
+  - [ X ] Exporting data into a csv file
 
 ### Secondary
 
