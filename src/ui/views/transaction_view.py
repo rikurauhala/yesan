@@ -1,4 +1,4 @@
-from tkinter import constants, ttk
+from tkinter import constants, StringVar, ttk
 
 from services.transaction_service import TransactionService
 
@@ -11,6 +11,8 @@ class TransactionView:
     def __init__(self, root, go_to_main_view, go_to_new_transaction_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._buttons = ttk.Frame(master=self._frame)
+        self._lbl_message = None
         self._go_to_main_view = go_to_main_view
         self._go_to_new_transaction_view = go_to_new_transaction_view
         self._transaction_service = TransactionService()
@@ -214,34 +216,103 @@ class TransactionView:
                 sticky=constants.W
             )
 
-    def _initialize_back_button(self, total):
+    def _initialize_back_button(self):
         txt_back = "« Back"
         btn_back = ttk.Button(
-            master=self._frame,
+            master=self._buttons,
             text=txt_back,
             command=self._go_to_main_view
         )
         btn_back.grid(
-            row=total+2,
+            row=0,
             column=0,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
+            padx=styles.PADDING_RIGHT,
             sticky=constants.EW
         )
 
-    def _initialize_new_transaction_button(self, total):
+    def _initialize_new_transaction_button(self):
         txt_new_transaction = "+ New transaction"
         btn_new_transaction = ttk.Button(
-            master=self._frame,
+            master=self._buttons,
             text=txt_new_transaction,
             command=self._go_to_new_transaction_view
         )
         btn_new_transaction.grid(
-            row=total+2,
+            row=0,
             column=1,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
+            padx=styles.PADDING_RIGHT,
             sticky=constants.EW
+        )
+
+    def _clear_message(self):
+        if self._lbl_message:
+            self._lbl_message.destroy()
+
+    def _display_message(self, mode):
+        self._var_message = StringVar(self._frame)
+        if mode == "error":
+            self._var_message.set("Exporting transactions failed!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.ERROR
+            )
+        if mode == "success":
+            self._var_message.set("Transactions exported successfully!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.SUCCESS
+            )
+        self._lbl_message.grid(
+            columnspan=6,
+            padx=styles.PADDING,
+            pady=styles.PADDING
+        )
+
+    def _handle_export(self):
+        self._clear_message()
+        success = self._transaction_service.export()
+        if not success:
+            self._display_message("error")
+        else:
+            self._display_message("success")
+
+    def _initialize_import_button(self):
+        txt_import = "↓ Import"
+        btn_import = ttk.Button(
+            master=self._buttons,
+            text=txt_import,
+            command=None
+        )
+        btn_import.grid(
+            row=0,
+            column=2,
+            padx=styles.PADDING_RIGHT
+        )
+
+    def _initialize_export_button(self):
+        txt_export = "↑ Export"
+        btn_export = ttk.Button(
+            master=self._buttons,
+            text=txt_export,
+            command=lambda: self._handle_export()
+        )
+        btn_export.grid(
+            row=0,
+            column=3,
+            padx=styles.PADDING_RIGHT
+        )
+
+    def _initialize_buttons(self):
+        self._initialize_back_button()
+        self._initialize_new_transaction_button()
+        self._initialize_import_button()
+        self._initialize_export_button()
+        self._buttons.grid(
+            columnspan=3,
+            padx=styles.PADDING_MAIN,
+            pady=styles.PADDING_MAIN
         )
 
     def _initialize(self):
@@ -250,5 +321,6 @@ class TransactionView:
         transactions = self._transaction_service.find_all()
         total = len(transactions)
         self._initialize_transaction_information(transactions, total)
-        self._initialize_back_button(total)
-        self._initialize_new_transaction_button(total)
+        self._initialize_back_button()
+        self._initialize_new_transaction_button()
+        self._initialize_buttons()
