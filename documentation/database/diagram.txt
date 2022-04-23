@@ -1,16 +1,16 @@
 Table accounts {
-  id INTEGER [pk, increment]
-  name TEXT [unique]
+  id TEXT [pk]
+  name TEXT
   type TEXT
 }
 
 Table transactions {
-  id INTEGER [pk, increment]
+  id TEXT [pk, increment]
   timestamp INTEGER
   amount INTEGER
   category TEXT
   description TEXT
-  account_id INTEGER
+  account_id TEXT
   party TEXT
 }
 
