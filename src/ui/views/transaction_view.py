@@ -216,6 +216,32 @@ class TransactionView:
                 sticky=constants.W
             )
 
+    def _clear_message(self):
+        if self._lbl_message:
+            self._lbl_message.destroy()
+
+    def _display_message(self, mode):
+        self._var_message = StringVar(self._frame)
+        if mode == "error":
+            self._var_message.set("Exporting transactions failed!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.ERROR
+            )
+        if mode == "success":
+            self._var_message.set("Transactions exported successfully!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.SUCCESS
+            )
+        self._lbl_message.grid(
+            columnspan=6,
+            padx=styles.PADDING,
+            pady=styles.PADDING
+        )
+
     def _initialize_back_button(self):
         txt_back = "« Back"
         btn_back = ttk.Button(
@@ -244,40 +270,6 @@ class TransactionView:
             sticky=constants.EW
         )
 
-    def _clear_message(self):
-        if self._lbl_message:
-            self._lbl_message.destroy()
-
-    def _display_message(self, mode):
-        self._var_message = StringVar(self._frame)
-        if mode == "error":
-            self._var_message.set("Exporting transactions failed!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if mode == "success":
-            self._var_message.set("Transactions exported successfully!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.SUCCESS
-            )
-        self._lbl_message.grid(
-            columnspan=6,
-            padx=styles.PADDING,
-            pady=styles.PADDING
-        )
-
-    def _handle_export(self):
-        self._clear_message()
-        success = self._transaction_service.export()
-        if not success:
-            self._display_message("error")
-        else:
-            self._display_message("success")
-
     def _initialize_import_button(self):
         txt_import = "↓ Import"
         btn_import = ttk.Button(
@@ -290,6 +282,14 @@ class TransactionView:
             column=2,
             padx=styles.PADDING_RIGHT
         )
+
+    def _handle_export(self):
+        self._clear_message()
+        success = self._transaction_service.export()
+        if not success:
+            self._display_message("error")
+        else:
+            self._display_message("success")
 
     def _initialize_export_button(self):
         txt_export = "↑ Export"
