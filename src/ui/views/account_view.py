@@ -196,6 +196,13 @@ class AccountView:
 
     def _display_message(self, mode):
         self._var_message = StringVar(self._frame)
+        if mode == "missing":
+            self._var_message.set("Importing accounts is not supported yet!")
+            self._lbl_message = ttk.Label(
+                master=self._frame,
+                textvariable=self._var_message,
+                foreground=colors.ERROR
+            )
         if mode == "error":
             self._var_message.set("Exporting accounts failed!")
             self._lbl_message = ttk.Label(
@@ -242,12 +249,16 @@ class AccountView:
             padx=styles.PADDING_RIGHT
         )
 
+    def _handle_import(self):
+        self._clear_message()
+        self._display_message("missing")
+
     def _initialize_import_button(self):
         txt_import = "↓ Import"
         btn_import = ttk.Button(
             master=self._buttons,
             text=txt_import,
-            command=None
+            command=lambda: self._handle_import()
         )
         btn_import.grid(
             row=0,
