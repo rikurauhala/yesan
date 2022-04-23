@@ -15,8 +15,7 @@ class AccountService:
         self._account_repository = AccountRepository(get_database_connection())
 
     def create_account(self, account_name, account_type):
-        new_account = Account(None, account_name, account_type)
-        return self._account_repository.create(new_account)
+        return self._account_repository.create(account_name, account_type)
 
     def find_all(self):
         return self._account_repository.find_all()

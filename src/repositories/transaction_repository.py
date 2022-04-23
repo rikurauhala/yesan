@@ -8,8 +8,8 @@ class TransactionRepository:
         self._connection = connection
 
     def create(self, date, amount, category, description, account_id, party):
-        cursor = self._connection.cursor()
         transaction_id = str(uuid.uuid4())
+        cursor = self._connection.cursor()
         cursor.execute("""
             INSERT INTO transactions(
                 id, timestamp, amount, category, 
