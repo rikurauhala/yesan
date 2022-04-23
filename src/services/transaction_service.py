@@ -47,6 +47,7 @@ class TransactionService:
             writer = csv.writer(file)
             for transaction in transactions:
                 details = []
+                details.append(transaction.id)
                 details.append(transaction.timestamp)
                 details.append(transaction.amount)
                 details.append(transaction.category)

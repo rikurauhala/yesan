@@ -37,6 +37,7 @@ class AccountService:
             writer = csv.writer(file)
             for account in accounts:
                 details = []
+                details.append(account.id)
                 details.append(account.name)
                 details.append(account.type)
                 writer.writerow(details)
