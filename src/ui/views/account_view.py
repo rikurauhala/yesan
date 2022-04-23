@@ -190,32 +190,6 @@ class AccountView:
             sticky=constants.E
         )
 
-    def _initialize_back_button(self):
-        txt_back = "« Back"
-        btn_back = ttk.Button(
-            master=self._buttons,
-            text=txt_back,
-            command=self._go_to_main_view
-        )
-        btn_back.grid(
-            row=0,
-            column=0,
-            padx=styles.PADDING_RIGHT
-        )
-
-    def _initialize_new_account_button(self):
-        txt_new_account = "+ New account"
-        btn_new_account = ttk.Button(
-            master=self._buttons,
-            text=txt_new_account,
-            command=self._go_to_new_account_view
-        )
-        btn_new_account.grid(
-            row=0,
-            column=1,
-            padx=styles.PADDING_RIGHT
-        )
-
     def _clear_message(self):
         if self._lbl_message:
             self._lbl_message.destroy()
@@ -242,13 +216,31 @@ class AccountView:
             pady=styles.PADDING
         )
 
-    def _handle_export(self):
-        self._clear_message()
-        success = self._account_service.export()
-        if not success:
-            self._display_message("error")
-        else:
-            self._display_message("success")
+    def _initialize_back_button(self):
+        txt_back = "« Back"
+        btn_back = ttk.Button(
+            master=self._buttons,
+            text=txt_back,
+            command=self._go_to_main_view
+        )
+        btn_back.grid(
+            row=0,
+            column=0,
+            padx=styles.PADDING_RIGHT
+        )
+
+    def _initialize_new_account_button(self):
+        txt_new_account = "+ New account"
+        btn_new_account = ttk.Button(
+            master=self._buttons,
+            text=txt_new_account,
+            command=self._go_to_new_account_view
+        )
+        btn_new_account.grid(
+            row=0,
+            column=1,
+            padx=styles.PADDING_RIGHT
+        )
 
     def _initialize_import_button(self):
         txt_import = "↓ Import"
@@ -262,6 +254,14 @@ class AccountView:
             column=2,
             padx=styles.PADDING_RIGHT
         )
+
+    def _handle_export(self):
+        self._clear_message()
+        success = self._account_service.export()
+        if not success:
+            self._display_message("error")
+        else:
+            self._display_message("success")
 
     def _initialize_export_button(self):
         txt_export = "↑ Export"
