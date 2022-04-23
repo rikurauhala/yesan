@@ -19,5 +19,6 @@
 | 2022-04-18 |      1 | tweaking, experimenting                                                                                   |
 | 2022-04-20 |      2 | creating functionality for exporting account details into a csv file                                      |
 | 2022-04-21 |      1 | adding error/success message for account exports, formatting source code                                  |
-| 2022-04-20 |      2 | creating functionality for exporting transaction details into a csv file                                  |
-| total      |     46 |                                                                                                           |
+| 2022-04-22 |      2 | creating functionality for exporting transaction details into a csv file                                  |
+| 2022-04-23 |      3 | converting account id's and transactions id's into uuid's to make imports/exports work as intended        |
+| total      |     49 |                                                                                                           |
