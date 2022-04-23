@@ -1,3 +1,5 @@
+import uuid
+
 from entities.account import Account
 
 
@@ -7,9 +9,10 @@ class AccountRepository:
 
     def create(self, account):
         cursor = self._connection.cursor()
+        account_id = str(uuid.uuid4())
         cursor.execute(
-            "INSERT INTO accounts (name, type) VALUES (?, ?)",
-            (account.name, account.type)
+            "INSERT INTO accounts (id, name, type) VALUES (?, ?, ?)",
+            (account_id, account.name, account.type)
         )
         self._connection.commit()
 

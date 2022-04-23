@@ -26,16 +26,10 @@ class TransactionService:
 
     def create_transaction(self, date, amount, category, description, account_id, party):
         amount = self._convert_to_int(amount)
-
-        new_transaction = Transaction(
-            date,
-            amount,
-            category,
-            description,
-            account_id,
-            party
+        return self._transaction_repository.create(
+            date, amount, category,
+            description, account_id, party
         )
-        return self._transaction_repository.create(new_transaction)
 
     def find_all(self):
         return self._transaction_repository.find_all()
@@ -60,5 +54,5 @@ class TransactionService:
                 details.append(transaction.account_id)
                 details.append(transaction.party)
                 writer.writerow(details)
-        
+
         return True
