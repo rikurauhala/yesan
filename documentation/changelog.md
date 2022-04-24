@@ -21,3 +21,10 @@
   - Created new transaction view
     - Contains all relevant fields for adding a new transaction to the database
 - Considerably improved user interface
+
+## Week 5
+
+- Made the balance column functional in the account view
+- Based on account balances, added a section in account view where net worth is calculated
+- Created functionality for exporting accounts and transactions in csv format
+- Improved user interface and added helpful messages for feedback
