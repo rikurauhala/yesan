@@ -24,10 +24,10 @@ class TestDatabase(unittest.TestCase):
         """, (self._test_name, ))
 
         values = cursor.fetchone()
-        id = values[0]
+        uuid = values[0]
         name = values[1]
         type = values[2]
 
-        self.assertEqual(id, self._test_uuid)
+        self.assertEqual(uuid, self._test_uuid)
         self.assertEqual(name, self._test_name)
         self.assertEqual(type, self._test_type)
