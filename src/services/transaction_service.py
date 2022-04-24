@@ -4,8 +4,6 @@ from config import TRANSACTIONS_FILE_PATH
 
 from database_operations import get_database_connection
 
-from entities.transaction import Transaction
-
 from repositories.transaction_repository import TransactionRepository
 
 
