@@ -7,7 +7,7 @@ from database_operations import database_connection
 
 class TestDatabase(unittest.TestCase):
     def setUp(self):
-        self._test_uuid= str(uuid.uuid4())
+        self._test_uuid = str(uuid.uuid4())
         self._test_name = "Name"
         self._test_type = "Type"
 

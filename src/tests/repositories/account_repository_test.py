@@ -1,7 +1,5 @@
 import unittest
 
-from entities.account import Account
-
 from database_operations import database_connection as connection
 
 from repositories.account_repository import AccountRepository
@@ -19,7 +17,10 @@ class TestAccountRepository(unittest.TestCase):
         self._type_account_b = "Crypto currency"
 
     def test_create(self):
-        self._account_repository.create(self._name_account_b, self._type_account_b)
+        self._account_repository.create(
+            self._name_account_b,
+            self._type_account_b
+        )
         accounts = self._account_repository.find_all()
 
         self.assertEqual(len(accounts), 1)
@@ -27,8 +28,14 @@ class TestAccountRepository(unittest.TestCase):
         self.assertEqual(accounts[0].type, self._type_account_b)
 
     def test_get_list(self):
-        self._account_repository.create(self._name_account_a, self._type_account_a)
-        self._account_repository.create(self._name_account_b, self._type_account_b)
+        self._account_repository.create(
+            self._name_account_a,
+            self._type_account_a
+        )
+        self._account_repository.create(
+            self._name_account_b,
+            self._type_account_b
+        )
 
         account_list = self._account_repository.get_list()
 

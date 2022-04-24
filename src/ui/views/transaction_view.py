@@ -223,7 +223,8 @@ class TransactionView:
     def _display_message(self, mode):
         self._var_message = StringVar(self._frame)
         if mode == "missing":
-            self._var_message.set("Importing transactions is not supported yet!")
+            self._var_message.set(
+                "Importing transactions is not supported yet!")
             self._lbl_message = ttk.Label(
                 master=self._frame,
                 textvariable=self._var_message,
