@@ -56,6 +56,8 @@ def create_tables(connection):
     """)
 
     connection.commit()
+    
+    print("Database initialized")
 
 
 def initialize_database():
