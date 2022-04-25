@@ -15,6 +15,7 @@ class AccountRepository:
             (account_id, account_name, account_type)
         )
         self._connection.commit()
+        return True
 
     def find_all(self):
         cursor = self._connection.cursor()

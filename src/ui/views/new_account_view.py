@@ -59,10 +59,12 @@ class NewAccountView:
         if not name or not type:
             self._display_message("error")
         else:
-            self._account_service.create_account(name, type)
-            self._display_message("success")
-            self._ent_name.delete(0, END)
-            self._ent_type.delete(0, END)
+            if self._account_service.create_account(name, type):
+                self._display_message("success")
+                self._ent_name.delete(0, END)
+                self._ent_type.delete(0, END)
+            else:
+                self._display_message("error")
 
     def _initialize_title_label(self):
         txt_title = "Add new account"
