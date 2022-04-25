@@ -2,6 +2,10 @@
 
 **Yesan** (예산, Korean for *budget*) is a personal finance application written in Python.
 
+## Releases
+
+- [Viikko 5](https://github.com/rikurauhala/yesan/releases/tag/viikko5)
+
 ## Documentation
 
 - [Architecture](/documentation/architecture.md)
