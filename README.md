@@ -11,6 +11,7 @@
 - [Architecture](/documentation/architecture.md)
 - [Changelog](/documentation/changelog.md)
 - [Software requirements specification](documentation/srs.md)
+- [User manual](documentation/manual.md)
 - [Work hour tracking](documentation/tracking.md)
 
 ## Instructions
