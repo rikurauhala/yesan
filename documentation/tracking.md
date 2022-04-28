@@ -23,4 +23,5 @@
 | 2022-04-23 |      3 | converting account id's and transactions id's into uuid's to make imports/exports work as intended        |
 | 2022-04-24 |      1 | fixing issues and making minor changes                                                                    |
 | 2022-04-25 |      2 | fixing issues, working on documentation                                                                   |
-| total      |     52 |                                                                                                           |
+| 2022-04-28 |      3 | refactoring                                                                                               |
+| total      |     55 |                                                                                                           |
