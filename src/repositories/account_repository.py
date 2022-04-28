@@ -9,12 +9,11 @@ class AccountRepository:
     def __init__(self, connection):
         self._connection = connection
 
-    def create(self, account_name, account_type):
-        account_id = str(uuid.uuid4())
+    def create(self, account):
         cursor = self._connection.cursor()
         cursor.execute(
             "INSERT INTO accounts (id, name, type) VALUES (?, ?, ?)",
-            (account_id, account_name, account_type)
+            (account.id, account.name, account.type)
         )
         self._connection.commit()
         return True

@@ -1,6 +1,10 @@
 import unittest
 
+import uuid
+
 from database import database_connection as connection
+
+from entities.account import Account
 
 from repositories.account_repository import AccountRepository
 
@@ -10,37 +14,42 @@ class TestAccountRepository(unittest.TestCase):
         self._account_repository = AccountRepository(connection)
         self._account_repository.delete_all()
 
-        self._name_account_a = "Checking account"
-        self._type_account_a = "Bank account"
+        self._uuid_account_a = str(uuid.uuid4())
+        self._name_account_a = "Account A name"
+        self._type_account_a = "Account B name"
+        self._account_a = Account(
+            self._uuid_account_a,
+            self._name_account_a,
+            self._type_account_a
+        )
 
-        self._name_account_b = "Bitcoin"
-        self._type_account_b = "Crypto currency"
+        self._uuid_account_b = str(uuid.uuid4())
+        self._name_account_b = "Account B name"
+        self._type_account_b = "Account B type"
+        self._account_b = Account(
+            self._uuid_account_b,
+            self._name_account_b,
+            self._type_account_b
+        )
 
     def test_create(self):
         self._account_repository.create(
-            self._name_account_b,
-            self._type_account_b
+            self._account_a,
         )
         accounts = self._account_repository.find_all()
 
         self.assertEqual(len(accounts), 1)
-        self.assertEqual(accounts[0].name, self._name_account_b)
-        self.assertEqual(accounts[0].type, self._type_account_b)
+        self.assertEqual(accounts[0].name, self._name_account_a)
+        self.assertEqual(accounts[0].type, self._type_account_a)
 
     def test_get_list(self):
-        self._account_repository.create(
-            self._name_account_a,
-            self._type_account_a
-        )
-        self._account_repository.create(
-            self._name_account_b,
-            self._type_account_b
-        )
-
+        self._account_repository.create(self._account_a)
+        self._account_repository.create(self._account_b)
+        
         account_list = self._account_repository.get_list()
 
-        self.assertEqual(account_list[1], self._name_account_a)
-        self.assertEqual(account_list[0], self._name_account_b)
+        self.assertEqual(account_list[0], self._name_account_a)
+        self.assertEqual(account_list[1], self._name_account_b)
 
     def test_get_id_by_name(self):
         pass

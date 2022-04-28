@@ -1,4 +1,8 @@
+import uuid
+
 from file_handler import file_handler
+
+from entities.account import Account
 
 from repositories.account_repository import account_repository
 
@@ -9,7 +13,13 @@ class AccountService:
         self._account_repository = account_repository
 
     def create_account(self, account_name, account_type):
-        return self._account_repository.create(account_name, account_type)
+        account_uuid = str(uuid.uuid4())
+        account = Account(
+            account_uuid,
+            account_name,
+            account_type
+        )
+        return self._account_repository.create(account)
 
     def find_all(self):
         return self._account_repository.find_all()
