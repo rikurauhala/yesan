@@ -22,5 +22,5 @@
 | 2022-04-22 |      2 | creating functionality for exporting transaction details into a csv file                                  |
 | 2022-04-23 |      3 | converting account id's and transactions id's into uuid's to make imports/exports work as intended        |
 | 2022-04-24 |      1 | fixing issues and making minor changes                                                                    |
-| 2022-04-24 |      2 | fixing issues, working on documentation                                                                   |
+| 2022-04-25 |      2 | fixing issues, working on documentation                                                                   |
 | total      |     52 |                                                                                                           |
