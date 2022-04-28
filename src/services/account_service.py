@@ -1,6 +1,4 @@
-import csv
-
-from config import ACCOUNTS_FILE_PATH
+from file_handler import file_handler
 
 from repositories.account_repository import account_repository
 
@@ -27,14 +25,4 @@ class AccountService:
 
     def export(self):
         accounts = self.find_all()
-
-        with open(ACCOUNTS_FILE_PATH, "w", encoding="UTF8") as file:
-            writer = csv.writer(file)
-            for account in accounts:
-                details = []
-                details.append(account.id)
-                details.append(account.name)
-                details.append(account.type)
-                writer.writerow(details)
-
-        return True
+        return file_handler.export_accounts(accounts)

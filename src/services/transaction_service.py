@@ -1,6 +1,4 @@
-import csv
-
-from config import TRANSACTIONS_FILE_PATH
+from file_handler import file_handler
 
 from repositories.transaction_repository import transaction_repository
 
@@ -36,18 +34,4 @@ class TransactionService:
 
     def export(self):
         transactions = self.find_all_with_id()
-
-        with open(TRANSACTIONS_FILE_PATH, "w", encoding="UTF8") as file:
-            writer = csv.writer(file)
-            for transaction in transactions:
-                details = []
-                details.append(transaction.id)
-                details.append(transaction.timestamp)
-                details.append(transaction.amount)
-                details.append(transaction.category)
-                details.append(transaction.description)
-                details.append(transaction.account_id)
-                details.append(transaction.party)
-                writer.writerow(details)
-
-        return True
+        return file_handler.export_transactions(transactions)
