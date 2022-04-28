@@ -1,4 +1,3 @@
-from hmac import trans_36
 import uuid
 
 from database import get_database_connection
