@@ -4,7 +4,7 @@
 
 ### Creating a new account
 
-The diagram below depicts a scenario in which a user creates a new account in the NewAccountView. First the user tries to create a new account, but hasn't specified its type. The user then sees an error message and enters the missing parameter. A new account is created by calling the create_account() function of the account service. The function passes its parameters to the class AccountRepository, which then creates a new account in the database and returns True. Finally, a message is displayed to the user indicating that a new account was succesfully created.
+The diagram below depicts a scenario in which a user creates a new account in the NewAccountView. First the user tries to create a new account, but hasn't specified its type. The user then sees an error message and enters the missing parameter. A new account is created by calling the create_account() function of the account service. The function creates a new instance of the class Account with the parameters it was given, and creates a new UUID to be used as the primary key and a unique identifier in the database. The account service then passes the Account object to the account repository, which then creates a new account in the database and returns True. Finally, a message is displayed to the user indicating that a new account was succesfully created.
 
 ```mermaid
 sequenceDiagram
@@ -12,11 +12,13 @@ sequenceDiagram
     participant NewAccountView
     participant AccountService
     participant AccountRepository
+    participant Account
     User->>NewAccountView: click "Submit" button
     NewAccountView--XAccountService: create_account("Checking account")
     NewAccountView->>NewAccountView: display_message("error")
     NewAccountView->>AccountService: create_account("Checking account", "Bank account")
-    AccountService->>AccountRepository: create("Checking account", "Bank account")
+    AccountService-->Account: Account(UUID4, "Checking account", "Bank account")
+    AccountService->>AccountRepository: create(account)
     AccountRepository-->>AccountService: True
     AccountService-->>NewAccountView: True
     NewAccountView->>NewAccountView: display_message("success")
