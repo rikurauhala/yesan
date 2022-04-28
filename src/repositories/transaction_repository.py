@@ -1,5 +1,3 @@
-import uuid
-
 from database import get_database_connection
 
 from entities.transaction import Transaction
@@ -9,15 +7,17 @@ class TransactionRepository:
     def __init__(self, connection):
         self._connection = connection
 
-    def create(self, date, amount, category, description, account_id, party):
-        transaction_id = str(uuid.uuid4())
+    def create(self, transaction):
+        
         cursor = self._connection.cursor()
         cursor.execute("""
             INSERT INTO transactions(
                 id, timestamp, amount, category, 
                 description, account_id, party)
             VALUES (?, ?, ?, ?, ?, ?, ?)""",
-                       (transaction_id, date, amount, category, description, account_id, party))
+                       (transaction.id, transaction.timestamp, transaction.amount,
+                       transaction.category, transaction.description, 
+                       transaction.account_id, transaction.party))
         self._connection.commit()
 
     def find_all(self):

@@ -1,4 +1,8 @@
+import uuid
+
 from file_handler import file_handler
+
+from entities.transaction import Transaction
 
 from repositories.transaction_repository import transaction_repository
 
@@ -17,11 +21,18 @@ class TransactionService:
         return int(euro + cents)
 
     def create_transaction(self, date, amount, category, description, account_id, party):
+        transaction_id = str(uuid.uuid4())
         amount = self._convert_to_int(amount)
-        return self._transaction_repository.create(
-            date, amount, category,
-            description, account_id, party
+        transaction = Transaction(
+            transaction_id,
+            date,
+            amount,
+            category,
+            description,
+            account_id,
+            party
         )
+        return self._transaction_repository.create(transaction)
 
     def find_all(self):
         return self._transaction_repository.find_all()

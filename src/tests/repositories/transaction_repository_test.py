@@ -35,14 +35,7 @@ class TestTransactionRepository(unittest.TestCase):
         )
 
     def test_create(self):
-        self._transaction_repository.create(
-            self._transaction_a.timestamp,
-            self._transaction_a.amount,
-            self._transaction_a.category,
-            self._transaction_a.description,
-            self._transaction_a.account_id,
-            self._transaction_a.party
-        )
+        self._transaction_repository.create(self._transaction_a)
         transactions = self._transaction_repository.find_all()
 
         # Not working for now
