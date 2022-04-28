@@ -41,4 +41,5 @@ class AccountRepository:
         cursor.execute("DELETE FROM accounts")
         self._connection.commit()
 
+
 account_repository = AccountRepository(get_database_connection())

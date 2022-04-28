@@ -87,4 +87,5 @@ class TransactionRepository:
             "SELECT SUM(amount) FROM transactions WHERE account_id=(?)", (account_id, ))
         return cursor.fetchone()[0]
 
+
 transaction_repository = TransactionRepository(get_database_connection())
