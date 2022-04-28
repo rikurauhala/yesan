@@ -2,7 +2,7 @@ import unittest
 
 from entities.account import Account
 
-from database_operations import database_connection as connection
+from database import database_connection as connection
 
 from services.account_service import AccountService
 

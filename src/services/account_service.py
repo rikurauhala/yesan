@@ -2,7 +2,7 @@ import csv
 
 from config import ACCOUNTS_FILE_PATH
 
-from database_operations import get_database_connection
+from database import get_database_connection
 
 from repositories.account_repository import AccountRepository
 

@@ -2,7 +2,7 @@ import csv
 
 from config import TRANSACTIONS_FILE_PATH
 
-from database_operations import get_database_connection
+from database import get_database_connection
 
 from repositories.transaction_repository import TransactionRepository
 

@@ -2,7 +2,7 @@ import uuid
 
 import unittest
 
-from database_operations import database_connection
+from database import database_connection
 
 
 class TestDatabase(unittest.TestCase):

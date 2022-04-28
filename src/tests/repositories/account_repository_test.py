@@ -1,6 +1,6 @@
 import unittest
 
-from database_operations import database_connection as connection
+from database import database_connection as connection
 
 from repositories.account_repository import AccountRepository
 
