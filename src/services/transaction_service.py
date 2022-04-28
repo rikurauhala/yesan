@@ -2,16 +2,12 @@ import csv
 
 from config import TRANSACTIONS_FILE_PATH
 
-from database import get_database_connection
-
-from repositories.transaction_repository import TransactionRepository
+from repositories.transaction_repository import transaction_repository
 
 
 class TransactionService:
     def __init__(self):
-        self._transaction_repository = TransactionRepository(
-            get_database_connection()
-        )
+        self._transaction_repository = transaction_repository
 
     def _convert_to_int(self, amount):
         euro = amount.split(".")[0]

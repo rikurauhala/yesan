@@ -2,15 +2,13 @@ import csv
 
 from config import ACCOUNTS_FILE_PATH
 
-from database import get_database_connection
-
-from repositories.account_repository import AccountRepository
+from repositories.account_repository import account_repository
 
 
 class AccountService:
 
     def __init__(self):
-        self._account_repository = AccountRepository(get_database_connection())
+        self._account_repository = account_repository
 
     def create_account(self, account_name, account_type):
         return self._account_repository.create(account_name, account_type)

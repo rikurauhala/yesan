@@ -1,5 +1,7 @@
 import uuid
 
+from database import get_database_connection
+
 from entities.account import Account
 
 
@@ -38,3 +40,5 @@ class AccountRepository:
         cursor = self._connection.cursor()
         cursor.execute("DELETE FROM accounts")
         self._connection.commit()
+
+account_repository = AccountRepository(get_database_connection())
