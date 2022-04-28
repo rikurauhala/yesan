@@ -8,7 +8,6 @@ class TransactionRepository:
         self._connection = connection
 
     def create(self, transaction):
-        
         cursor = self._connection.cursor()
         cursor.execute("""
             INSERT INTO transactions(
@@ -16,8 +15,8 @@ class TransactionRepository:
                 description, account_id, party)
             VALUES (?, ?, ?, ?, ?, ?, ?)""",
                        (transaction.id, transaction.timestamp, transaction.amount,
-                       transaction.category, transaction.description, 
-                       transaction.account_id, transaction.party))
+                        transaction.category, transaction.description,
+                        transaction.account_id, transaction.party))
         self._connection.commit()
 
     def find_all(self):

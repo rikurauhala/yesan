@@ -45,7 +45,7 @@ class TestAccountRepository(unittest.TestCase):
     def test_get_list(self):
         self._account_repository.create(self._account_a)
         self._account_repository.create(self._account_b)
-        
+
         account_list = self._account_repository.get_list()
 
         self.assertEqual(account_list[0], self._name_account_a)

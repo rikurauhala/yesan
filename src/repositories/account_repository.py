@@ -1,5 +1,3 @@
-import uuid
-
 from database import get_database_connection
 
 from entities.account import Account
