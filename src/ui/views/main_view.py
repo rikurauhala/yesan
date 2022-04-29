@@ -1,4 +1,5 @@
 from tkinter import constants, ttk
+from tkinter.messagebox import askyesno
 
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
@@ -62,12 +63,20 @@ class MainView:
             sticky=constants.EW
         )
 
+    def _handle_quit(self):
+        answer = askyesno(
+            title="Confirmation",
+            message="Are you sure you want to quit?"
+        )
+        if answer:
+            self._root.destroy()
+
     def _initialize_quit_button(self):
         txt_quit = "Quit"
         btn_quit = ttk.Button(
             master=self._frame,
             text=txt_quit,
-            command=lambda: self._root.destroy()
+            command=self._handle_quit
         )
         btn_quit.grid(
             padx=styles.PADDING,
