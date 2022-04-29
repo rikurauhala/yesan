@@ -87,7 +87,7 @@ class AccountView:
             column=2,
             padx=styles.PADDING,
             pady=styles.PADDING,
-            sticky=constants.W
+            sticky=constants.E
         )
 
     def _initialize_account_information(self, accounts, total):
