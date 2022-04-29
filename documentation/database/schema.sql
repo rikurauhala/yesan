@@ -6,7 +6,7 @@ CREATE TABLE accounts (
 
 CREATE TABLE transactions (
     id TEXT PRIMARY KEY,
-    timestamp INTEGER,
+    date INTEGER,
     amount INTEGER,
     category TEXT,
     description TEXT,

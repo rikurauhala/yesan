@@ -11,10 +11,10 @@ class TransactionRepository:
         cursor = self._connection.cursor()
         cursor.execute("""
             INSERT INTO transactions(
-                id, timestamp, amount, category, 
+                id, date, amount, category, 
                 description, account_id, party)
             VALUES (?, ?, ?, ?, ?, ?, ?)""",
-                       (transaction.id, transaction.timestamp, transaction.amount,
+                       (transaction.id, transaction.date, transaction.amount,
                         transaction.category, transaction.description,
                         transaction.account_id, transaction.party))
         self._connection.commit()
@@ -22,10 +22,10 @@ class TransactionRepository:
     def find_all(self):
         cursor = self._connection.cursor()
         cursor.execute("""
-            SELECT t.id, t.timestamp, t.amount, t.category, t.description, a.name, t.party
+            SELECT t.id, t.date, t.amount, t.category, t.description, a.name, t.party
             FROM transactions AS t, accounts AS a
             WHERE t.account_id = a.id
-            ORDER BY t.timestamp DESC
+            ORDER BY t.date DESC
         """)
 
         rows = cursor.fetchall()
@@ -34,14 +34,14 @@ class TransactionRepository:
 
         for row in rows:
             transaction_id = row["id"]
-            timestamp = row["timestamp"]
+            date = row["date"]
             amount = row["amount"]
             category = row["category"]
             description = row["description"]
             account_name = row["name"]
             party = row["party"]
             transaction = Transaction(
-                transaction_id, timestamp, amount, category, description, account_name, party
+                transaction_id, date, amount, category, description, account_name, party
             )
             transactions.append(transaction)
 
@@ -50,9 +50,9 @@ class TransactionRepository:
     def find_all_with_id(self):
         cursor = self._connection.cursor()
         cursor.execute("""
-            SELECT id, timestamp, amount, category, description, account_id, party
+            SELECT id, date, amount, category, description, account_id, party
             FROM transactions
-            ORDER BY timestamp DESC
+            ORDER BY date DESC
         """)
 
         rows = cursor.fetchall()
@@ -61,14 +61,14 @@ class TransactionRepository:
 
         for row in rows:
             transaction_id = row["id"]
-            timestamp = row["timestamp"]
+            date = row["date"]
             amount = row["amount"]
             category = row["category"]
             description = row["description"]
             account_id = row["account_id"]
             party = row["party"]
             transaction = Transaction(
-                transaction_id, timestamp, amount, category, description, account_id, party
+                transaction_id, date, amount, category, description, account_id, party
             )
             transactions.append(transaction)
 
