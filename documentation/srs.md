@@ -19,11 +19,7 @@ The application has a graphical user interface created with the `Tkinter` librar
 
 ### Basic
 
-- [ / ] Main view
-  - Relevant information about user's personal finances
-    - Monthly income
-    - Monthly expenses
-    - Net worth
+- [ X ] Main view
   - [ X ] Contains a button for showing the account view
   - [ X ] Contains a button for showing the transaction view
   - [ X ] Contains a button for exiting the application
