@@ -38,7 +38,7 @@ classDiagram
     }
     class Transaction {
         id
-        timestamp
+        date
         amount
         category
         description
