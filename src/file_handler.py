@@ -32,7 +32,7 @@ class FileHandler:
             for transaction in transactions:
                 details = []
                 details.append(transaction.id)
-                details.append(transaction.timestamp)
+                details.append(transaction.date)
                 details.append(transaction.amount)
                 details.append(transaction.category)
                 details.append(transaction.description)

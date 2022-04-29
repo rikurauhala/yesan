@@ -1,4 +1,5 @@
 from tkinter import constants, StringVar, ttk
+from tkinter.messagebox import askyesno
 
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
@@ -119,7 +120,8 @@ class AccountView:
 
             account_id = self._account_service.get_id_by_name(accounts[i].name)
             txt_balance = self._transaction_service.get_balance_by_id(
-                account_id)
+                account_id
+            )
             if not txt_balance:
                 txt_balance = "0.00 €"
             else:
@@ -268,11 +270,16 @@ class AccountView:
 
     def _handle_export(self):
         self._clear_message()
-        success = self._account_service.export()
-        if not success:
-            self._display_message("error")
-        else:
-            self._display_message("success")
+        answer = askyesno(
+            title="Confirmation",
+            message="Are you sure you want to export accounts?"
+        )
+        if answer:
+            success = self._account_service.export()
+            if not success:
+                self._display_message("error")
+            else:
+                self._display_message("success")
 
     def _initialize_export_button(self):
         txt_export = "↑ Export"

@@ -1,4 +1,5 @@
 from tkinter import constants, StringVar, ttk
+from tkinter.messagebox import askyesno
 
 from services.transaction_service import TransactionService
 
@@ -130,7 +131,7 @@ class TransactionView:
 
     def _initialize_transaction_information(self, transactions, total):
         for i in range(total):
-            txt_date = transactions[i].timestamp
+            txt_date = transactions[i].date
             lbl_date = ttk.Label(
                 master=self._frame,
                 text=txt_date
@@ -297,11 +298,16 @@ class TransactionView:
 
     def _handle_export(self):
         self._clear_message()
-        success = self._transaction_service.export()
-        if not success:
-            self._display_message("error")
-        else:
-            self._display_message("success")
+        answer = askyesno(
+            title="Confirmation",
+            message="Are you sure you want to export transactions?"
+        )
+        if answer:
+            success = self._transaction_service.export()
+            if not success:
+                self._display_message("error")
+            else:
+                self._display_message("success")
 
     def _initialize_export_button(self):
         txt_export = "↑ Export"
