@@ -6,8 +6,6 @@ authors = ["Riku Rauhala <riku@rauhala.io>"]
 
 [tool.poetry.dependencies]
 invoke = "^1.7.0"
-matplotlib = "^3.5.1"
-numpy = "^1.22.3"
 python = "^3.8"
 python-dotenv = "^0.20.0"
 tkcalendar = "^1.6.1"
