@@ -24,4 +24,5 @@
 | 2022-04-24 |      1 | fixing issues and making minor changes                                                                    |
 | 2022-04-25 |      2 | fixing issues, working on documentation                                                                   |
 | 2022-04-28 |      3 | refactoring                                                                                               |
-| total      |     55 |                                                                                                           |
+| 2022-04-29 |      2 | fixing issues, improving user interface                                                                   |
+| total      |     57 |                                                                                                           |
