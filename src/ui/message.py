@@ -18,8 +18,8 @@ class Message:
         self._var_message = var_message
         self._lbl_message = None
 
-    def _get_error_message(self, mode):
-        content = error[mode]
+    def _get_error_message(self, code):
+        content = error[code]
         self._var_message.set(content)
 
         self._lbl_message = ttk.Label(
@@ -28,8 +28,8 @@ class Message:
             foreground=colors.ERROR
         )
 
-    def _get_success_message(self, mode):
-        content = success[mode]
+    def _get_success_message(self, code):
+        content = success[code]
         self._var_message.set(content)
         
         self._lbl_message = ttk.Label(
@@ -38,10 +38,10 @@ class Message:
             foreground=colors.SUCCESS
         )
 
-    def get_message(self, mode):
-        if mode[0] == "e":
-            self._get_error_message(mode)
+    def get_message(self, code):
+        if code[0] == "e":
+            self._get_error_message(code)
         else:
-            self._get_success_message(mode)
+            self._get_success_message(code)
         
         return self._lbl_message

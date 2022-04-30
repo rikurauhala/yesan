@@ -31,16 +31,16 @@ class NewAccountView:
         if self._lbl_message:
             self._lbl_message.destroy()
 
-    def _display_message(self, mode):
+    def _display_message(self, code):
         self._var_message = StringVar(self._frame)
-        if mode == "error":
+        if code == "error":
             self._var_message.set("Please enter name and type!")
             self._lbl_message = ttk.Label(
                 master=self._frame,
                 textvariable=self._var_message,
                 foreground=colors.ERROR
             )
-        if mode == "success":
+        if code == "success":
             self._var_message.set("New account added!")
             self._lbl_message = ttk.Label(
                 master=self._frame,
