@@ -10,7 +10,12 @@ error = {
     "e-05": "Failed to add a new account!",
     "e-06": "Exporting transactions failed!",
     "e-07": "Importing transactions is not supported yet!",
-    "e-08": "Please enter every detail!",
+    "e-08": "Please choose a correct date!",
+    "e-09": "Please enter a correct amount!",
+    "e-10": "Please enter a category!",
+    "e-11": "Please enter a description!",
+    "e-12": "Please choose an account!",
+    "e-13": "Please enter a sender / receiver!",
 }
 
 success = {

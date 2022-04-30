@@ -62,8 +62,18 @@ class NewTransactionView:
         description = self._ent_description.get()
         account_name = self._var_account.get()
         party = self._ent_party.get()
-        if not (date and amount and category and description and account_name and party):
+        if not date:
             self._display_message("e-08")
+        elif not amount:
+            self._display_message("e-09")
+        elif not category:
+            self._display_message("e-10")
+        elif not description:
+            self._display_message("e-11")
+        elif not account_name:
+            self._display_message("e-12")
+        elif not party:
+            self._display_message("e-13")            
         else:
             account_id = self._account_service.get_id_by_name(account_name)
             self._transaction_service.create_transaction(
