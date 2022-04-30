@@ -73,7 +73,7 @@ class NewTransactionView:
         elif not account_name:
             self._display_message("e-12")
         elif not party:
-            self._display_message("e-13")            
+            self._display_message("e-13")
         else:
             account_id = self._account_service.get_id_by_name(account_name)
             self._transaction_service.create_transaction(
