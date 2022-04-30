@@ -2,7 +2,8 @@ from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
 
-import ui.styles.colors as colors
+from ui.message import Message
+
 import ui.styles.styles as styles
 
 
@@ -10,10 +11,11 @@ class NewAccountView:
     def __init__(self, root, go_to_account_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._var_message = StringVar(self._frame)
+        self._message = Message(self._frame, self._var_message)
         self._go_to_account_view = go_to_account_view
         self._ent_name = None
         self._ent_type = None
-        self._var_message = None
         self._lbl_message = None
         self._account_service = AccountService()
         self._initialize()
@@ -32,21 +34,7 @@ class NewAccountView:
             self._lbl_message.destroy()
 
     def _display_message(self, code):
-        self._var_message = StringVar(self._frame)
-        if code == "error":
-            self._var_message.set("Please enter name and type!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if code == "success":
-            self._var_message.set("New account added!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.SUCCESS
-            )
+        self._lbl_message = self._message.get_message(code)
         self._lbl_message.grid(
             columnspan=2,
             padx=styles.PADDING,
@@ -57,15 +45,17 @@ class NewAccountView:
         self._clear_message()
         name = self._ent_name.get()
         type = self._ent_type.get()
-        if not name or not type:
-            self._display_message("error")
+        if not name:
+            self._display_message("e-03")
+        elif not type:
+            self._display_message("e-04")
         else:
             if self._account_service.create_account(name, type):
-                self._display_message("success")
+                self._display_message("s-02")
                 self._ent_name.delete(0, END)
                 self._ent_type.delete(0, END)
             else:
-                self._display_message("error")
+                self._display_message("e-05")
 
     def _initialize_title_label(self):
         txt_title = "Add new account"

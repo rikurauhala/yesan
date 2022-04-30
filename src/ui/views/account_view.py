@@ -200,8 +200,8 @@ class AccountView:
         if self._lbl_message:
             self._lbl_message.destroy()
 
-    def _display_message(self, mode):
-        self._lbl_message = self._message.get_message(mode)
+    def _display_message(self, code):
+        self._lbl_message = self._message.get_message(code)
         self._lbl_message.grid(
             columnspan=3,
             padx=styles.PADDING,

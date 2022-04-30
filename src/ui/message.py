@@ -5,10 +5,14 @@ import ui.styles.colors as colors
 error = {
     "e-01": "Exporting accounts failed!",
     "e-02": "Importing accounts is not supported yet!",
+    "e-03": "Please enter name!",
+    "e-04": "Please enter type!",
+    "e-05": "Failed to add a new account!",
 }
 
 success = {
     "s-01": "Accounts exported successfully!",
+    "s-02": "New account added!",
 }
 
 class Message:
