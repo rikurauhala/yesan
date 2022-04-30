@@ -7,6 +7,8 @@ from tkcalendar import DateEntry
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
 
+from ui.message import Message
+
 import ui.styles.colors as colors
 import ui.styles.styles as styles
 
@@ -15,6 +17,9 @@ class NewTransactionView:
     def __init__(self, root, go_to_transaction_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._lbl_message = None
+        self._var_message = StringVar(self._frame)
+        self._message = Message(self._frame, self._var_message)
         self._go_to_transaction_view = go_to_transaction_view
         self._ent_date = None
         self._ent_amount = None
@@ -23,8 +28,6 @@ class NewTransactionView:
         self._opt_account = None
         self._var_account = None
         self._ent_party = None
-        self._var_message = None
-        self._lbl_message = None
         self._accounts = None
         self._account_service = AccountService()
         self._transaction_service = TransactionService()
@@ -43,22 +46,8 @@ class NewTransactionView:
         if self._lbl_message:
             self._lbl_message.destroy()
 
-    def _display_message(self, mode):
-        self._var_message = StringVar(self._frame)
-        if mode == "error":
-            self._var_message.set("Please enter every detail!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if mode == "success":
-            self._var_message.set("New transaction added!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.SUCCESS
-            )
+    def _display_message(self, code):
+        self._lbl_message = self._message.get_message(code)
         self._lbl_message.grid(
             columnspan=2,
             padx=styles.PADDING,
@@ -74,7 +63,7 @@ class NewTransactionView:
         account_name = self._var_account.get()
         party = self._ent_party.get()
         if not (date and amount and category and description and account_name and party):
-            self._display_message("error")
+            self._display_message("e-08")
         else:
             account_id = self._account_service.get_id_by_name(account_name)
             self._transaction_service.create_transaction(
@@ -85,7 +74,7 @@ class NewTransactionView:
                 account_id,
                 party
             )
-            self._display_message("success")
+            self._display_message("s-04")
             self._ent_amount.delete(0, END)
             self._ent_category.delete(0, END)
             self._ent_description.delete(0, END)

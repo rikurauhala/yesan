@@ -10,12 +10,14 @@ error = {
     "e-05": "Failed to add a new account!",
     "e-06": "Exporting transactions failed!",
     "e-07": "Importing transactions is not supported yet!",
+    "e-08": "Please enter every detail!",
 }
 
 success = {
     "s-01": "Accounts exported successfully!",
     "s-02": "New account added!",
     "s-03": "Transactions exported successfully!",
+    "s-04": "New transaction added!",
 }
 
 
