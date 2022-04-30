@@ -25,4 +25,5 @@
 | 2022-04-25 |      2 | fixing issues, working on documentation                                                                   |
 | 2022-04-28 |      3 | refactoring                                                                                               |
 | 2022-04-29 |      2 | fixing issues, improving user interface                                                                   |
-| total      |     57 |                                                                                                           |
+| 2022-04-30 |      3 | refactoring message feedback system to reduce the amount of copy-paste in the code                        |
+| total      |     60 |                                                                                                           |
