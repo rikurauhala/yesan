@@ -11,10 +11,10 @@ class Message:
         self._lbl_message = None
 
     def _get_error_message(self, mode):
-        if mode == "missing":
-            self._var_message.set("Importing accounts is not supported yet!")
-        elif mode == "error":
+        if mode == "e-01":
             self._var_message.set("Exporting accounts failed!")
+        elif mode == "e-02":
+            self._var_message.set("Importing accounts is not supported yet!")
 
         self._lbl_message = ttk.Label(
             master=self._frame,
@@ -23,7 +23,7 @@ class Message:
         )
 
     def _get_success_message(self, mode):
-        if mode == "success":
+        if mode == "s-01":
             self._var_message.set("Accounts exported successfully!")
         
         self._lbl_message = ttk.Label(
@@ -33,7 +33,7 @@ class Message:
         )
 
     def get_message(self, mode):
-        if mode == "missing" or mode == "error":
+        if mode[0] == "e":
             self._get_error_message(mode)
         else:
             self._get_success_message(mode)

@@ -236,7 +236,7 @@ class AccountView:
 
     def _handle_import(self):
         self._clear_message()
-        self._display_message("missing")
+        self._display_message("e-02")
 
     def _initialize_import_button(self):
         txt_import = "↓ Import"
@@ -260,9 +260,9 @@ class AccountView:
         if answer:
             success = self._account_service.export()
             if not success:
-                self._display_message("error")
+                self._display_message("e-01")
             else:
-                self._display_message("success")
+                self._display_message("s-01")
 
     def _initialize_export_button(self):
         txt_export = "↑ Export"
