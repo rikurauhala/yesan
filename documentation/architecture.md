@@ -26,7 +26,7 @@ sequenceDiagram
     AccountService-->>NewAccountView: True
    NewAccountView->>NewAccountView: display_message("s-02")
     NewAccountView->>Message: get_message("s-02")
-    Message-->>NewAccountView: Label(StringVar(text="New account added!"))
+    Message-->>NewAccountView: Label(StringVar("New account added!"))
 ```
 
 ## Entities
