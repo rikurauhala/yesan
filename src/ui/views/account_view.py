@@ -4,6 +4,8 @@ from tkinter.messagebox import askyesno
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
 
+from ui.message import Message
+
 import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
@@ -14,8 +16,10 @@ class AccountView:
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._buttons = ttk.Frame(master=self._frame)
-        self._net_worth = 0
+        self._var_message = StringVar(self._frame)
+        self._message = Message(self._frame, self._var_message)
         self._lbl_message = None
+        self._net_worth = 0
         self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
         self._account_service = AccountService()
@@ -197,28 +201,7 @@ class AccountView:
             self._lbl_message.destroy()
 
     def _display_message(self, mode):
-        self._var_message = StringVar(self._frame)
-        if mode == "missing":
-            self._var_message.set("Importing accounts is not supported yet!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if mode == "error":
-            self._var_message.set("Exporting accounts failed!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if mode == "success":
-            self._var_message.set("Accounts exported successfully!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.SUCCESS
-            )
+        self._lbl_message = self._message.get_message(mode)
         self._lbl_message.grid(
             columnspan=3,
             padx=styles.PADDING,
