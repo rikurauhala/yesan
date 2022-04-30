@@ -3,6 +3,8 @@ from tkinter.messagebox import askyesno
 
 from services.transaction_service import TransactionService
 
+from ui.message import Message
+
 import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
@@ -14,6 +16,8 @@ class TransactionView:
         self._frame = ttk.Frame(master=self._root)
         self._buttons = ttk.Frame(master=self._frame)
         self._lbl_message = None
+        self._var_message = StringVar(self._frame)
+        self._message = Message(self._frame, self._var_message)
         self._go_to_main_view = go_to_main_view
         self._go_to_new_transaction_view = go_to_new_transaction_view
         self._transaction_service = TransactionService()
@@ -221,30 +225,8 @@ class TransactionView:
         if self._lbl_message:
             self._lbl_message.destroy()
 
-    def _display_message(self, mode):
-        self._var_message = StringVar(self._frame)
-        if mode == "missing":
-            self._var_message.set(
-                "Importing transactions is not supported yet!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if mode == "error":
-            self._var_message.set("Exporting transactions failed!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.ERROR
-            )
-        if mode == "success":
-            self._var_message.set("Transactions exported successfully!")
-            self._lbl_message = ttk.Label(
-                master=self._frame,
-                textvariable=self._var_message,
-                foreground=colors.SUCCESS
-            )
+    def _display_message(self, code):
+        self._lbl_message = self._message.get_message(code)
         self._lbl_message.grid(
             columnspan=6,
             padx=styles.PADDING,
@@ -281,7 +263,7 @@ class TransactionView:
 
     def _handle_import(self):
         self._clear_message()
-        self._display_message("missing")
+        self._display_message("e-07")
 
     def _initialize_import_button(self):
         txt_import = "↓ Import"
@@ -305,9 +287,9 @@ class TransactionView:
         if answer:
             success = self._transaction_service.export()
             if not success:
-                self._display_message("error")
+                self._display_message("e-06")
             else:
-                self._display_message("success")
+                self._display_message("s-03")
 
     def _initialize_export_button(self):
         txt_export = "↑ Export"

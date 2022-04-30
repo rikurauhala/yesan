@@ -11,12 +11,12 @@ class NewAccountView:
     def __init__(self, root, go_to_account_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._lbl_message = None
         self._var_message = StringVar(self._frame)
         self._message = Message(self._frame, self._var_message)
         self._go_to_account_view = go_to_account_view
         self._ent_name = None
         self._ent_type = None
-        self._lbl_message = None
         self._account_service = AccountService()
         self._initialize()
 

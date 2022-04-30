@@ -8,12 +8,16 @@ error = {
     "e-03": "Please enter name!",
     "e-04": "Please enter type!",
     "e-05": "Failed to add a new account!",
+    "e-06": "Exporting transactions failed!",
+    "e-07": "Importing transactions is not supported yet!",
 }
 
 success = {
     "s-01": "Accounts exported successfully!",
     "s-02": "New account added!",
+    "s-03": "Transactions exported successfully!",
 }
+
 
 class Message:
 
@@ -35,7 +39,7 @@ class Message:
     def _get_success_message(self, code):
         content = success[code]
         self._var_message.set(content)
-        
+
         self._lbl_message = ttk.Label(
             master=self._frame,
             textvariable=self._var_message,
@@ -47,5 +51,5 @@ class Message:
             self._get_error_message(code)
         else:
             self._get_success_message(code)
-        
+
         return self._lbl_message
