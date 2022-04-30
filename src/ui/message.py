@@ -2,6 +2,14 @@ from tkinter import ttk
 
 import ui.styles.colors as colors
 
+error = {
+    "e-01": "Exporting accounts failed!",
+    "e-02": "Importing accounts is not supported yet!",
+}
+
+success = {
+    "s-01": "Accounts exported successfully!",
+}
 
 class Message:
 
@@ -11,10 +19,8 @@ class Message:
         self._lbl_message = None
 
     def _get_error_message(self, mode):
-        if mode == "e-01":
-            self._var_message.set("Exporting accounts failed!")
-        elif mode == "e-02":
-            self._var_message.set("Importing accounts is not supported yet!")
+        content = error[mode]
+        self._var_message.set(content)
 
         self._lbl_message = ttk.Label(
             master=self._frame,
@@ -23,8 +29,8 @@ class Message:
         )
 
     def _get_success_message(self, mode):
-        if mode == "s-01":
-            self._var_message.set("Accounts exported successfully!")
+        content = success[mode]
+        self._var_message.set(content)
         
         self._lbl_message = ttk.Label(
             master=self._frame,
