@@ -10,18 +10,23 @@ The diagram below depicts a scenario in which a user creates a new account in th
 sequenceDiagram
     actor User
     participant NewAccountView
+    participant Message
     participant AccountService
     participant AccountRepository
     participant Account
     User->>NewAccountView: click "Submit" button
     NewAccountView--XAccountService: create_account("Checking account")
-    NewAccountView->>NewAccountView: display_message("error")
+    NewAccountView->>NewAccountView: display_message("e-04")
+    NewAccountView->>Message: get_message("e-04")
+    Message-->>NewAccountView: Label(StringVar("Please enter type!"))
     NewAccountView->>AccountService: create_account("Checking account", "Bank account")
     AccountService-->Account: Account(UUID4, "Checking account", "Bank account")
     AccountService->>AccountRepository: create(account)
     AccountRepository-->>AccountService: True
     AccountService-->>NewAccountView: True
-    NewAccountView->>NewAccountView: display_message("success")
+   NewAccountView->>NewAccountView: display_message("s-02")
+    NewAccountView->>Message: get_message("s-02")
+    Message-->>NewAccountView: Label(StringVar(text="New account added!"))
 ```
 
 ## Entities
