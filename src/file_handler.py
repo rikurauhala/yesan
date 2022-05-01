@@ -3,6 +3,8 @@ import csv
 from config import ACCOUNTS_FILE_PATH
 from config import TRANSACTIONS_FILE_PATH
 
+from entities.account import Account
+
 
 class FileHandler:
 
@@ -14,7 +16,15 @@ class FileHandler:
         with open(ACCOUNTS_FILE_PATH, "r", encoding="UTF8") as file:
             reader = csv.reader(file)
             for row in reader:
-                accounts.append(row)
+                account_uuid = row[0]
+                account_name = row[1]
+                account_type = row[2]
+                account = Account(
+                    account_uuid,
+                    account_name,
+                    account_type
+                )
+                accounts.append(account)
         return accounts
 
     def export_accounts(self, accounts):

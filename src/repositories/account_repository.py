@@ -10,25 +10,23 @@ class AccountRepository:
         self._connection = connection
 
     def create(self, account):
-        cursor = self._connection.cursor()
-        cursor.execute(
-            "INSERT INTO accounts (id, name, type) VALUES (?, ?, ?)",
-            (account.id, account.name, account.type)
-        )
-        self._connection.commit()
-        return True
-
-    def create_multiple(self, accounts):
         try:
             cursor = self._connection.cursor()
-            cursor.executemany(
+            cursor.execute(
                 "INSERT INTO accounts (id, name, type) VALUES (?, ?, ?)",
-                accounts
+                (account.id, account.name, account.type)
             )
             self._connection.commit()
             return True
         except IntegrityError:
             return False
+
+    def create_multiple(self, accounts):
+        created = 0
+        for account in accounts:
+            if self.create(account):
+                created = created + 1
+        return created
 
     def find_all(self):
         cursor = self._connection.cursor()
