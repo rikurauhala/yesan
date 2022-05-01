@@ -10,7 +10,12 @@ class FileHandler:
         pass
 
     def import_accounts(self):
-        pass
+        accounts = []
+        with open(ACCOUNTS_FILE_PATH, "r", encoding="UTF8") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                accounts.append(row)
+        return accounts
 
     def export_accounts(self, accounts):
         with open(ACCOUNTS_FILE_PATH, "w", encoding="UTF8") as file:

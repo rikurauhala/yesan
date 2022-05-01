@@ -236,7 +236,16 @@ class AccountView:
 
     def _handle_import(self):
         self._clear_message()
-        self._display_message("e-02")
+        answer = askyesno(
+            title="Confirmation",
+            message="Are you sure you want to import accounts?"
+        )
+        if answer:
+            success = self._account_service.import_accounts()
+            if not success:
+                self._display_message("e-02")
+            else:
+                self._display_message("s-05")
 
     def _initialize_import_button(self):
         txt_import = "↓ Import"
@@ -258,7 +267,7 @@ class AccountView:
             message="Are you sure you want to export accounts?"
         )
         if answer:
-            success = self._account_service.export()
+            success = self._account_service.export_accounts()
             if not success:
                 self._display_message("e-01")
             else:

@@ -33,6 +33,10 @@ class AccountService:
     def delete_all(self):
         return self._account_repository.delete_all()
 
-    def export(self):
+    def import_accounts(self):
+        accounts = file_handler.import_accounts()
+        return self._account_repository.create_multiple(accounts)
+
+    def export_accounts(self):
         accounts = self.find_all()
         return file_handler.export_accounts(accounts)

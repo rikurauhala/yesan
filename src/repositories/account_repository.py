@@ -1,3 +1,5 @@
+from sqlite3 import IntegrityError
+
 from database import get_database_connection
 
 from entities.account import Account
@@ -15,6 +17,18 @@ class AccountRepository:
         )
         self._connection.commit()
         return True
+
+    def create_multiple(self, accounts):
+        try:
+            cursor = self._connection.cursor()
+            cursor.executemany(
+                "INSERT INTO accounts (id, name, type) VALUES (?, ?, ?)",
+                accounts
+            )
+            self._connection.commit()
+            return True
+        except IntegrityError:
+            return False
 
     def find_all(self):
         cursor = self._connection.cursor()

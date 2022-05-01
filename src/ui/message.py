@@ -4,7 +4,7 @@ import ui.styles.colors as colors
 
 error = {
     "e-01": "Exporting accounts failed!",
-    "e-02": "Importing accounts is not supported yet!",
+    "e-02": "Importing accounts failed!",
     "e-03": "Please enter name!",
     "e-04": "Please enter type!",
     "e-05": "Failed to add a new account!",
@@ -23,6 +23,7 @@ success = {
     "s-02": "New account added!",
     "s-03": "Transactions exported successfully!",
     "s-04": "New transaction added!",
+    "s-05": "Accounts imported successfully!"
 }
 
 
