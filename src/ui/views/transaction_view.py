@@ -263,7 +263,16 @@ class TransactionView:
 
     def _handle_import(self):
         self._clear_message()
-        self._display_message("e-07")
+        answer = askyesno(
+            title="Confirmation",
+            message="Are you sure you want to import transactions?"
+        )
+        if answer:
+            success = self._transaction_service.import_transactions()
+            if not success:
+                self._display_message("e-07")
+            else:
+                self._display_message("s-06")
 
     def _initialize_import_button(self):
         txt_import = "↓ Import"
@@ -285,7 +294,7 @@ class TransactionView:
             message="Are you sure you want to export transactions?"
         )
         if answer:
-            success = self._transaction_service.export()
+            success = self._transaction_service.export_transactions()
             if not success:
                 self._display_message("e-06")
             else:

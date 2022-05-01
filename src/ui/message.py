@@ -9,7 +9,7 @@ error = {
     "e-04": "Please enter type!",
     "e-05": "Failed to add a new account!",
     "e-06": "Exporting transactions failed!",
-    "e-07": "Importing transactions is not supported yet!",
+    "e-07": "Importing transactions failed!",
     "e-08": "Please choose a correct date!",
     "e-09": "Please enter a correct amount!",
     "e-10": "Please enter a category!",
@@ -23,7 +23,8 @@ success = {
     "s-02": "New account added!",
     "s-03": "Transactions exported successfully!",
     "s-04": "New transaction added!",
-    "s-05": "Accounts imported successfully!"
+    "s-05": "Accounts imported successfully!",
+    "s-06": "Transactions imported successfully!"
 }
 
 

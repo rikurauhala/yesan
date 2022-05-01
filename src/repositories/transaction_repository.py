@@ -1,3 +1,5 @@
+from sqlite3 import IntegrityError
+
 from database import get_database_connection
 
 from entities.transaction import Transaction
@@ -8,16 +10,27 @@ class TransactionRepository:
         self._connection = connection
 
     def create(self, transaction):
-        cursor = self._connection.cursor()
-        cursor.execute("""
-            INSERT INTO transactions(
-                id, date, amount, category, 
-                description, account_id, party)
-            VALUES (?, ?, ?, ?, ?, ?, ?)""",
-                       (transaction.id, transaction.date, transaction.amount,
-                        transaction.category, transaction.description,
-                        transaction.account_id, transaction.party))
-        self._connection.commit()
+        try:
+            cursor = self._connection.cursor()
+            cursor.execute("""
+                INSERT INTO transactions(
+                    id, date, amount, category, 
+                    description, account_id, party)
+                VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                           (transaction.id, transaction.date, transaction.amount,
+                            transaction.category, transaction.description,
+                            transaction.account_id, transaction.party))
+            self._connection.commit()
+            return True
+        except IntegrityError:
+            return False
+
+    def create_multiple(self, transactions):
+        created = 0
+        for transaction in transactions:
+            if self.create(transaction):
+                created = created + 1
+        return created
 
     def find_all(self):
         cursor = self._connection.cursor()

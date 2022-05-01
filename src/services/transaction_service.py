@@ -43,6 +43,10 @@ class TransactionService:
     def get_balance_by_id(self, account_id):
         return self._transaction_repository.get_balance_by_id(account_id)
 
-    def export(self):
+    def import_transactions(self):
+        transactions = file_handler.import_transactions()
+        return self._transaction_repository.create_multiple(transactions)
+
+    def export_transactions(self):
         transactions = self.find_all_with_id()
         return file_handler.export_transactions(transactions)
