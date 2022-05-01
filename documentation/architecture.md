@@ -35,6 +35,7 @@ The application uses the following entities. An `account` can be anything from a
 
 ```mermaid
 classDiagram
+    direction LR
     Transaction "*" --> "1" Account
     class Account {
         id
@@ -50,4 +51,26 @@ classDiagram
         account_id
         party
     }
+```
+
+## Database
+
+Data is stored in an `SQLite` database using the `sqlite3` module for Python. The database consists of two tables that correspond to the two entities used in the application. The following schema can be used to initialize the database.
+
+```sql
+CREATE TABLE accounts (
+    id TEXT PRIMARY KEY,
+    name TEXT,
+    type TEXT
+);
+
+CREATE TABLE transactions (
+    id TEXT PRIMARY KEY,
+    date INTEGER,
+    amount INTEGER,
+    category TEXT,
+    description TEXT,
+    account_id TEXT REFERENCES accounts,
+    party TEXT
+);
 ```
