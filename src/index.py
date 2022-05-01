@@ -4,7 +4,6 @@ from ui.user_interface import UserInterface
 
 
 def main():
-    """Main function of the program."""
     window = Tk()
     title = "Yesan"
     window.title(title)
