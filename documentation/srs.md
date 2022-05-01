@@ -23,16 +23,16 @@ The programming language used is Python and user data is stored in an SQLite dat
   - [ X ] Contains a button for showing the account view
   - [ X ] Contains a button for showing the transaction view
   - [ X ] Contains a button for exiting the application
-- [ / ] Account view
+- [ X ] Account view
   - [ X ] Contains a list of accounts and their balance
   - [ X ] Displays net worth
   - [ X ] Contains a button for adding new accounts
-  - [ / ] Importing data from a csv file
+  - [ X ] Importing data from a csv file
   - [ X ] Exporting data into a csv file
-- [ / ] Transaction view
+- [ X ] Transaction view
   - [ X ] Contains a list of recent transactions
   - [ X ] Contains a button for adding new transactions
-  - [ / ] Importing data from a csv file
+  - [ X ] Importing data from a csv file
   - [ X ] Exporting data into a csv file
 
 ### Secondary
