@@ -33,3 +33,4 @@
 
 - Created functionality for importing accounts and transactions from a csv file
 - Updated the transaction view
+- Improved currency formatting
