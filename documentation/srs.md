@@ -12,9 +12,9 @@ The application has a graphical user interface created with the `tkinter` librar
 
 ## Functionality
 
-The programming language used is Python and user data is stored in an SQLite database via the `sqlite3` module. Data may also be imported and exported in the csv file format. The application contains the following functionality. *Basic* functionality forms the core of the application and *secondary* features are ideas for further development.
+The programming language used is Python and user data is stored in an SQLite database via the `sqlite3` module. Data may also be imported and exported in the csv file format. The application contains the following functionality. *Primary* functionality forms the core of the application and *secondary* features are ideas for further development.
 
-### Basic
+### Primary
 
 All of the following functionality has been implemented. This list represents the current state of the application.
 
