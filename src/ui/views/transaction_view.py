@@ -13,6 +13,7 @@ class TransactionView:
     def __init__(self, root, go_to_main_view, go_to_new_transaction_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
+        self._tree = None
         self._buttons = ttk.Frame(master=self._frame)
         self._lbl_message = None
         self._var_message = StringVar(self._frame)
@@ -57,33 +58,34 @@ class TransactionView:
             "party"
         )
 
-        tree = ttk.Treeview(
+        self._tree = ttk.Treeview(
             master=self._frame,
             columns=columns,
             show="headings"
         )
 
-        tree.heading("date", text="Date")
-        tree.heading("amount", text="Amount")
-        tree.heading("category", text="Category")
-        tree.heading("description", text="Description")
-        tree.heading("account", text="Account")
-        tree.heading("party", text="Payer / Receiver")
+        self._tree.heading("date", text="Date")
+        self._tree.heading("amount", text="Amount")
+        self._tree.heading("category", text="Category")
+        self._tree.heading("description", text="Description")
+        self._tree.heading("account", text="Account")
+        self._tree.heading("party", text="Payer / Receiver")
 
         transactions = self._transaction_service.find_all_as_list()
 
         for transaction in transactions:
-            tree.insert("", END, values=transaction)
+            self._tree.insert("", END, values=transaction)
 
-        tree.grid(row=1, column=0, sticky="NSEW")
+        self._tree.grid(row=1, column=0, sticky="NSEW")
+        self._initialize_scrollbar()
 
+    def _initialize_scrollbar(self):
         scrollbar = ttk.Scrollbar(
             self._frame,
             orient=constants.VERTICAL,
-            command=tree.yview
+            command=self._tree.yview
         )
-        
-        tree.configure(yscroll=scrollbar.set)
+        self._tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=1, column=1, sticky="NS")
 
     def _clear_message(self):
