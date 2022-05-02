@@ -5,6 +5,7 @@ from services.transaction_service import TransactionService
 
 from ui.message import Message
 
+import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
@@ -13,7 +14,7 @@ class TransactionView:
     def __init__(self, root, go_to_main_view, go_to_new_transaction_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
-        self._tree = None
+        self._data_tree = None
         self._buttons = ttk.Frame(master=self._frame)
         self._lbl_message = None
         self._var_message = StringVar(self._frame)
@@ -48,7 +49,7 @@ class TransactionView:
             sticky=constants.W
         )
 
-    def _initialize_data(self):
+    def _initialize_data_tree(self):
         columns = (
             "date",
             "amount",
@@ -58,37 +59,41 @@ class TransactionView:
             "party"
         )
 
-        self._tree = ttk.Treeview(
+        self._data_tree = ttk.Treeview(
             master=self._frame,
             columns=columns,
             show="headings",
             height=20
         )
 
-        self._tree.heading("date", text="Date")
-        self._tree.column("date", anchor=constants.CENTER, width=100)
-        self._tree.heading("amount", text="Amount")
-        self._tree.column("amount", anchor=constants.E)
-        self._tree.heading("category", text="Category")
-        self._tree.heading("description", text="Description")
-        self._tree.heading("account", text="Account")
-        self._tree.heading("party", text="Payer / Receiver")
+        self._data_tree.heading("date", text="Date")
+        self._data_tree.column("date", anchor=constants.CENTER, width=100)
+        self._data_tree.heading("amount", text="Amount")
+        self._data_tree.column("amount", anchor=constants.E)
+        self._data_tree.heading("category", text="Category")
+        self._data_tree.heading("description", text="Description")
+        self._data_tree.heading("account", text="Account")
+        self._data_tree.heading("party", text="Payer / Receiver")
 
         transactions = self._transaction_service.find_all_as_list()
 
         for transaction in transactions:
-            self._tree.insert("", END, values=transaction)
+            if transaction[1][0] == "-":
+                self._data_tree.insert("", END, values=transaction, tags=("negative", ))
+            else:
+                self._data_tree.insert("", END, values=transaction)
 
-        self._tree.grid(row=1, column=0, sticky="NSEW")
+        self._data_tree.tag_configure("negative", foreground=colors.NEGATIVE)
+        self._data_tree.grid(row=1, column=0, sticky="NSEW")
         self._initialize_scrollbar()
 
     def _initialize_scrollbar(self):
         scrollbar = ttk.Scrollbar(
             self._frame,
             orient=constants.VERTICAL,
-            command=self._tree.yview
+            command=self._data_tree.yview
         )
-        self._tree.configure(yscroll=scrollbar.set)
+        self._data_tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=1, column=1, sticky="NS")
 
     def _clear_message(self):
@@ -195,5 +200,5 @@ class TransactionView:
 
     def _initialize(self):
         self._initialize_title_label()
-        self._initialize_data()
+        self._initialize_data_tree()
         self._initialize_buttons()
