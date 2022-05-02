@@ -20,20 +20,29 @@ The programming language used is Python and user data is stored in an SQLite dat
 ### Basic
 
 - [ X ] Main view
-  - [ X ] Contains a button for showing the account view
-  - [ X ] Contains a button for showing the transaction view
-  - [ X ] Contains a button for exiting the application
-- [ X ] Account view
-  - [ X ] Contains a list of accounts and their balance
-  - [ X ] Displays net worth
-  - [ X ] Contains a button for adding new accounts
-  - [ X ] Importing data from a csv file
-  - [ X ] Exporting data into a csv file
-- [ X ] Transaction view
-  - [ X ] Contains a list of recent transactions
-  - [ X ] Contains a button for adding new transactions
-  - [ X ] Importing data from a csv file
-  - [ X ] Exporting data into a csv file
+  - [ X ] Contains "Accounts" button for showing the account view
+    - [ X ] Account view
+      - [ X ] Contains a list of accounts and their balance
+      - [ X ] Displays net worth
+      - [ X ] Contains button "Back" for going back to main view
+      - [ X ] Contains button "New account" for showing the new account view
+          - [ X ] New account view
+            - [ X ] Contains fields for account details
+            - [ X ] Contains button "Back" for going back to the account view
+            - [ X ] Contains button "Submit" for adding a new account 
+      - [ X ] Contains button "Import" for importing account data from a csv file
+      - [ X ] Contains button "Export" for exporting account data into a csv file
+  - [ X ] Contains button "Transactions" for showing the transaction view
+    - [ X ] Transaction view
+      - [ X ] Contains a list of recent transactions
+      - [ X ] Contains button "New transaction" for adding new transactions
+          - [ X ] New transaction view
+                - [ X ] Contains fields for transaction details
+                - [ X ] Contains button "Back" for going back to the transaction view
+                - [ X ] Contains button "Submit" for adding a new transaction 
+      - [ X ] Contains button "Import" for importing transaction data from a csv file
+      - [ X ] Contains button "Export" for exporting transaction data into a csv file
+  - [ X ] Contains button "Quit" for exiting the application
 
 ### Secondary
 
