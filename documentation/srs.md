@@ -37,9 +37,9 @@ The programming language used is Python and user data is stored in an SQLite dat
       - [ X ] Contains a list of recent transactions
       - [ X ] Contains button "New transaction" for adding new transactions
           - [ X ] New transaction view
-                - [ X ] Contains fields for transaction details
-                - [ X ] Contains button "Back" for going back to the transaction view
-                - [ X ] Contains button "Submit" for adding a new transaction 
+            - [ X ] Contains fields for transaction details
+            - [ X ] Contains button "Back" for going back to the transaction view
+            - [ X ] Contains button "Submit" for adding a new transaction 
       - [ X ] Contains button "Import" for importing transaction data from a csv file
       - [ X ] Contains button "Export" for exporting transaction data into a csv file
   - [ X ] Contains button "Quit" for exiting the application
