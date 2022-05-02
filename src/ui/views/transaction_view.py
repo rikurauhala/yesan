@@ -69,7 +69,7 @@ class TransactionView:
         self._data_tree.heading("date", text="Date")
         self._data_tree.column("date", anchor=constants.CENTER, width=100)
         self._data_tree.heading("amount", text="Amount")
-        self._data_tree.column("amount", anchor=constants.E)
+        self._data_tree.column("amount", anchor=constants.E, width=120)
         self._data_tree.heading("category", text="Category")
         self._data_tree.heading("description", text="Description")
         self._data_tree.heading("account", text="Account")
@@ -103,7 +103,6 @@ class TransactionView:
     def _display_message(self, code):
         self._lbl_message = self._message.get_message(code)
         self._lbl_message.grid(
-            columnspan=6,
             padx=styles.PADDING,
             pady=styles.PADDING
         )

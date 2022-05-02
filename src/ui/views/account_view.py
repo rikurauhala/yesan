@@ -130,11 +130,9 @@ class AccountView:
                 txt_balance = "0.00 €"
             else:
                 self._net_worth = self._net_worth + int(txt_balance)
-                euro = str(int(txt_balance/100))
-                cents = str(txt_balance)[-2:]
-                txt_balance = euro + "." + cents + " €"
+                txt_balance = self._transaction_service.format_amount(txt_balance)
             lbl_balance = None
-            if txt_balance[0] == "-":
+            if str(txt_balance)[0] == "-":
                 lbl_balance = ttk.Label(
                     master=self._frame,
                     text=txt_balance,
@@ -180,9 +178,7 @@ class AccountView:
         )
 
     def _initialize_net_worth_info(self, total):
-        euro = str(int(self._net_worth/100))
-        cents = str(self._net_worth)[-2:]
-        txt_net_worth = euro + "." + cents + " €"
+        txt_net_worth = self._transaction_service.format_amount(self._net_worth)
         lbl_net_worth = ttk.Label(
             master=self._frame,
             text=txt_net_worth,
