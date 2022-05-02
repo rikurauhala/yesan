@@ -61,11 +61,14 @@ class TransactionView:
         self._tree = ttk.Treeview(
             master=self._frame,
             columns=columns,
-            show="headings"
+            show="headings",
+            height=20
         )
 
         self._tree.heading("date", text="Date")
+        self._tree.column("date", anchor=constants.CENTER, width=100)
         self._tree.heading("amount", text="Amount")
+        self._tree.column("amount", anchor=constants.E)
         self._tree.heading("category", text="Category")
         self._tree.heading("description", text="Description")
         self._tree.heading("account", text="Account")
@@ -186,9 +189,8 @@ class TransactionView:
         self._initialize_import_button()
         self._initialize_export_button()
         self._buttons.grid(
-            columnspan=3,
             padx=styles.PADDING_MAIN,
-            pady=styles.PADDING_MAIN
+            pady=styles.PADDING_MAIN,
         )
 
     def _initialize(self):
