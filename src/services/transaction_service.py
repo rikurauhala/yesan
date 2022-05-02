@@ -41,6 +41,20 @@ class TransactionService:
     def find_all(self):
         return self._transaction_repository.find_all()
 
+    def find_all_as_list(self):
+        transactions = self._transaction_repository.find_all()
+        transaction_list = []
+        for transaction in transactions:
+            details = []
+            details.append(transaction.date)
+            details.append("{:.2f} €".format(transaction.amount/100))
+            details.append(transaction.category)
+            details.append(transaction.description)
+            details.append(transaction.account_id)
+            details.append(transaction.party)
+            transaction_list.append(details)
+        return transaction_list
+
     def find_all_with_id(self):
         return self._transaction_repository.find_all_with_id()
 

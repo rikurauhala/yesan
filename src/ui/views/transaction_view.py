@@ -1,11 +1,10 @@
-from tkinter import constants, StringVar, ttk
+from tkinter import constants, END, StringVar, ttk
 from tkinter.messagebox import askyesno
 
 from services.transaction_service import TransactionService
 
 from ui.message import Message
 
-import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
@@ -48,178 +47,44 @@ class TransactionView:
             sticky=constants.W
         )
 
-    def _initialize_subtitles(self):
-        txt_date = "Date"
-        lbl_date = ttk.Label(
+    def _initialize_data(self):
+        columns = (
+            "date",
+            "amount",
+            "category",
+            "description",
+            "account",
+            "party"
+        )
+
+        tree = ttk.Treeview(
             master=self._frame,
-            text=txt_date,
-            font=fonts.SUBTITLE
-        )
-        lbl_date.grid(
-            row=1,
-            column=0,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
+            columns=columns,
+            show="headings"
         )
 
-        txt_amount = "Amount"
-        lbl_amount = ttk.Label(
-            master=self._frame,
-            text=txt_amount,
-            font=fonts.SUBTITLE
-        )
-        lbl_amount.grid(
-            row=1,
-            column=1,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
-        )
+        tree.heading("date", text="Date")
+        tree.heading("amount", text="Amount")
+        tree.heading("category", text="Category")
+        tree.heading("description", text="Description")
+        tree.heading("account", text="Account")
+        tree.heading("party", text="Payer / Receiver")
 
-        txt_category = "Category"
-        lbl_category = ttk.Label(
-            master=self._frame,
-            text=txt_category,
-            font=fonts.SUBTITLE
+        transactions = self._transaction_service.find_all_as_list()
+
+        for transaction in transactions:
+            tree.insert("", END, values=transaction)
+
+        tree.grid(row=1, column=0, sticky="NSEW")
+
+        scrollbar = ttk.Scrollbar(
+            self._frame,
+            orient=constants.VERTICAL,
+            command=tree.yview
         )
-        lbl_category.grid(
-            row=1,
-            column=2,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
-        )
-
-        txt_description = "Description"
-        lbl_description = ttk.Label(
-            master=self._frame,
-            text=txt_description,
-            font=fonts.SUBTITLE
-        )
-        lbl_description.grid(
-            row=1,
-            column=3,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
-        )
-
-        txt_account = "Account"
-        lbl_account = ttk.Label(
-            master=self._frame,
-            text=txt_account,
-            font=fonts.SUBTITLE
-        )
-        lbl_account.grid(
-            row=1,
-            column=4,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
-        )
-
-        txt_party = "Payer / receiver"
-        lbl_party = ttk.Label(
-            master=self._frame,
-            text=txt_party,
-            font=fonts.SUBTITLE
-        )
-        lbl_party.grid(
-            row=1,
-            column=5,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
-            sticky=constants.W
-        )
-
-    def _initialize_transaction_information(self, transactions, total):
-        for i in range(total):
-            txt_date = transactions[i].date
-            lbl_date = ttk.Label(
-                master=self._frame,
-                text=txt_date
-            )
-            lbl_date.grid(
-                row=i+2,
-                column=0,
-                padx=styles.PADDING,
-                pady=styles.PADDING,
-                sticky=constants.W
-            )
-
-            txt_amount = "{:.2f} €".format(transactions[i].amount/100)
-            lbl_amount = None
-            if txt_amount[0] == "-":
-                lbl_amount = ttk.Label(
-                    master=self._frame,
-                    text=txt_amount,
-                    foreground=colors.NEGATIVE
-                )
-            else:
-                lbl_amount = ttk.Label(
-                    master=self._frame,
-                    text=txt_amount
-                )
-            lbl_amount.grid(
-                row=i+2,
-                column=1,
-                padx=styles.PADDING,
-                pady=styles.PADDING,
-                sticky=constants.E
-            )
-
-            txt_category = transactions[i].category
-            lbl_category = ttk.Label(
-                master=self._frame,
-                text=txt_category
-            )
-            lbl_category.grid(
-                row=i+2,
-                column=2,
-                padx=styles.PADDING,
-                pady=styles.PADDING,
-                sticky=constants.W
-            )
-
-            txt_description = transactions[i].description
-            lbl_description = ttk.Label(
-                master=self._frame,
-                text=txt_description
-            )
-            lbl_description.grid(
-                row=i+2,
-                column=3,
-                padx=styles.PADDING,
-                pady=styles.PADDING,
-                sticky=constants.W
-            )
-
-            txt_account = transactions[i].account_id
-            lbl_account = ttk.Label(
-                master=self._frame,
-                text=txt_account
-            )
-            lbl_account.grid(
-                row=i+2,
-                column=4,
-                padx=styles.PADDING,
-                pady=styles.PADDING,
-                sticky=constants.W
-            )
-
-            txt_party = transactions[i].party
-            lbl_party = ttk.Label(
-                master=self._frame,
-                text=txt_party
-            )
-            lbl_party.grid(
-                row=i+2,
-                column=5,
-                padx=styles.PADDING,
-                pady=styles.PADDING,
-                sticky=constants.W
-            )
+        
+        tree.configure(yscroll=scrollbar.set)
+        scrollbar.grid(row=1, column=1, sticky="NS")
 
     def _clear_message(self):
         if self._lbl_message:
@@ -326,10 +191,5 @@ class TransactionView:
 
     def _initialize(self):
         self._initialize_title_label()
-        self._initialize_subtitles()
-        transactions = self._transaction_service.find_all()
-        total = len(transactions)
-        self._initialize_transaction_information(transactions, total)
-        self._initialize_back_button()
-        self._initialize_new_transaction_button()
+        self._initialize_data()
         self._initialize_buttons()
