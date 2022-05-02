@@ -14,42 +14,45 @@ The application has a graphical user interface created with the `tkinter` librar
 
 The programming language used is Python and user data is stored in an SQLite database via the `sqlite3` module. Data may also be imported and exported in the csv file format. The application contains the following functionality. *Basic* functionality forms the core of the application and *secondary* features are ideas for further development.
 
-[ X ] = ready  
-[ / ] = working on it
-
 ### Basic
 
-- [ X ] Main view
-  - [ X ] Contains "Accounts" button for showing the account view
-    - [ X ] Account view
-      - [ X ] Contains a list of accounts and their balance
-      - [ X ] Displays net worth
-      - [ X ] Contains button "Back" for going back to main view
-      - [ X ] Contains button "New account" for showing the new account view
-          - [ X ] New account view
-            - [ X ] Contains fields for account details
-            - [ X ] Contains button "Back" for going back to the account view
-            - [ X ] Contains button "Submit" for adding a new account 
-      - [ X ] Contains button "Import" for importing account data from a csv file
-      - [ X ] Contains button "Export" for exporting account data into a csv file
-  - [ X ] Contains button "Transactions" for showing the transaction view
-    - [ X ] Transaction view
-      - [ X ] Contains a list of recent transactions
-      - [ X ] Contains button "New transaction" for adding new transactions
-          - [ X ] New transaction view
-            - [ X ] Contains fields for transaction details
-            - [ X ] Contains button "Back" for going back to the transaction view
-            - [ X ] Contains button "Submit" for adding a new transaction 
-      - [ X ] Contains button "Import" for importing transaction data from a csv file
-      - [ X ] Contains button "Export" for exporting transaction data into a csv file
-  - [ X ] Contains button "Quit" for exiting the application
+All of the following functionality has been implemented. This list represents the current state of the application.
+
+- Main view
+  - Contains "Accounts" button for showing the account view
+    - Account view
+      - Contains a list of accounts and their balance
+      - Displays net worth
+      - Contains button "Back" for going back to main view
+      - Contains button "New account" for showing the new account view
+          - New account view
+            - Contains fields for account details
+            - Contains button "Back" for going back to the account view
+            - Contains button "Submit" for adding a new account 
+      - Contains button "Import" for importing account data from a csv file
+      - Contains button "Export" for exporting account data into a csv file
+  - Contains button "Transactions" for showing the transaction view
+    - Transaction view
+      - Contains a list of recent transactions
+      - Contains button "New transaction" for adding new transactions
+          - New transaction view
+            - Contains fields for transaction details
+            - Contains button "Back" for going back to the transaction view
+            - Contains button "Submit" for adding a new transaction 
+      - Contains button "Import" for importing transaction data from a csv file
+      - Contains button "Export" for exporting transaction data into a csv file
+  - Contains button "Quit" for exiting the application
 
 ### Secondary
+
+This list contains ideas for functionality to be implemented at a later date.
 
 - Login view
   - Password protection
   - Protecting sensitive personal data
     - Encrypting/decrypting the database (?)
+- Individual account view
+  - View transaction history and other statistics of each individual account
 - Budgeting
   - Creating a budget and comparing monthly expenses
 - Reports
