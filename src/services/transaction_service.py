@@ -1,5 +1,7 @@
 import uuid
 
+import re
+
 from file_handler import file_handler
 
 from entities.transaction import Transaction
@@ -12,6 +14,8 @@ class TransactionService:
         self._transaction_repository = transaction_repository
 
     def _convert_to_int(self, amount):
+        if re.match(r"^(\+|-)?\d+$", amount):
+            return int(amount + "00")
         euro = amount.split(".")[0]
         cents = amount.split(".")[1]
 
