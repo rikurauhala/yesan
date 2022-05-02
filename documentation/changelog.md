@@ -28,3 +28,7 @@
 - Based on account balances, added a section in account view where net worth is calculated
 - Created functionality for exporting accounts and transactions in csv format
 - Improved user interface and added helpful messages for feedback
+
+## Week 6
+
+- Created functionality for importing accounts and transactions from a csv file
