@@ -46,9 +46,13 @@ class AccountRepository:
         return cursor.fetchone()[0]
 
     def delete_all(self):
-        cursor = self._connection.cursor()
-        cursor.execute("DELETE FROM accounts")
-        self._connection.commit()
+        try:
+            cursor = self._connection.cursor()
+            cursor.execute("DELETE FROM accounts")
+            self._connection.commit()
+            return True
+        except Exception:
+            return False
 
 
 account_repository = AccountRepository(get_database_connection())
