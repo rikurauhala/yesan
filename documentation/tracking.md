@@ -28,4 +28,5 @@
 | 2022-04-30 |      3 | refactoring message feedback system to reduce the amount of copy-paste in the code                        |
 | 2022-05-01 |      3 | adding support for import functionality for accounts and transactions                                     |
 | 2022-05-02 |      7 | working on documentation, improving the transaction view, improving currency formatting                   |
-| total      |     70 |                                                                                                           |
+| 2022-05-03 |      3 | writing documentation, adding docstrings                                                                  |
+| total      |     73 |                                                                                                           |
