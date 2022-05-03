@@ -4,6 +4,7 @@
 
 ## Releases
 
+- [Viikko 6](https://github.com/rikurauhala/yesan/releases/tag/viikko6) [latest]
 - [Viikko 5](https://github.com/rikurauhala/yesan/releases/tag/viikko5)
 
 ## Documentation
