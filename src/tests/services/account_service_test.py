@@ -1,3 +1,4 @@
+from cgi import test
 import unittest
 
 from services.account_service import AccountService
@@ -41,4 +42,14 @@ class TestAccountService(unittest.TestCase):
         self.assertEqual(account_list[0], self._name_account_b)
 
     def test_get_id_by_name(self):
-        pass
+        self._account_service.create_account(
+            self._name_account_b,
+            self._type_account_b
+        )
+        accounts = self._account_service.find_all()
+        id_expected = accounts[0].id
+        id_actual = self._account_service.get_id_by_name(self._name_account_b)
+
+        self.assertEqual(len(accounts), 1)
+        self.assertEqual(id_actual, id_expected)
+
