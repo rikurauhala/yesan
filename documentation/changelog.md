@@ -32,5 +32,6 @@
 ## Week 6
 
 - Created functionality for importing accounts and transactions from a csv file
+- Added confirmation dialog boxes for import and export functionality and exiting the application
 - Updated the transaction view
 - Improved currency formatting
