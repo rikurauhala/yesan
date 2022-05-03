@@ -15,10 +15,21 @@ database_connection.row_factory = sqlite3.Row
 
 
 def get_database_connection():
+    """Gets the database connection.
+
+    Returns:
+        Connection: Database connection object.
+    """
     return database_connection
 
 
 def drop_tables(connection):
+    """Clears all data from the database.
+
+    Args:
+        connection (Connection): Database connection object.
+    """
+
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -33,6 +44,12 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """Creates database tables.
+
+    Args:
+        connection (Connection): Database connection object.
+    """
+
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -61,6 +78,7 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """Initializes the database."""
     connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)
