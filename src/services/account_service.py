@@ -22,7 +22,7 @@ class AccountService:
             account_type (String): Type of the account.
 
         Returns:
-            Boolean: True or False depending if creation succeeded or not.
+            Boolean: True or False depending on if creation succeeded or not.
         """
 
         account_uuid = str(uuid.uuid4())
@@ -64,7 +64,7 @@ class AccountService:
         """Deletes all account data.
 
         Returns:
-            Boolean: True or False depending if deletion succeeded or not.
+            Boolean: True or False depending on if deletion succeeded or not.
         """
         return self._account_repository.delete_all()
 

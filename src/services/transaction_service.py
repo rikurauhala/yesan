@@ -10,7 +10,10 @@ from repositories.transaction_repository import transaction_repository
 
 
 class TransactionService:
+    """Handles all functionality related to transactions."""
+
     def __init__(self):
+        """Initializes a new instance of TransactionService."""
         self._transaction_repository = transaction_repository
 
     def _convert_to_int(self, amount):
@@ -25,6 +28,19 @@ class TransactionService:
         return int(euro + cents)
 
     def create_transaction(self, date, amount, category, description, account_id, party):
+        """Creates a new transaction.
+
+        Args:
+            date (Timestamp): Date when the transaction was made. 
+            amount (Integer): Amount of money involved in the transaction.
+            category (String): String, category to which the transaction belongs to.
+            description (String): Describes the purpose of the transaction.
+            account_id (String): Connects the transaction to an account.
+            party (String): Specifies the other party (payer/receiver) of the transaction.
+
+        Returns:
+            Boolean: True or false depending on if creation succeeded or not.
+        """
         transaction_id = str(uuid.uuid4())
         amount = self._convert_to_int(amount)
         transaction = Transaction(
@@ -39,9 +55,22 @@ class TransactionService:
         return self._transaction_repository.create(transaction)
 
     def find_all(self):
+        """Finds all transactions.
+
+        Returns:
+            List containing all transaction data as Transaction objects.
+        """
         return self._transaction_repository.find_all()
 
     def format_amount(self, amount):
+        """Formats the given amount in a more readable form.
+
+        Args:
+            amount (Integer): Amount to be formatted.
+
+        Returns:
+            String: Formatted amount.
+        """
         currency = "{:,.2f} €".format(amount/100)
         euros = currency.split(".")[0]
         cents = currency.split(".")[1]
@@ -50,6 +79,11 @@ class TransactionService:
         return currency
 
     def find_all_as_list(self):
+        """Finds all transactions in a list form.
+
+        Returns:
+            List of transactions details as list.
+        """
         transactions = self._transaction_repository.find_all()
         transaction_list = []
         for transaction in transactions:
@@ -64,15 +98,38 @@ class TransactionService:
         return transaction_list
 
     def find_all_with_id(self):
+        """Finds all transactions including account id instead of account name.
+
+        Returns:
+            List containing all transaction data as Transaction objects.
+        """
         return self._transaction_repository.find_all_with_id()
 
     def get_balance_by_id(self, account_id):
+        """Returns the account balance based on its id.
+
+        Args:
+            account_id (String): Unique identifier of an account.
+
+        Returns:
+            Integer: Account balance.
+        """
         return self._transaction_repository.get_balance_by_id(account_id)
 
     def import_transactions(self):
+        """Imports transaction data from a csv file.
+
+        Returns:
+            Integer: Number of transactions imported.
+        """
         transactions = file_handler.import_transactions()
         return self._transaction_repository.create_multiple(transactions)
 
     def export_transactions(self):
+        """Exports transaction data into a csv file.
+
+        Returns:
+            Boolean: True if exporting transactions succeeded.
+        """
         transactions = self.find_all_with_id()
         return file_handler.export_transactions(transactions)

@@ -88,9 +88,13 @@ class TransactionRepository:
         return transactions
 
     def delete_all(self):
-        cursor = self._connection.cursor()
-        cursor.execute("DELETE FROM transactions")
-        self._connection.commit()
+        try:
+            cursor = self._connection.cursor()
+            cursor.execute("DELETE FROM transactions")
+            self._connection.commit()
+            return True
+        except Exception:
+            return False
 
     def get_balance_by_id(self, account_id):
         cursor = self._connection.cursor()
