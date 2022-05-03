@@ -2,7 +2,7 @@ class Account:
     """Account object, stores properties of an account.
 
     Attributes:
-        id: UUID, unique identifier of an account.
+        id: String, unique identifier of an account in the UUID format.
         name: String, name of an account.
         type: String, type of an account.
     """
@@ -11,7 +11,7 @@ class Account:
         """Initializes a new instance of an Account object.
 
         Args:
-            account_id (UUID): Unique identifier of an account.
+            account_id (String): Unique identifier of an account in the UUID format.
             account_name (String): Name of an account.
             account_type (String): Type of an account.
         """
