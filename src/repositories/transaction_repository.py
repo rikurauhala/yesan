@@ -6,10 +6,25 @@ from entities.transaction import Transaction
 
 
 class TransactionRepository:
+    """Handles all database operations related to transactions."""
+    
     def __init__(self, connection):
+        """Initializes a new instance of TransactionRepository.
+
+        Args:
+            connection (Connection object): Connection to the database.
+        """
         self._connection = connection
 
     def create(self, transaction):
+        """Inserts a new transaction into the database.
+
+        Args:
+            transaction (Transaction): Transaction object.
+
+        Returns:
+            Boolean: True or False depending on if creation succeeded or not.
+        """
         try:
             cursor = self._connection.cursor()
             cursor.execute("""
@@ -26,6 +41,14 @@ class TransactionRepository:
             return False
 
     def create_multiple(self, transactions):
+        """Inserts multiple transactions in to the database.
+
+        Args:
+            transactions (List): List of Transaction objects.
+
+        Returns:
+            Integer: Number of transactions created.
+        """
         created = 0
         for transaction in transactions:
             if self.create(transaction):
@@ -33,6 +56,11 @@ class TransactionRepository:
         return created
 
     def find_all(self):
+        """Finds all transaction data from the database.
+
+        Returns:
+            List of Transaction objects.
+        """
         cursor = self._connection.cursor()
         cursor.execute("""
             SELECT t.id, t.date, t.amount, t.category, t.description, a.name, t.party
@@ -61,6 +89,12 @@ class TransactionRepository:
         return transactions
 
     def find_all_with_id(self):
+        """Finds all transactions including account id instead of account name.
+
+        Returns:
+            List of Transaction objects.
+        """
+        
         cursor = self._connection.cursor()
         cursor.execute("""
             SELECT id, date, amount, category, description, account_id, party
@@ -88,6 +122,11 @@ class TransactionRepository:
         return transactions
 
     def delete_all(self):
+        """_Deletes all transaction data from the database.
+
+        Returns:
+            Boolean: True or False depending on if deletion succeeded or not.
+        """
         try:
             cursor = self._connection.cursor()
             cursor.execute("DELETE FROM transactions")
@@ -97,6 +136,14 @@ class TransactionRepository:
             return False
 
     def get_balance_by_id(self, account_id):
+        """Calculates the account balance based on its id.
+
+        Args:
+            account_id (String): Unique identifier of an account.
+
+        Returns:
+            Integer: Account balance.
+        """
         cursor = self._connection.cursor()
         cursor.execute(
             "SELECT SUM(amount) FROM transactions WHERE account_id=(?)", (account_id, ))

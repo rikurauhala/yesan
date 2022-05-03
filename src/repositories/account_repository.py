@@ -9,7 +9,11 @@ class AccountRepository:
     """Handles all database operations related to accounts."""
 
     def __init__(self, connection):
-        """Initializes a new instance of AccountRepository."""
+        """Initializes a new instance of AccountRepository.
+
+        Args:
+            connection (Connection object): Connection to the database.
+        """
         self._connection = connection
 
     def create(self, account):
