@@ -29,6 +29,20 @@ sequenceDiagram
     Message-->>NewAccountView: Label(StringVar("New account added!"))
 ```
 
+## User interface
+
+The application has a graphical user interface created with the `tkinter` module. The user interface consists of five relevant views that form a hierarchical structure:
+
+- Main view
+  - Account view
+    - New account view
+  - Transaction view
+    - New transaction view
+
+## Project structure
+
+The application is divided into three main parts. The package `ui` contains all user interface elements. User interface makes calls to the `services`, which uses `repositories` and other functions (such as file_handler.py) to handle data. Both services and repositories can take advantage of `entities` to pass information about relevant data in an object form.
+
 ## Entities
 
 The application uses the following entities. An `account` can be anything from a bank account, to crypto currency or a loan. A `transaction` contains information about a single transaction where money is moved from one account to another, for example when receiving the monthly salary from the employer or making a purchase at the grocery store. Each account can be connected to multiple transactions and a single transaction can be only connected to one account.
