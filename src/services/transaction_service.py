@@ -116,6 +116,14 @@ class TransactionService:
         """
         return self._transaction_repository.get_balance_by_id(account_id)
 
+    def delete_all(self):
+        """Deletes all transaction data.
+
+        Returns:
+            Boolean: True or False depending on if deletion succeeded or not.
+        """
+        return self._transaction_repository.delete_all()
+
     def import_transactions(self):
         """Imports transaction data from a csv file.
 
