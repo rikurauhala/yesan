@@ -12,7 +12,6 @@ class FileHandler:
 
     def __init__(self):
         """Initializes a new instance of FileHandler."""
-        pass
 
     def import_accounts(self):
         """Imports account data from a csv file.

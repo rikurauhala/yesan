@@ -52,4 +52,3 @@ class TestAccountService(unittest.TestCase):
 
         self.assertEqual(len(accounts), 1)
         self.assertEqual(id_actual, id_expected)
-

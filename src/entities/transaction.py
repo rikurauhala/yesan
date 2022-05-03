@@ -3,7 +3,7 @@ class Transaction:
 
     Attributes:
         id: String, unique identifier of a transaction in the UUID format.
-        date: Timestamp, date when the transaction was made. 
+        date: Timestamp, date when the transaction was made.
         amount: Integer, amount of money involved in the transaction.
         category: String, category to which the transaction belongs to.
         description: String, describes the purpose of the transaction.
@@ -16,7 +16,7 @@ class Transaction:
 
         Args:
             transaction_id (String): Unique identifier of a transaction in the UUID format.
-            date (Timestamp): Date when the transaction was made. 
+            date (Timestamp): Date when the transaction was made.
             amount (Integer): Amount of money involved in the transaction.
             category (String): String, category to which the transaction belongs to.
             description (String): Describes the purpose of the transaction.

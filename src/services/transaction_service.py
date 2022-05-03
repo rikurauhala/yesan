@@ -31,7 +31,7 @@ class TransactionService:
         """Creates a new transaction.
 
         Args:
-            date (Timestamp): Date when the transaction was made. 
+            date (Timestamp): Date when the transaction was made.
             amount (Integer): Amount of money involved in the transaction.
             category (String): String, category to which the transaction belongs to.
             description (String): Describes the purpose of the transaction.

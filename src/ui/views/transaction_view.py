@@ -79,7 +79,8 @@ class TransactionView:
 
         for transaction in transactions:
             if transaction[1][0] == "-":
-                self._data_tree.insert("", END, values=transaction, tags=("negative", ))
+                self._data_tree.insert(
+                    "", END, values=transaction, tags=("negative", ))
             else:
                 self._data_tree.insert("", END, values=transaction)
 

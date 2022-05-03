@@ -7,7 +7,7 @@ from entities.transaction import Transaction
 
 class TransactionRepository:
     """Handles all database operations related to transactions."""
-    
+
     def __init__(self, connection):
         """Initializes a new instance of TransactionRepository.
 
@@ -94,7 +94,7 @@ class TransactionRepository:
         Returns:
             List of Transaction objects.
         """
-        
+
         cursor = self._connection.cursor()
         cursor.execute("""
             SELECT id, date, amount, category, description, account_id, party
