@@ -8,11 +8,18 @@ from entities.transaction import Transaction
 
 
 class FileHandler:
+    """Handles all functionality related to reading from or writing to a file."""
 
     def __init__(self):
+        """Initializes a new instance of FileHandler."""
         pass
 
     def import_accounts(self):
+        """Imports account data from a csv file.
+
+        Returns:
+            List of Account objects.
+        """
         accounts = []
         with open(ACCOUNTS_FILE_PATH, "r", encoding="UTF8") as file:
             reader = csv.reader(file)
@@ -29,6 +36,14 @@ class FileHandler:
         return accounts
 
     def export_accounts(self, accounts):
+        """Exports account data into a csv file.
+
+        Args:
+            accounts (List): List of Account objects.
+
+        Returns:
+            Boolean: True if exporting succeeds.
+        """
         with open(ACCOUNTS_FILE_PATH, "w", encoding="UTF8") as file:
             writer = csv.writer(file)
             for account in accounts:
@@ -40,6 +55,11 @@ class FileHandler:
         return True
 
     def import_transactions(self):
+        """Imports transaction data from a csv file.
+
+        Returns:
+            List of Transaction objects.
+        """
         transactions = []
         with open(TRANSACTIONS_FILE_PATH, "r", encoding="UTF8") as file:
             reader = csv.reader(file)
@@ -64,6 +84,14 @@ class FileHandler:
         return transactions
 
     def export_transactions(self, transactions):
+        """Exports transaction data into a csv file.
+
+        Args:
+            transactions (List): List of Transaction objects.
+
+        Returns:
+            Boolean: True if exporting succeeds.
+        """
         with open(TRANSACTIONS_FILE_PATH, "w", encoding="UTF8") as file:
             writer = csv.writer(file)
             for transaction in transactions:
