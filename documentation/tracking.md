@@ -29,4 +29,5 @@
 | 2022-05-01 |      3 | adding support for import functionality for accounts and transactions                                     |
 | 2022-05-02 |      7 | working on documentation, improving the transaction view, improving currency formatting                   |
 | 2022-05-03 |      3 | writing documentation, adding docstrings                                                                  |
-| total      |     73 |                                                                                                           |
+| 2022-05-04 |      2 | refactoring, fixing issues                                                                                |
+| total      |     75 |                                                                                                           |
