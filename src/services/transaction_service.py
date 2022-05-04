@@ -117,6 +117,11 @@ class TransactionService:
         return self._transaction_repository.get_balance_by_id(account_id)
 
     def calculate_net_worth(self):
+        """Calculates the net worth (total balance of all accounts).
+
+        Returns:
+            Integer: Net worth.
+        """
         return self._transaction_repository.calculate_net_worth()
 
     def delete_all(self):

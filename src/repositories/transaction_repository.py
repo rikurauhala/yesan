@@ -150,6 +150,11 @@ class TransactionRepository:
         return cursor.fetchone()[0]
 
     def calculate_net_worth(self):
+        """Calculates the net worth (total balance of all accounts).
+
+        Returns:
+            Integer: Net worth.
+        """
         cursor = self._connection.cursor()
         cursor.execute("SELECT SUM(amount) FROM transactions")
         return cursor.fetchone()[0]
