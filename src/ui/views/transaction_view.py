@@ -85,7 +85,12 @@ class TransactionView:
                 self._data_tree.insert("", END, values=transaction)
 
         self._data_tree.tag_configure("negative", foreground=colors.NEGATIVE)
-        self._data_tree.grid(row=1, column=0, sticky="NSEW")
+        self._data_tree.grid(
+            row=1,
+            column=0,
+            padx=styles.PADDING,
+            pady=styles.PADDING
+        )
         self._initialize_scrollbar()
 
     def _initialize_scrollbar(self):
@@ -95,7 +100,13 @@ class TransactionView:
             command=self._data_tree.yview
         )
         self._data_tree.configure(yscroll=scrollbar.set)
-        scrollbar.grid(row=1, column=1, sticky="NS")
+        scrollbar.grid(
+            row=1,
+            column=1,
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky="NS"
+        )
 
     def _clear_message(self):
         if self._lbl_message:
@@ -196,6 +207,7 @@ class TransactionView:
         self._buttons.grid(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN,
+            sticky=constants.W
         )
 
     def _initialize(self):
