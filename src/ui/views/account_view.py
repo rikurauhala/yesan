@@ -19,7 +19,6 @@ class AccountView:
         self._var_message = StringVar(self._frame)
         self._message = Message(self._frame, self._var_message)
         self._lbl_message = None
-        self._net_worth = 0
         self._go_to_main_view = go_to_main_view
         self._go_to_new_account_view = go_to_new_account_view
         self._account_service = AccountService()
@@ -129,7 +128,6 @@ class AccountView:
             if not txt_balance:
                 txt_balance = "0.00 €"
             else:
-                self._net_worth = self._net_worth + int(txt_balance)
                 txt_balance = self._transaction_service.format_amount(
                     txt_balance
                 )
@@ -180,9 +178,8 @@ class AccountView:
         )
 
     def _initialize_net_worth_info(self, total):
-        txt_net_worth = self._transaction_service.format_amount(
-            self._net_worth
-        )
+        net_worth = self._transaction_service.calculate_net_worth()
+        txt_net_worth = self._transaction_service.format_amount(net_worth)
         lbl_net_worth = ttk.Label(
             master=self._frame,
             text=txt_net_worth,

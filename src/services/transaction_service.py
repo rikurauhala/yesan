@@ -116,6 +116,9 @@ class TransactionService:
         """
         return self._transaction_repository.get_balance_by_id(account_id)
 
+    def calculate_net_worth(self):
+        return self._transaction_repository.calculate_net_worth()
+
     def delete_all(self):
         """Deletes all transaction data.
 
