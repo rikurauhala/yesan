@@ -30,4 +30,5 @@
 | 2022-05-02 |      7 | working on documentation, improving the transaction view, improving currency formatting                   |
 | 2022-05-03 |      3 | writing documentation, adding docstrings                                                                  |
 | 2022-05-04 |      2 | refactoring, fixing issues                                                                                |
-| total      |     75 |                                                                                                           |
+| 2022-05-05 |      5 | creating settings view, fixing issues, updating documentation                                             |
+| total      |     80 |                                                                                                           |
