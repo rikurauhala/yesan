@@ -6,11 +6,12 @@ import ui.styles.styles as styles
 
 
 class MainView:
-    def __init__(self, root, go_to_accounts_view, go_to_transaction_view):
+    def __init__(self, root, go_to_accounts_view, go_to_transaction_view, go_to_settings_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._go_to_accounts_view = go_to_accounts_view
         self._go_to_transaction_view = go_to_transaction_view
+        self._go_to_settings_view = go_to_settings_view
         self._initialize()
 
     def pack(self):
@@ -63,6 +64,19 @@ class MainView:
             sticky=constants.EW
         )
 
+    def _initialize_settings_button(self):
+        txt_settings = "Settings"
+        btn_settings = ttk.Button(
+            master=self._frame,
+            text=txt_settings,
+            command=self._go_to_settings_view
+        )
+        btn_settings.grid(
+            padx=styles.PADDING,
+            pady=styles.PADDING,
+            sticky=constants.EW
+        )
+
     def _handle_quit(self):
         answer = askyesno(
             title="Confirmation",
@@ -88,4 +102,5 @@ class MainView:
         self._initialize_title_label()
         self._initialize_accounts_button()
         self._initialize_transactions_button()
+        self._initialize_settings_button()
         self._initialize_quit_button()

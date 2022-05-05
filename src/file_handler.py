@@ -1,4 +1,5 @@
 import csv
+import os
 
 from config import ACCOUNTS_FILE_PATH
 from config import TRANSACTIONS_FILE_PATH
@@ -12,6 +13,9 @@ class FileHandler:
 
     def __init__(self):
         """Initializes a new instance of FileHandler."""
+        dirname = os.path.dirname(__file__)
+        root_folder = os.path.join(dirname, "..")
+        self._env_file = os.path.join(root_folder, ".env")
 
     def import_accounts(self):
         """Imports account data from a csv file.
@@ -105,5 +109,33 @@ class FileHandler:
                 writer.writerow(details)
         return True
 
+    def import_settings(self):
+        """Imports settings from the .env file.
+
+        Returns:
+            List: Rows containing the contents of the env. file.
+        """
+        config_lines = []
+
+        with open(self._env_file, "r", encoding="UTF8") as file:
+            lines = file.readlines()
+            for line in lines:
+                config_lines.append(line)
+
+        return config_lines
+
+    def export_settings(self, content):
+        """Exports settings into the .env file.
+
+        Args:
+            content (List): Rows containin the contents of the Text object in the Settings view.
+
+        Returns:
+            Boolean: True if the operation succeeded as expected.
+        """
+        with open(self._env_file, "w", encoding="UTF8") as file:
+            file.writelines(content)
+
+        return True
 
 file_handler = FileHandler()
