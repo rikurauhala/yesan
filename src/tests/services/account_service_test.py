@@ -1,4 +1,3 @@
-from cgi import test
 import unittest
 
 from services.account_service import AccountService
