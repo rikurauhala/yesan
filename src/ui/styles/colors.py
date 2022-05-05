@@ -1,4 +1,5 @@
 ERROR = "red"
+COMMENT = "gray"
 DARK_BLUE = "darkblue"
 NEGATIVE = "red"
 SUCCESS = "green"

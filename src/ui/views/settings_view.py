@@ -4,6 +4,7 @@ from ui.message import Message
 
 from services.settings_service import settings_service
 
+import ui.styles.colors as colors
 import ui.styles.fonts as fonts
 import ui.styles.styles as styles
 
@@ -58,15 +59,21 @@ class SettingsView:
         )
 
     def _initialize_text_field_content(self):
+        self._txt_text.tag_configure("comment", foreground=colors.COMMENT)
+        line_no = 0
         lines = self._settings_service.import_settings()
         for line in lines:
+            line_no = line_no + 1
             self._txt_text.insert(constants.END, line)
+            if line[0] == "#":
+                self._txt_text.tag_add("comment", f"{line_no}.0", f"{line_no}.{len(line)}")
+            
 
     def _initialize_text_field(self):
         self._txt_text = Text(
             master=self._frame,
-            height=15,
-            width=50
+            height=20,
+            width=60
         )
         self._txt_text.grid(
             row=1,
