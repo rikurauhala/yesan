@@ -8,7 +8,7 @@ Before running the application for the first time, you need to run few commands 
 
 ### Main view
 
-The main view has three buttons. Clicking the `Accounts` button will take you to the Account view and clicking the `Transactions` button will take you to the Transaction view. Pressing the `Quit` button will ask for confirmation to terminate the program. You may also click the `X` symbol in the top right corner if your operating system / window manager supports it.
+The main view has three buttons. Clicking the `Accounts` button will take you to the Account view and clicking the `Transactions` button will take you to the Transaction view. The `Settings` button will display the Settings view that allows user to edit the configuration file of the application. Pressing the `Quit` button will ask for confirmation to terminate the program. You may also click the `X` symbol in the top right corner if your operating system / window manager supports it.
 
 ### Account view
 
@@ -25,3 +25,7 @@ The transaction view consists of more data than the account view. All your trans
 ### New transaction view
 
 This view works just like the new account view, but more information is required. To add a new transaction, you first need to have at least one account added.
+
+### Settings view
+
+The settings view contains the contents of the .env file. You may edit the contents of the file either inside this view, or by opening the file itself with your favorite text editor. Pressing the Save button will write all changes to the .env file. Please do not edit the rows that start with the # symbol! Those are just helpful comments with no actual functionality!
