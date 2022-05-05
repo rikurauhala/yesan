@@ -30,6 +30,17 @@ class SettingsView:
     def destroy(self):
         self._frame.destroy()
 
+    def _clear_message(self):
+        if self._lbl_message:
+            self._lbl_message.destroy()
+
+    def _display_message(self, code):
+        self._lbl_message = self._message.get_message(code)
+        self._lbl_message.grid(
+            padx=styles.PADDING,
+            pady=styles.PADDING
+        )
+
     def _initialize_title_label(self):
         txt_title = "Settings"
         lbl_title = ttk.Label(
@@ -79,8 +90,13 @@ class SettingsView:
         )
 
     def _handle_submit(self):
+        self._clear_message()
         content = self._txt_text.get(1.0, constants.END)
-        self._settings_service.export_settings(content)
+        success = self._settings_service.export_settings(content)
+        if success:
+            self._display_message("s-07")
+        else:
+            self._display_message("e-14")
 
     def _initialize_submit_button(self):
         txt_submit = "✔ Submit"

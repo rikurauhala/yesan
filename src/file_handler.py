@@ -116,12 +116,10 @@ class FileHandler:
             List: Rows containing the contents of the env. file.
         """
         config_lines = []
-
         with open(self._env_file, "r", encoding="UTF8") as file:
             lines = file.readlines()
             for line in lines:
                 config_lines.append(line)
-
         return config_lines
 
     def export_settings(self, content):
@@ -135,7 +133,6 @@ class FileHandler:
         """
         with open(self._env_file, "w", encoding="UTF8") as file:
             file.writelines(content)
-
         return True
 
 file_handler = FileHandler()

@@ -16,6 +16,7 @@ error = {
     "e-11": "Please enter a description!",
     "e-12": "Please choose an account!",
     "e-13": "Please enter a sender / receiver!",
+    "e-14": "Exporting settings failed!",
 }
 
 success = {
@@ -24,7 +25,8 @@ success = {
     "s-03": "Transactions exported successfully!",
     "s-04": "New transaction added!",
     "s-05": "Accounts imported successfully!",
-    "s-06": "Transactions imported successfully!"
+    "s-06": "Transactions imported successfully!",
+    "s-07": "Settings exported successfully!",
 }
 
 
