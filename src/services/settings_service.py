@@ -19,7 +19,7 @@ class SettingsService:
         """Exports settings into the .env file.
 
         Args:
-            content (List): Rows containin the contents of the Text object in the Settings view.
+            content (List): Rows containing the contents of the Text object in the Settings view.
 
         Returns:
             Boolean: True if the operation succeeded as expected.

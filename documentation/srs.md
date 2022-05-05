@@ -42,6 +42,11 @@ All of the following functionality has been implemented. This list represents th
             - Contains button [✔ Submit] for adding a new transaction 
       - Contains button [↓ Import] for importing transaction data from a csv file
       - Contains button [↑ Export] for exporting transaction data into a csv file
+  - Contains button [Settings] for showing the settings view
+    - Settings view
+      - Contains a text field that contains the contents of the .env file
+      - Contains button [« Back] for going back to the main view
+      - Contains button [✔ Save] for saving the settings to the .env file
   - Contains button [Quit] for exiting the application
 
 ### Secondary

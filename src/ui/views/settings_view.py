@@ -89,7 +89,7 @@ class SettingsView:
             padx=styles.PADDING_RIGHT
         )
 
-    def _handle_submit(self):
+    def _handle_save(self):
         self._clear_message()
         content = self._txt_text.get(1.0, constants.END)
         success = self._settings_service.export_settings(content)
@@ -98,14 +98,14 @@ class SettingsView:
         else:
             self._display_message("e-14")
 
-    def _initialize_submit_button(self):
-        txt_submit = "✔ Submit"
-        btn_submit = ttk.Button(
+    def _initialize_save_button(self):
+        txt_save = "✔ Save"
+        btn_save = ttk.Button(
             master=self._buttons,
-            text=txt_submit,
-            command=self._handle_submit
+            text=txt_save,
+            command=self._handle_save
         )
-        btn_submit.grid(
+        btn_save.grid(
             row=0,
             column=1,
             padx=styles.PADDING_RIGHT
@@ -113,7 +113,7 @@ class SettingsView:
 
     def _initialize_buttons(self):
         self._initialize_back_button()
-        self._initialize_submit_button()
+        self._initialize_save_button()
         self._buttons.grid(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN,
