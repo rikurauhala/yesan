@@ -17,7 +17,7 @@ class SettingsView:
         self._var_message = StringVar(self._frame)
         self._message = Message(self._frame, self._var_message)
         self._lbl_message = None
-        self._txt_text = None
+        self._text = None
         self._go_to_main_view = go_to_main_view
         self._settings_service = settings_service
         self._initialize()
@@ -59,23 +59,22 @@ class SettingsView:
         )
 
     def _initialize_text_field_content(self):
-        self._txt_text.tag_configure("comment", foreground=colors.COMMENT)
-        line_no = 0
+        self._text.tag_configure("comment", foreground=colors.COMMENT)
+        no = 0
         lines = self._settings_service.import_settings()
         for line in lines:
-            line_no = line_no + 1
-            self._txt_text.insert(constants.END, line)
+            no = no + 1
+            self._text.insert(constants.END, line)
             if line[0] == "#":
-                self._txt_text.tag_add("comment", f"{line_no}.0", f"{line_no}.{len(line)}")
-            
+                self._text.tag_add("comment", f"{no}.0", f"{no}.{len(line)}")
 
     def _initialize_text_field(self):
-        self._txt_text = Text(
+        self._text = Text(
             master=self._frame,
             height=20,
             width=60
         )
-        self._txt_text.grid(
+        self._text.grid(
             row=1,
             column=0,
             padx=styles.PADDING,
@@ -98,7 +97,7 @@ class SettingsView:
 
     def _handle_save(self):
         self._clear_message()
-        content = self._txt_text.get(1.0, constants.END)
+        content = self._text.get(1.0, constants.END)
         success = self._settings_service.export_settings(content)
         if success:
             self._display_message("s-07")
