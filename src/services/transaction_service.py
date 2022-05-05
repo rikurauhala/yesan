@@ -71,7 +71,7 @@ class TransactionService:
         Returns:
             String: Formatted amount.
         """
-        currency = "{:,.2f} €".format(amount/100)
+        currency = f"{amount/100:,.2f} €"
         euros = currency.split(".")[0]
         cents = currency.split(".")[1]
         euros = euros.replace(",", " ")
@@ -128,7 +128,7 @@ class TransactionService:
         """Deletes all transaction data.
 
         Returns:
-            Boolean: True or False depending on if deletion succeeded or not.
+            Boolean: True after the operation succeeds as expected.
         """
         return self._transaction_repository.delete_all()
 

@@ -64,7 +64,7 @@ class AccountService:
         """Deletes all account data.
 
         Returns:
-            Boolean: True or False depending on if deletion succeeded or not.
+            Boolean: True after the operation succeeds as expected.
         """
         return self._account_repository.delete_all()
 

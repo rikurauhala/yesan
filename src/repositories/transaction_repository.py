@@ -125,15 +125,12 @@ class TransactionRepository:
         """_Deletes all transaction data from the database.
 
         Returns:
-            Boolean: True or False depending on if deletion succeeded or not.
+            Boolean: True after the operation succeeds as expected.
         """
-        try:
-            cursor = self._connection.cursor()
-            cursor.execute("DELETE FROM transactions")
-            self._connection.commit()
-            return True
-        except Exception:
-            return False
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM transactions")
+        self._connection.commit()
+        return True
 
     def get_balance_by_id(self, account_id):
         """Calculates the account balance based on its id.

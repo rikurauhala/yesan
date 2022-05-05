@@ -90,15 +90,12 @@ class AccountRepository:
         """Deletes all account data from the database.
 
         Returns:
-            Boolean: True or False depending on if deletion succeeded or not.
+            Boolean: True after the operation succeeds as expected.
         """
-        try:
-            cursor = self._connection.cursor()
-            cursor.execute("DELETE FROM accounts")
-            self._connection.commit()
-            return True
-        except Exception:
-            return False
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM accounts")
+        self._connection.commit()
+        return True
 
 
 account_repository = AccountRepository(get_database_connection())
