@@ -135,4 +135,5 @@ class FileHandler:
             file.writelines(content)
         return True
 
+
 file_handler = FileHandler()

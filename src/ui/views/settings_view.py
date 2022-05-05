@@ -66,13 +66,13 @@ class SettingsView:
         self._txt_text = Text(
             master=self._frame,
             height=15,
-            width=50,
+            width=50
         )
         self._txt_text.grid(
             row=1,
             column=0,
             padx=styles.PADDING,
-            pady=styles.PADDING,
+            pady=styles.PADDING
         )
         self._initialize_text_field_content()
 

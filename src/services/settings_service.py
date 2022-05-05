@@ -6,7 +6,6 @@ class SettingsService:
 
     def __init__(self):
         """Initializes a new instance of SettingsService."""
-        pass
 
     def import_settings(self):
         """Imports settings from the .env file.
