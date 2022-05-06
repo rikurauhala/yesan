@@ -26,6 +26,12 @@ class TestAccountRepository(unittest.TestCase):
             account_type="Type B"
         )
 
+        self._account_c = Account(
+            account_id=str(uuid.uuid4()),
+            account_name="Name C",
+            account_type="Type C"
+        )
+
     def test_create(self):
         success = self._account_repository.create(self._account_a)
         self.assertTrue(success)
@@ -48,6 +54,11 @@ class TestAccountRepository(unittest.TestCase):
         accounts = self._account_repository.find_all()
         self.assertEqual(len(accounts), 1)
 
+    def test_create_multiple(self):
+        accounts = [self._account_a, self._account_a, self._account_b, self._account_c]
+        created = self._account_repository.create_multiple(accounts)
+        self.assertEqual(created, 3)
+
     def test_get_list(self):
         self._account_repository.create(self._account_a)
         self._account_repository.create(self._account_b)
@@ -56,6 +67,3 @@ class TestAccountRepository(unittest.TestCase):
 
         self.assertEqual(account_list[0], self._account_a.name)
         self.assertEqual(account_list[1], self._account_b.name)
-
-    def test_get_id_by_name(self):
-        pass
