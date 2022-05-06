@@ -24,18 +24,23 @@ class FileHandler:
             List of Account objects.
         """
         accounts = []
-        with open(ACCOUNTS_FILE_PATH, "r", encoding="UTF8") as file:
-            reader = csv.reader(file)
-            for row in reader:
-                account_uuid = row[0]
-                account_name = row[1]
-                account_type = row[2]
-                account = Account(
-                    account_uuid,
-                    account_name,
-                    account_type
-                )
-                accounts.append(account)
+        try:
+            with open(ACCOUNTS_FILE_PATH, "r", encoding="UTF8") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    account_uuid = row[0]
+                    account_name = row[1]
+                    account_type = row[2]
+                    account = Account(
+                        account_uuid,
+                        account_name,
+                        account_type
+                    )
+                    accounts.append(account)
+        except FileNotFoundError:
+            with open(ACCOUNTS_FILE_PATH, "w", encoding="UTF8") as file:
+                pass
+            self.import_accounts()
         return accounts
 
     def export_accounts(self, accounts):
@@ -64,26 +69,31 @@ class FileHandler:
             List of Transaction objects.
         """
         transactions = []
-        with open(TRANSACTIONS_FILE_PATH, "r", encoding="UTF8") as file:
-            reader = csv.reader(file)
-            for row in reader:
-                transaction_id = row[0]
-                transaction_date = row[1]
-                transaction_amount = row[2]
-                transaction_category = row[3]
-                transaction_description = row[4]
-                transaction_account_id = row[5]
-                transaction_party = row[6]
-                transaction = Transaction(
-                    transaction_id,
-                    transaction_date,
-                    transaction_amount,
-                    transaction_category,
-                    transaction_description,
-                    transaction_account_id,
-                    transaction_party,
-                )
-                transactions.append(transaction)
+        try:
+            with open(TRANSACTIONS_FILE_PATH, "r", encoding="UTF8") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    transaction_id = row[0]
+                    transaction_date = row[1]
+                    transaction_amount = row[2]
+                    transaction_category = row[3]
+                    transaction_description = row[4]
+                    transaction_account_id = row[5]
+                    transaction_party = row[6]
+                    transaction = Transaction(
+                        transaction_id,
+                        transaction_date,
+                        transaction_amount,
+                        transaction_category,
+                        transaction_description,
+                        transaction_account_id,
+                        transaction_party,
+                    )
+                    transactions.append(transaction)
+        except FileNotFoundError:
+            with open(TRANSACTIONS_FILE_PATH, "w", encoding="UTF8") as file:
+                pass
+            self.import_transactions()
         return transactions
 
     def export_transactions(self, transactions):
