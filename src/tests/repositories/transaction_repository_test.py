@@ -31,36 +31,83 @@ class TestTransactionRepository(unittest.TestCase):
 
         self._account_repository.create(self._account_a)
 
-        id_transaction_a = str(uuid.uuid4())
-        date_transaction_a = date.today()
-        amount_transaction_a = -1000
-        category_transaction_a = "Category A"
-        description_transaction_a = "Description A"
-        account_id_transaction_a = self._uuid_account_a
-        party_transaction_a = "Receiver A"
         self._transaction_a = Transaction(
-            id_transaction_a,
-            date_transaction_a,
-            amount_transaction_a,
-            category_transaction_a,
-            description_transaction_a,
-            account_id_transaction_a,
-            party_transaction_a
+            transaction_id=str(uuid.uuid4()),
+            date=date.today(),
+            amount=-1000,
+            category="Category A",
+            description="Description A",
+            account_id=self._uuid_account_a,
+            party="Receiver A"
+        )
+
+        self._transaction_b = Transaction(
+            transaction_id=str(uuid.uuid4()),
+            date=date.today(),
+            amount=-1000,
+            category="Category B",
+            description="Description B",
+            account_id=self._uuid_account_a,
+            party="Receiver B"
         )
 
     def test_create(self):
         success = self._transaction_repository.create(self._transaction_a)
         self.assertTrue(success)
 
-    def test_find_all(self):
-        success = self._transaction_repository.create(self._transaction_a)
-        self.assertTrue(success)
-        transactions = self._transaction_repository.find_all()
-        print(transactions)
-        self.assertEqual(len(transactions), 1)
-
-    def test_cannot_reuse_uuid(self):
+    def test_cannot_reuse_same_uuid(self):
         success = self._transaction_repository.create(self._transaction_a)
         self.assertTrue(success)
         success = self._transaction_repository.create(self._transaction_a)
         self.assertFalse(success)
+
+    def test_create_multiple(self):
+        transactions = [self._transaction_a, self._transaction_a, self._transaction_b]
+        created = self._transaction_repository.create_multiple(transactions)
+        self.assertEqual(created, 2)
+
+    def test_find_all(self):
+        success = self._transaction_repository.create(self._transaction_a)
+        self.assertTrue(success)
+        transactions = self._transaction_repository.find_all()
+        self.assertEqual(len(transactions), 1)
+        self.assertEqual(transactions[0].id, self._transaction_a.id)
+        self.assertEqual(transactions[0].date, self._transaction_a.date.strftime("%Y-%m-%d"))
+        self.assertEqual(transactions[0].amount, self._transaction_a.amount)
+        self.assertEqual(transactions[0].category, self._transaction_a.category)
+        self.assertEqual(transactions[0].description, self._transaction_a.description)
+        self.assertEqual(transactions[0].account_id, self._account_a.name)
+        self.assertEqual(transactions[0].party, self._transaction_a.party)
+
+    def test_find_all_with_id(self):
+        success = self._transaction_repository.create(self._transaction_a)
+        self.assertTrue(success)
+        transactions = self._transaction_repository.find_all_with_id()
+        self.assertEqual(len(transactions), 1)
+        self.assertEqual(transactions[0].id, self._transaction_a.id)
+        self.assertEqual(transactions[0].date, self._transaction_a.date.strftime("%Y-%m-%d"))
+        self.assertEqual(transactions[0].amount, self._transaction_a.amount)
+        self.assertEqual(transactions[0].category, self._transaction_a.category)
+        self.assertEqual(transactions[0].description, self._transaction_a.description)
+        self.assertEqual(transactions[0].account_id, self._transaction_a.account_id)
+        self.assertEqual(transactions[0].party, self._transaction_a.party)
+
+    def test_get_balance_by_id(self):
+        success = self._transaction_repository.create(self._transaction_a)
+        self.assertTrue(success)
+        balance = self._transaction_repository.get_balance_by_id(self._account_a.id)
+        self.assertEqual(balance, -1000)
+        success = self._transaction_repository.create(self._transaction_b)
+        self.assertTrue(success)
+        balance = self._transaction_repository.get_balance_by_id(self._account_a.id)
+        self.assertEqual(balance, -2000)
+
+    def test_calculate_net_worth(self):
+        success = self._transaction_repository.create(self._transaction_a)
+        self.assertTrue(success)
+        balance = self._transaction_repository.get_balance_by_id(self._account_a.id)
+        self.assertEqual(balance, -1000)
+        success = self._transaction_repository.create(self._transaction_b)
+        self.assertTrue(success)
+        net_worth = self._transaction_repository.calculate_net_worth()
+        self.assertEqual(net_worth, -2000)
