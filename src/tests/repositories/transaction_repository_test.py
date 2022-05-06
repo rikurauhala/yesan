@@ -20,13 +20,10 @@ class TestTransactionRepository(unittest.TestCase):
         self._account_repository = AccountRepository(connection)
         self._account_repository.delete_all()
 
-        self._uuid_account_a = str(uuid.uuid4())
-        self._name_account_a = "Name A"
-        self._type_account_a = "Type A"
         self._account_a = Account(
-            self._uuid_account_a,
-            self._name_account_a,
-            self._type_account_a
+            account_id=str(uuid.uuid4()),
+            account_name="Name A",
+            account_type="Type A"
         )
 
         self._account_repository.create(self._account_a)
@@ -37,7 +34,7 @@ class TestTransactionRepository(unittest.TestCase):
             amount=-1000,
             category="Category A",
             description="Description A",
-            account_id=self._uuid_account_a,
+            account_id=self._account_a.id,
             party="Receiver A"
         )
 
@@ -47,7 +44,7 @@ class TestTransactionRepository(unittest.TestCase):
             amount=-1000,
             category="Category B",
             description="Description B",
-            account_id=self._uuid_account_a,
+            account_id=self._account_a.id,
             party="Receiver B"
         )
 
