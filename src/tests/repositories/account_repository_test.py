@@ -15,8 +15,8 @@ class TestAccountRepository(unittest.TestCase):
         self._account_repository.delete_all()
 
         self._uuid_account_a = str(uuid.uuid4())
-        self._name_account_a = "Account A name"
-        self._type_account_a = "Account B name"
+        self._name_account_a = "Name A"
+        self._type_account_a = "Type A"
         self._account_a = Account(
             self._uuid_account_a,
             self._name_account_a,
@@ -24,8 +24,8 @@ class TestAccountRepository(unittest.TestCase):
         )
 
         self._uuid_account_b = str(uuid.uuid4())
-        self._name_account_b = "Account B name"
-        self._type_account_b = "Account B type"
+        self._name_account_b = "Name B"
+        self._type_account_b = "Type B"
         self._account_b = Account(
             self._uuid_account_b,
             self._name_account_b,
