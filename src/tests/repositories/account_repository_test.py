@@ -14,33 +14,39 @@ class TestAccountRepository(unittest.TestCase):
         self._account_repository = AccountRepository(connection)
         self._account_repository.delete_all()
 
-        self._uuid_account_a = str(uuid.uuid4())
-        self._name_account_a = "Name A"
-        self._type_account_a = "Type A"
         self._account_a = Account(
-            self._uuid_account_a,
-            self._name_account_a,
-            self._type_account_a
+            account_id=str(uuid.uuid4()),
+            account_name="Name A",
+            account_type="Type A"
         )
 
-        self._uuid_account_b = str(uuid.uuid4())
-        self._name_account_b = "Name B"
-        self._type_account_b = "Type B"
         self._account_b = Account(
-            self._uuid_account_b,
-            self._name_account_b,
-            self._type_account_b
+            account_id=str(uuid.uuid4()),
+            account_name="Name B",
+            account_type="Type B"
         )
 
     def test_create(self):
-        self._account_repository.create(
-            self._account_a,
-        )
-        accounts = self._account_repository.find_all()
+        success = self._account_repository.create(self._account_a)
+        self.assertTrue(success)
 
+        accounts = self._account_repository.find_all()
         self.assertEqual(len(accounts), 1)
-        self.assertEqual(accounts[0].name, self._name_account_a)
-        self.assertEqual(accounts[0].type, self._type_account_a)
+        self.assertEqual(accounts[0].name, self._account_a.name)
+        self.assertEqual(accounts[0].type, self._account_a.type)
+
+    def test_create_integrity_error(self):
+        success = self._account_repository.create(self._account_a)
+        self.assertTrue(success)
+
+        accounts = self._account_repository.find_all()
+        self.assertEqual(len(accounts), 1)
+
+        success = self._account_repository.create(self._account_a)
+        self.assertFalse(success)
+
+        accounts = self._account_repository.find_all()
+        self.assertEqual(len(accounts), 1)
 
     def test_get_list(self):
         self._account_repository.create(self._account_a)
@@ -48,8 +54,8 @@ class TestAccountRepository(unittest.TestCase):
 
         account_list = self._account_repository.get_list()
 
-        self.assertEqual(account_list[0], self._name_account_a)
-        self.assertEqual(account_list[1], self._name_account_b)
+        self.assertEqual(account_list[0], self._account_a.name)
+        self.assertEqual(account_list[1], self._account_b.name)
 
     def test_get_id_by_name(self):
         pass
