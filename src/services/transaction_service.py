@@ -73,15 +73,19 @@ class TransactionService:
         Returns:
             String: Formatted amount.
         """
+        zero = f"0{DECIMAL_SEPARATOR}00 {CURRENCY_SYMBOL}"
         if not amount:
-            return f"0{DECIMAL_SEPARATOR}00 {CURRENCY_SYMBOL}"
+            return zero
 
-        currency = f"{amount/100:,.2f}"
-        main = currency.split(".")[0]
-        decimals = currency.split(".")[1]
-        main_currency = main.replace(",", THOUSANDS_SEPARATOR)
-        currency = f"{main_currency}{DECIMAL_SEPARATOR}{decimals} {CURRENCY_SYMBOL}"
-        return currency
+        try:
+            currency = f"{amount/100:,.2f}"
+            main = currency.split(".")[0]
+            decimals = currency.split(".")[1]
+            main_currency = main.replace(",", THOUSANDS_SEPARATOR)
+            currency = f"{main_currency}{DECIMAL_SEPARATOR}{decimals} {CURRENCY_SYMBOL}"
+            return currency
+        except TypeError:
+            return zero
 
     def find_all_as_list(self):
         """Finds all transactions in a list form.
