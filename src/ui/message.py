@@ -31,8 +31,15 @@ success = {
 
 
 class Message:
+    """Handles functionality for displaying a message in the user interface."""
 
     def __init__(self, frame, var_message):
+        """Initializes a new instance of the Message class.
+
+        Args:
+            frame (Frame): A Frame widget which will be the master of all other widgets.
+            var_message (StringVar): A StringVar widget that will contain the message.
+        """
         self._frame = frame
         self._var_message = var_message
         self._lbl_message = None
@@ -58,6 +65,14 @@ class Message:
         )
 
     def get_message(self, code):
+        """Returns the message corresponding to the code given.
+
+        Args:
+            code (String): An error or a success code.
+
+        Returns:
+            Label: A Label widget that contains the message in a StringVar widget.
+        """
         if code[0] == "e":
             self._get_error_message(code)
         else:
