@@ -7,11 +7,19 @@ from ui.views.settings_view import SettingsView
 
 
 class UserInterface:
+    """Contains the main class of the user interface."""
+
     def __init__(self, root):
+        """Initializes the user interface.
+
+        Args:
+            root (Tk): The main window.
+        """
         self._root = root
         self._current_view = None
 
     def start(self):
+        """Starts the user interface."""
         self._show_main_view()
 
     def _hide_current_view(self):
