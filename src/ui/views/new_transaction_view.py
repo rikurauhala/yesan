@@ -14,7 +14,15 @@ import ui.styles.styles as styles
 
 
 class NewTransactionView:
+    """A view that offers an interface for creating a new transaction."""
+
     def __init__(self, root, go_to_transaction_view):
+        """Initializes thew view.
+
+        Args:
+            root (Tk): The main window.
+            go_to_transaction_view (function): Called to go back to the transaction view.
+        """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._lbl_message = None

@@ -8,7 +8,7 @@ import ui.styles.styles as styles
 
 
 class NewAccountView:
-    """A view that offers interface for creating a new account."""
+    """A view that offers an interface for creating a new account."""
 
     def __init__(self, root, go_to_account_view):
         """Initializes the view.
