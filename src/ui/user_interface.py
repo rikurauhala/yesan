@@ -7,7 +7,7 @@ from ui.views.settings_view import SettingsView
 
 
 class UserInterface:
-    """Contains the main class of the user interface."""
+    """The main class of the user interface."""
 
     def __init__(self, root):
         """Initializes the user interface.
