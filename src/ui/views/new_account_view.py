@@ -8,7 +8,15 @@ import ui.styles.styles as styles
 
 
 class NewAccountView:
+    """A view that offers interface for creating a new account."""
+
     def __init__(self, root, go_to_account_view):
+        """Initializes the view.
+
+        Args:
+            root (Tk): The main window._
+            go_to_account_view (function): Called to go back to the account view.
+        """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._lbl_message = None
@@ -21,12 +29,14 @@ class NewAccountView:
         self._initialize()
 
     def pack(self):
+        """Displays the view."""
         self._frame.pack(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN
         )
 
     def destroy(self):
+        """Hides the view."""
         self._frame.destroy()
 
     def _clear_message(self):
