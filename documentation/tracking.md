@@ -32,4 +32,5 @@
 | 2022-05-04 |      2 | refactoring, fixing issues                                                                                |
 | 2022-05-05 |      5 | creating settings view, fixing issues, updating documentation                                             |
 | 2022-05-06 |      6 | writing tests                                                                                             |
-| total      |     86 |                                                                                                           |
+| 2022-05-07 |      1 | adding docstring to ui files                                                                              |
+| total      |     87 |                                                                                                           |
