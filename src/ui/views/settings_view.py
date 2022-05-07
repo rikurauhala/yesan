@@ -10,7 +10,15 @@ import ui.styles.styles as styles
 
 
 class SettingsView:
+    """A view that allows the user to see and edit the settings (config) file."""
+
     def __init__(self, root, go_to_main_view):
+        """Initializes the view.
+
+        Args:
+            root (Tk): The main window.
+            go_to_main_view (function): Called to go back to the main view.
+        """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._buttons = ttk.Frame(master=self._frame)
@@ -23,12 +31,14 @@ class SettingsView:
         self._initialize()
 
     def pack(self):
+        """Displays the view."""
         self._frame.pack(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN
         )
 
     def destroy(self):
+        """Hides the view."""
         self._frame.destroy()
 
     def _clear_message(self):
