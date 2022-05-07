@@ -42,12 +42,14 @@ class NewTransactionView:
         self._initialize()
 
     def pack(self):
+        """Displays the view."""
         self._frame.pack(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN
         )
 
     def destroy(self):
+        """Hides the view."""
         self._frame.destroy()
 
     def _clear_message(self):
