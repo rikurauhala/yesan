@@ -12,7 +12,16 @@ import ui.styles.styles as styles
 
 
 class AccountView:
+    """A view that displays information about accounts."""
+    
     def __init__(self, root, go_to_main_view, go_to_new_account_view):
+        """Initializes the view.
+
+        Args:
+            root (Tk): The main window.
+            go_to_main_view (function): Called to go back to the main view.
+            go_to_new_account_view (function): Called to go to the new account view.
+        """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._buttons = ttk.Frame(master=self._frame)
@@ -26,12 +35,14 @@ class AccountView:
         self._initialize()
 
     def pack(self):
+        """Displays the view."""
         self._frame.pack(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN
         )
 
     def destroy(self):
+        """Hides the view."""
         self._frame.destroy()
 
     def _initialize_title_label(self):
