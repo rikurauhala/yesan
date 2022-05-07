@@ -6,7 +6,17 @@ import ui.styles.styles as styles
 
 
 class MainView:
+    """The main view (main menu) of the application."""
+    
     def __init__(self, root, go_to_accounts_view, go_to_transaction_view, go_to_settings_view):
+        """Initializes the view.
+
+        Args:
+            root (Tk): The main window.
+            go_to_accounts_view (function): Called to go to the account view.
+            go_to_transaction_view (function): Called to go to the transaction view.
+            go_to_settings_view (function): Called to go to the settings view.
+        """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self._go_to_accounts_view = go_to_accounts_view
@@ -15,12 +25,14 @@ class MainView:
         self._initialize()
 
     def pack(self):
+        """Displays the view."""
         self._frame.pack(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN
         )
 
     def destroy(self):
+        """Hides the view."""
         self._frame.destroy()
 
     def _initialize_title_label(self):
