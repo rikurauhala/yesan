@@ -59,7 +59,8 @@ class TestTransactionRepository(unittest.TestCase):
         self.assertFalse(success)
 
     def test_create_multiple(self):
-        transactions = [self._transaction_a, self._transaction_a, self._transaction_b]
+        transactions = [self._transaction_a,
+                        self._transaction_a, self._transaction_b]
         created = self._transaction_repository.create_multiple(transactions)
         self.assertEqual(created, 2)
 
@@ -69,10 +70,13 @@ class TestTransactionRepository(unittest.TestCase):
         transactions = self._transaction_repository.find_all()
         self.assertEqual(len(transactions), 1)
         self.assertEqual(transactions[0].id, self._transaction_a.id)
-        self.assertEqual(transactions[0].date, self._transaction_a.date.strftime("%Y-%m-%d"))
+        self.assertEqual(
+            transactions[0].date, self._transaction_a.date.strftime("%Y-%m-%d"))
         self.assertEqual(transactions[0].amount, self._transaction_a.amount)
-        self.assertEqual(transactions[0].category, self._transaction_a.category)
-        self.assertEqual(transactions[0].description, self._transaction_a.description)
+        self.assertEqual(transactions[0].category,
+                         self._transaction_a.category)
+        self.assertEqual(transactions[0].description,
+                         self._transaction_a.description)
         self.assertEqual(transactions[0].account_id, self._account_a.name)
         self.assertEqual(transactions[0].party, self._transaction_a.party)
 
@@ -82,27 +86,34 @@ class TestTransactionRepository(unittest.TestCase):
         transactions = self._transaction_repository.find_all_with_id()
         self.assertEqual(len(transactions), 1)
         self.assertEqual(transactions[0].id, self._transaction_a.id)
-        self.assertEqual(transactions[0].date, self._transaction_a.date.strftime("%Y-%m-%d"))
+        self.assertEqual(
+            transactions[0].date, self._transaction_a.date.strftime("%Y-%m-%d"))
         self.assertEqual(transactions[0].amount, self._transaction_a.amount)
-        self.assertEqual(transactions[0].category, self._transaction_a.category)
-        self.assertEqual(transactions[0].description, self._transaction_a.description)
-        self.assertEqual(transactions[0].account_id, self._transaction_a.account_id)
+        self.assertEqual(transactions[0].category,
+                         self._transaction_a.category)
+        self.assertEqual(transactions[0].description,
+                         self._transaction_a.description)
+        self.assertEqual(transactions[0].account_id,
+                         self._transaction_a.account_id)
         self.assertEqual(transactions[0].party, self._transaction_a.party)
 
     def test_get_balance_by_id(self):
         success = self._transaction_repository.create(self._transaction_a)
         self.assertTrue(success)
-        balance = self._transaction_repository.get_balance_by_id(self._account_a.id)
+        balance = self._transaction_repository.get_balance_by_id(
+            self._account_a.id)
         self.assertEqual(balance, -1000)
         success = self._transaction_repository.create(self._transaction_b)
         self.assertTrue(success)
-        balance = self._transaction_repository.get_balance_by_id(self._account_a.id)
+        balance = self._transaction_repository.get_balance_by_id(
+            self._account_a.id)
         self.assertEqual(balance, -2000)
 
     def test_calculate_net_worth(self):
         success = self._transaction_repository.create(self._transaction_a)
         self.assertTrue(success)
-        balance = self._transaction_repository.get_balance_by_id(self._account_a.id)
+        balance = self._transaction_repository.get_balance_by_id(
+            self._account_a.id)
         self.assertEqual(balance, -1000)
         success = self._transaction_repository.create(self._transaction_b)
         self.assertTrue(success)

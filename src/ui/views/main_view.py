@@ -7,7 +7,7 @@ import ui.styles.styles as styles
 
 class MainView:
     """The main view (main menu) of the application."""
-    
+
     def __init__(self, root, go_to_account_view, go_to_transaction_view, go_to_settings_view):
         """Initializes the view.
 

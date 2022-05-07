@@ -13,7 +13,7 @@ import ui.styles.styles as styles
 
 class AccountView:
     """A view that displays information about accounts."""
-    
+
     def __init__(self, root, go_to_main_view, go_to_new_account_view):
         """Initializes the view.
 

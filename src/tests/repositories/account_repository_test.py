@@ -55,7 +55,8 @@ class TestAccountRepository(unittest.TestCase):
         self.assertEqual(len(accounts), 1)
 
     def test_create_multiple(self):
-        accounts = [self._account_a, self._account_a, self._account_b, self._account_c]
+        accounts = [self._account_a, self._account_a,
+                    self._account_b, self._account_c]
         created = self._account_repository.create_multiple(accounts)
         self.assertEqual(created, 3)
 
