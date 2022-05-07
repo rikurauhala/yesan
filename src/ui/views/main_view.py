@@ -8,7 +8,7 @@ import ui.styles.styles as styles
 class MainView:
     """The main view (main menu) of the application."""
     
-    def __init__(self, root, go_to_accounts_view, go_to_transaction_view, go_to_settings_view):
+    def __init__(self, root, go_to_account_view, go_to_transaction_view, go_to_settings_view):
         """Initializes the view.
 
         Args:
@@ -19,7 +19,7 @@ class MainView:
         """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
-        self._go_to_accounts_view = go_to_accounts_view
+        self._go_to_account_view = go_to_account_view
         self._go_to_transaction_view = go_to_transaction_view
         self._go_to_settings_view = go_to_settings_view
         self._initialize()
@@ -55,7 +55,7 @@ class MainView:
         btn_accounts = ttk.Button(
             master=self._frame,
             text=txt_accounts,
-            command=self._go_to_accounts_view
+            command=self._go_to_account_view
         )
         btn_accounts.grid(
             padx=styles.PADDING,
