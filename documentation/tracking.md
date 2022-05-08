@@ -33,4 +33,5 @@
 | 2022-05-05 |      5 | creating settings view, fixing issues, updating documentation                                             |
 | 2022-05-06 |      6 | writing tests                                                                                             |
 | 2022-05-07 |      1 | adding docstring to ui files                                                                              |
-| total      |     87 |                                                                                                           |
+| 2022-05-08 |      1 | creating validator class to validate user input                                                           |
+| total      |     88 |                                                                                                           |
