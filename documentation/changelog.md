@@ -35,3 +35,8 @@
 - Added confirmation dialog boxes for import and export functionality and exiting the application
 - Updated the transaction view
 - Improved currency formatting
+
+## Week 7
+
+- Created settings view
+  - Allows the user to edit the contents of the .env file inside the program
