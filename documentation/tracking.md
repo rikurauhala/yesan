@@ -1,5 +1,7 @@
 # Work hour tracking
 
+This document is used to keep track of hours that I have spent working on this project.
+
 | date       | hours  | description                                                                                               |
 | ---------: | -----: | :-------------------------------------------------------------------------------------------------------- |
 | 2022-03-29 |      1 | planning, writing the srs document                                                                        |
