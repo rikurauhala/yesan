@@ -17,6 +17,10 @@ error = {
     "e-12": "Please choose an account!",
     "e-13": "Please enter a sender / receiver!",
     "e-14": "Saving settings failed!",
+    "e-15": "Name should contain at least 3 characters!",
+    "e-16": "Name should contain fewer than 50 characters!",
+    "e-17": "Type should contain at least 3 characters!",
+    "e-18": "Type should contain fewer than 50 characters!",
 }
 
 success = {

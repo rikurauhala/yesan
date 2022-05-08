@@ -2,6 +2,8 @@ from tkinter import constants, END, StringVar, ttk
 
 from services.account_service import AccountService
 
+from ui.validator import Validator
+
 from ui.message import Message
 
 import ui.styles.styles as styles
@@ -26,6 +28,7 @@ class NewAccountView:
         self._ent_name = None
         self._ent_type = None
         self._account_service = AccountService()
+        self._validator = Validator()
         self._initialize()
 
     def pack(self):
@@ -55,10 +58,12 @@ class NewAccountView:
         self._clear_message()
         name = self._ent_name.get()
         type = self._ent_type.get()
-        if not name:
-            self._display_message("e-03")
-        elif not type:
-            self._display_message("e-04")
+        name_code = self._validator.validate_account_name(name)
+        type_code = self._validator.validate_account_type(type)
+        if name_code[0] == "e":
+            self._display_message(name_code)
+        elif type_code[0] == "e":
+            self._display_message(type_code)
         else:
             if self._account_service.create_account(name, type):
                 self._display_message("s-02")
