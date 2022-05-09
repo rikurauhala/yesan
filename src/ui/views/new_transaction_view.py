@@ -7,6 +7,8 @@ from tkcalendar import DateEntry
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
 
+from ui.validator import Validator
+
 from ui.message.message import Message
 
 import ui.styles.colors as colors
@@ -39,6 +41,7 @@ class NewTransactionView:
         self._accounts = None
         self._account_service = AccountService()
         self._transaction_service = TransactionService()
+        self._validator = Validator()
         self._initialize()
 
     def pack(self):
@@ -66,24 +69,33 @@ class NewTransactionView:
 
     def _handle_submit(self):
         self._clear_message()
+
         date = self._ent_date.get_date()
         amount = self._ent_amount.get()
         category = self._ent_category.get()
         description = self._ent_description.get()
         account_name = self._var_account.get()
         party = self._ent_party.get()
-        if not date:
-            self._display_message("e-08")
-        elif not amount:
-            self._display_message("e-09")
-        elif not category:
-            self._display_message("e-10")
-        elif not description:
-            self._display_message("e-11")
-        elif not account_name:
-            self._display_message("e-12")
-        elif not party:
-            self._display_message("e-13")
+        
+        date_code = self._validator.validate_transaction_date(date)
+        amount_code = self._validator.validate_transaction_amount(amount)
+        category_code = self._validator.validate_transaction_category(category)
+        description_code = self._validator.validate_transaction_description(description)
+        account_name_code = self._validator.validate_transaction_account_name(account_name)
+        party_code = self._validator.validate_transaction_party(party)
+        
+        if date_code[0] == "e":
+            self._display_message(date_code)
+        elif amount_code[0] == "e":
+            self._display_message(amount_code)
+        elif category_code[0] == "e":
+            self._display_message(category_code)
+        elif description_code[0] == "e":
+            self._display_message(description_code)
+        elif account_name_code[0] == "e":
+            self._display_message(account_name_code)
+        elif party_code[0] == "e":
+            self._display_message(party_code)
         else:
             account_id = self._account_service.get_id_by_name(account_name)
             self._transaction_service.create_transaction(

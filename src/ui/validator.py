@@ -39,3 +39,33 @@ class Validator:
         if length > 50:
             return "e-18"
         return "ok"
+
+    def validate_transaction_date(self, date):
+        if not date:
+            return "e-08"
+        return "ok"
+
+    def validate_transaction_amount(self, amount):
+        if not amount:
+            return "e-09"
+        return "ok"
+
+    def validate_transaction_category(self, category):
+        if not category:
+            return "e-10"
+        return "ok"
+
+    def validate_transaction_description(self, description):
+        if not description:
+            return "e-11"
+        return "ok"
+
+    def validate_transaction_account_name(self, account_name):
+        if not account_name:
+            return "e-12"
+        return "ok"
+
+    def validate_transaction_party(self, party):
+        if not party:
+            return "e-13"
+        return "ok"
