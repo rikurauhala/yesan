@@ -4,7 +4,7 @@ from services.account_service import AccountService
 
 from ui.validator import Validator
 
-from ui.message import Message
+from ui.message.message import Message
 
 import ui.styles.styles as styles
 

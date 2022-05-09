@@ -1,8 +1,8 @@
 from tkinter import constants, StringVar, Text, ttk
 
-from ui.message import Message
-
 from services.settings_service import settings_service
+
+from ui.message.message import Message
 
 import ui.styles.colors as colors
 import ui.styles.fonts as fonts

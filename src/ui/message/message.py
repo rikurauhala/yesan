@@ -2,8 +2,8 @@ from tkinter import ttk
 
 import ui.styles.colors as colors
 
-from ui.error import error
-from ui.success import success
+from ui.message.error import error
+from ui.message.success import success
 
 
 class Message:

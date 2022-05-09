@@ -4,7 +4,7 @@ from tkinter.messagebox import askyesno
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
 
-from ui.message import Message
+from ui.message.message import Message
 
 import ui.styles.colors as colors
 import ui.styles.fonts as fonts
