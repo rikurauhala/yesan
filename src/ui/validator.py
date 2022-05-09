@@ -119,6 +119,8 @@ class Validator:
         """
         if not account_name:
             return "e-12"
+        if account_name == "Select an account":
+            return "e-26"
         return "ok"
 
     def validate_transaction_party(self, party):

@@ -24,4 +24,5 @@ error = {
     "e-23": "Description should contain fewer than 100 characters!",
     "e-24": "Payer / receiver should contain at least 3 characters!",
     "e-25": "Payer / receiver should contain fewer than 50 characters!",
+    "e-26": "Please select an account from the list or add a new account first!",
 }
