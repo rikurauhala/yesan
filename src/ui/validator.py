@@ -1,3 +1,6 @@
+import re
+
+
 class Validator:
     """Validates user input."""
 
@@ -44,7 +47,7 @@ class Validator:
         """Validates the contents of the date field in NewTransactionView.
 
         Args:
-            date (String): Expected a date in the YYYY-MM-DD format.
+            date (String): Expects a date in the YYYY-MM-DD format.
 
         Returns:
             String: Status code.
@@ -57,13 +60,16 @@ class Validator:
         """Validates the contents of the amount field in NewTransactionView.
 
         Args:
-            amount (String): Expected an amount with a dot as the decimal separator.
+            amount (String): Expects an amount with a dot as the decimal separator.
 
         Returns:
             String: Status code.
         """
+        pattern = r"^-?(?=\d)\d*(?:\.\d{1,2})?$"
         if not amount:
             return "e-09"
+        if not re.match(pattern, amount):
+            return "e-19"
         return "ok"
 
     def validate_transaction_category(self, category):

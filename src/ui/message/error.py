@@ -17,4 +17,5 @@ error = {
     "e-16": "Name should contain fewer than 50 characters!",
     "e-17": "Type should contain at least 3 characters!",
     "e-18": "Type should contain fewer than 50 characters!",
+    "e-19": "Please enter an integer or use '.' as the decimal separator!",
 }
