@@ -13,7 +13,7 @@
 - [Changelog](/documentation/changelog.md)
 - [Software requirements specification](documentation/srs.md)
 - [User manual](documentation/manual.md)
-- [Work hour tracking](documentation/tracking.md)
+- [Work hour tracking](documentation/hours.md)
 
 ## Instructions
 
