@@ -40,3 +40,4 @@
 
 - Created settings view
   - Allows the user to edit the contents of the .env file inside the program
+- Improved the validation of user input and added more error messages
