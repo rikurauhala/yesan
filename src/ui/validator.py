@@ -41,31 +41,79 @@ class Validator:
         return "ok"
 
     def validate_transaction_date(self, date):
+        """Validates the contents of the date field in NewTransactionView.
+
+        Args:
+            date (String): Expected a date in the YYYY-MM-DD format.
+
+        Returns:
+            String: Status code.
+        """
         if not date:
             return "e-08"
         return "ok"
 
     def validate_transaction_amount(self, amount):
+        """Validates the contents of the amount field in NewTransactionView.
+
+        Args:
+            amount (String): Expected an amount with a dot as the decimal separator.
+
+        Returns:
+            String: Status code.
+        """
         if not amount:
             return "e-09"
         return "ok"
 
     def validate_transaction_category(self, category):
+        """Validates the contents of the category field in NewTransactionView.
+
+        Args:
+            category (String): Category of the transaction.
+
+        Returns:
+            String: Status code.
+        """
         if not category:
             return "e-10"
         return "ok"
 
     def validate_transaction_description(self, description):
+        """Validates the contents of the description field in NewTransactionView.
+
+        Args:
+            description (String): Description of the transaction.
+
+        Returns:
+            String: Status code.
+        """
         if not description:
             return "e-11"
         return "ok"
 
     def validate_transaction_account_name(self, account_name):
+        """Validates the contents of the account field in NewTransactionView.
+
+        Args:
+            account_name (String): Name of the account to be associated with the transaction.
+
+        Returns:
+            String: Status code.
+        """
         if not account_name:
             return "e-12"
         return "ok"
 
     def validate_transaction_party(self, party):
+        """Validates the contents of the party field in NewTransactionView.
+
+        Args:
+            party (String): Payer / receiver.
+
+        Returns:
+            String: Status code.
+        """
         if not party:
             return "e-13"
         return "ok"
