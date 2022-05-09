@@ -18,4 +18,10 @@ error = {
     "e-17": "Type should contain at least 3 characters!",
     "e-18": "Type should contain fewer than 50 characters!",
     "e-19": "Please enter an integer or use '.' as the decimal separator!",
+    "e-20": "Category should contain at least 3 characters!",
+    "e-21": "Category should contain fewer than 50 characters!",
+    "e-22": "Description should contain at least 3 characters!",
+    "e-23": "Description should contain fewer than 100 characters!",
+    "e-24": "Payer / receiver should contain at least 3 characters!",
+    "e-25": "Payer / receiver should contain fewer than 50 characters!",
 }

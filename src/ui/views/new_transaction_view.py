@@ -76,14 +76,16 @@ class NewTransactionView:
         description = self._ent_description.get()
         account_name = self._var_account.get()
         party = self._ent_party.get()
-        
+
         date_code = self._validator.validate_transaction_date(date)
         amount_code = self._validator.validate_transaction_amount(amount)
         category_code = self._validator.validate_transaction_category(category)
-        description_code = self._validator.validate_transaction_description(description)
-        account_name_code = self._validator.validate_transaction_account_name(account_name)
+        description_code = self._validator.validate_transaction_description(
+            description)
+        account_name_code = self._validator.validate_transaction_account_name(
+            account_name)
         party_code = self._validator.validate_transaction_party(party)
-        
+
         if date_code[0] == "e":
             self._display_message(date_code)
         elif amount_code[0] == "e":

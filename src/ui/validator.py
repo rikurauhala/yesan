@@ -24,7 +24,7 @@ class Validator:
         if length > 50:
             return "e-16"
         return "ok"
-        
+
     def validate_account_type(self, type):
         """Validates the contents of the type field in NewAccountView.
 
@@ -81,8 +81,13 @@ class Validator:
         Returns:
             String: Status code.
         """
+        length = len(category)
         if not category:
             return "e-10"
+        if length < 3:
+            return "e-20"
+        if length > 50:
+            return "e-21"
         return "ok"
 
     def validate_transaction_description(self, description):
@@ -94,8 +99,13 @@ class Validator:
         Returns:
             String: Status code.
         """
+        length = len(description)
         if not description:
             return "e-11"
+        if length < 3:
+            return "e-22"
+        if length > 100:
+            return "e-23"
         return "ok"
 
     def validate_transaction_account_name(self, account_name):
@@ -120,6 +130,11 @@ class Validator:
         Returns:
             String: Status code.
         """
+        length = len(party)
         if not party:
             return "e-13"
+        if length < 3:
+            return "e-24"
+        if length > 50:
+            return "e-25"
         return "ok"
