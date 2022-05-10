@@ -1,5 +1,20 @@
 # Architecture
 
+## Project structure
+
+The application is divided into three main parts. The package `ui` contains all user interface elements. User interface makes calls to the package `services`, which uses `repositories` and other functions (such as file_handler.py) to handle data. Both services and repositories take advantage of `entities` to pass information about relevant data in an object form.
+
+## User interface
+
+The application has a graphical user interface created with the `tkinter` module. The user interface consists of six relevant views that form a hierarchical structure. Only one view can be viewed at a time and each view contains buttons for moving back to the previous view or possibly other views.
+
+- Main view
+  - Account view
+    - New account view
+  - Transaction view
+    - New transaction view
+  - Settings view
+
 ## Functionality
 
 ### Creating a new account
@@ -43,21 +58,6 @@ sequenceDiagram
     Message->>Message: _get_success_message("s-02")
     Message-->>NewAccountView: Label(StringVar("New account added!"))
 ```
-
-## User interface
-
-The application has a graphical user interface created with the `tkinter` module. The user interface consists of six relevant views that form a hierarchical structure:
-
-- Main view
-  - Account view
-    - New account view
-  - Transaction view
-    - New transaction view
-  - Settings view
-
-## Project structure
-
-The application is divided into three main parts. The package `ui` contains all user interface elements. User interface makes calls to the `services`, which uses `repositories` and other functions (such as file_handler.py) to handle data. Both services and repositories can take advantage of `entities` to pass information about relevant data in an object form.
 
 ## Entities
 
