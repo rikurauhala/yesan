@@ -37,4 +37,5 @@ This document is used to keep track of hours that I have spent working on this p
 | 2022-05-07 |      1 | adding docstring to ui files                                                                              |
 | 2022-05-08 |      1 | creating validator class to validate user input                                                           |
 | 2022-05-09 |      3 | refactoring the message system, improving the validation of user input                                    |
-| total      |     91 |                                                                                                           |
+| 2022-05-10 |      4 | refactoring input validation, writing documentation                                                       |
+| total      |     95 |                                                                                                           |
