@@ -59,6 +59,43 @@ sequenceDiagram
     Message-->>NewAccountView: Label(StringVar("New account added!"))
 ```
 
+### Creating a new transaction
+
+Creating a new transaction works similarly to creating a new account.
+
+### Changing the configuration
+
+The configuration (settings) of the application can be edited using the SettingsView. As the user enters the view, the content of the .env file is loaded into the text field widget. Clicking the "Save" button writes the contents of the field to the file. Finally, a success message is displayed to the user to indicate that the settings have been saved.
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant SettingsView
+    participant Message
+    participant SettingsService
+    participant FileHandler
+    participant .env
+    User->>SettingsView: enter the view 
+    SettingsView->>SettingsView: _initialize_text_field_content()
+    SettingsView->>SettingsService: import_settings()
+    SettingsService->>FileHandler: import_settings()
+    .env-->>FileHandler: [contents of the file]
+    FileHandler-->>SettingsService: [contents of the .env file]
+    SettingsService-->>SettingsView: [contents of the .env file]
+    User->>SettingsView: edit the content of the file
+    User->>SettingsView: click "Save" button
+    SettingsView->>SettingsView: _handle_save()
+    SettingsView->>SettingsService: export_settings(content)
+    SettingsService->>FileHandler: export_settings(content)
+    FileHandler->>.env: [contents of the text field]
+    FileHandler-->>SettingsService: True
+    SettingsService-->>SettingsView: True
+    SettingsView->>SettingsView: _display_message("s-07")
+    SettingsView->>Message: get_message("s-07")
+    Message->>Message: _get_success_message("s-07")
+    Message-->>SettingsView: Label(StringVar("Settings saved successfully!"))
+```
+
 ## Entities
 
 The application uses the following entities. An `account` can be anything from a bank account, to crypto currency or a loan. A `transaction` contains information about a single transaction where money is moved from one account to another, for example when receiving the monthly salary from the employer or making a purchase at the grocery store. Each account can be connected to multiple transactions and a single transaction can be only connected to one account.
