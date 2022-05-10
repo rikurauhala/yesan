@@ -16,7 +16,7 @@ class NewAccountView:
         """Initializes the view.
 
         Args:
-            root (Tk): The main window._
+            root (Tk): The main window.
             go_to_account_view (function): Called to go back to the account view.
         """
         self._root = root
@@ -54,23 +54,39 @@ class NewAccountView:
             pady=styles.PADDING
         )
 
+    def _validate_input(self):
+        name_code = self._validator.validate_account_name(
+            self._ent_name.get()
+        )
+        type_code = self._validator.validate_account_type(
+            self._ent_type.get()
+        )
+        valid = True
+        if name_code[0] == "e":
+            self._display_message(name_code)
+            valid = False
+        elif type_code[0] == "e":
+            self._display_message(type_code)
+            valid = False
+        return valid
+
+    def _reset_fields(self):
+        self._ent_name.delete(0, END)
+        self._ent_type.delete(0, END)
+
     def _handle_submit(self):
         self._clear_message()
         name = self._ent_name.get()
         type = self._ent_type.get()
-        name_code = self._validator.validate_account_name(name)
-        type_code = self._validator.validate_account_type(type)
-        if name_code[0] == "e":
-            self._display_message(name_code)
-        elif type_code[0] == "e":
-            self._display_message(type_code)
+        
+        if not self._validate_input():
+            return
+        
+        if self._account_service.create_account(name, type):
+            self._display_message("s-02")
+            self._reset_fields()
         else:
-            if self._account_service.create_account(name, type):
-                self._display_message("s-02")
-                self._ent_name.delete(0, END)
-                self._ent_type.delete(0, END)
-            else:
-                self._display_message("e-05")
+            self._display_message("e-05")
 
     def _initialize_title_label(self):
         txt_title = "Add new account"
