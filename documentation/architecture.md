@@ -10,22 +10,37 @@ The diagram below depicts a scenario in which a user creates a new account in th
 sequenceDiagram
     actor User
     participant NewAccountView
+    participant Validator
     participant Message
     participant AccountService
     participant AccountRepository
     participant Account
+    User->>NewAccountView: enter "Checking account" in the name field
     User->>NewAccountView: click "Submit" button
-    NewAccountView--XAccountService: create_account("Checking account")
-    NewAccountView->>NewAccountView: display_message("e-04")
+    NewAccountView->>NewAccountView: _validate_input()
+    NewAccountView->>Validator: validate_account_name("Checking account")
+    Validator-->>NewAccountView: "ok"
+    NewAccountView->>Validator: validate_account_type("")
+    Validator-->>NewAccountView: "e-04"
+    NewAccountView->>NewAccountView: _display_message("e-04")
     NewAccountView->>Message: get_message("e-04")
+    Message->>Message: _get_error_message("e-04")
     Message-->>NewAccountView: Label(StringVar("Please enter type!"))
+    User->>NewAccountView: enter "Bank account" in the type field
+    User->>NewAccountView: click "Submit" button
+    NewAccountView->>NewAccountView: _validate_input()
+    NewAccountView->>Validator: validate_account_name("Checking account")
+    Validator-->>NewAccountView: "ok"
+    NewAccountView->>Validator: validate_account_type("Bank account")
+    Validator-->>NewAccountView: "ok"
     NewAccountView->>AccountService: create_account("Checking account", "Bank account")
-    AccountService-->Account: Account(UUID4, "Checking account", "Bank account")
+    AccountService->>Account: Account(UUID4, "Checking account", "Bank account")
     AccountService->>AccountRepository: create(account)
     AccountRepository-->>AccountService: True
     AccountService-->>NewAccountView: True
-   NewAccountView->>NewAccountView: display_message("s-02")
+    NewAccountView->>NewAccountView: _display_message("s-02")
     NewAccountView->>Message: get_message("s-02")
+    Message->>Message: _get_success_message("s-02")
     Message-->>NewAccountView: Label(StringVar("New account added!"))
 ```
 
