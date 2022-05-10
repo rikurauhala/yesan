@@ -67,6 +67,55 @@ class NewTransactionView:
             pady=styles.PADDING
         )
 
+    def _validate_input(self):
+        date_code = self._validator.validate_transaction_date(
+            self._ent_date.get_date()
+        )
+        amount_code = self._validator.validate_transaction_amount(
+            self._ent_amount.get()
+        )
+        category_code = self._validator.validate_transaction_category(
+            self._ent_category.get()
+        )
+        description_code = self._validator.validate_transaction_description(
+            self._ent_description.get()
+        )
+        account_name_code = self._validator.validate_transaction_account_name(
+            self._var_account.get()
+        )
+        party_code = self._validator.validate_transaction_party(
+            self._ent_party.get()
+        )
+
+        valid = True
+
+        if date_code[0] == "e":
+            self._display_message(date_code)
+            valid = False
+        elif amount_code[0] == "e":
+            self._display_message(amount_code)
+            valid = False
+        elif category_code[0] == "e":
+            self._display_message(category_code)
+            valid = False
+        elif description_code[0] == "e":
+            self._display_message(description_code)
+            valid = False
+        elif account_name_code[0] == "e":
+            self._display_message(account_name_code)
+            valid = False
+        elif party_code[0] == "e":
+            self._display_message(party_code)
+            valid = False
+
+        return valid
+
+    def _clear_fields(self):
+        self._ent_amount.delete(0, END)
+        self._ent_category.delete(0, END)
+        self._ent_description.delete(0, END)
+        self._ent_party.delete(0, END)
+
     def _handle_submit(self):
         self._clear_message()
 
@@ -77,42 +126,20 @@ class NewTransactionView:
         account_name = self._var_account.get()
         party = self._ent_party.get()
 
-        date_code = self._validator.validate_transaction_date(date)
-        amount_code = self._validator.validate_transaction_amount(amount)
-        category_code = self._validator.validate_transaction_category(category)
-        description_code = self._validator.validate_transaction_description(
-            description)
-        account_name_code = self._validator.validate_transaction_account_name(
-            account_name)
-        party_code = self._validator.validate_transaction_party(party)
+        if not self._validate_input():
+            return
 
-        if date_code[0] == "e":
-            self._display_message(date_code)
-        elif amount_code[0] == "e":
-            self._display_message(amount_code)
-        elif category_code[0] == "e":
-            self._display_message(category_code)
-        elif description_code[0] == "e":
-            self._display_message(description_code)
-        elif account_name_code[0] == "e":
-            self._display_message(account_name_code)
-        elif party_code[0] == "e":
-            self._display_message(party_code)
-        else:
-            account_id = self._account_service.get_id_by_name(account_name)
-            self._transaction_service.create_transaction(
-                date,
-                amount,
-                category,
-                description,
-                account_id,
-                party
-            )
-            self._display_message("s-04")
-            self._ent_amount.delete(0, END)
-            self._ent_category.delete(0, END)
-            self._ent_description.delete(0, END)
-            self._ent_party.delete(0, END)
+        account_id = self._account_service.get_id_by_name(account_name)
+        self._transaction_service.create_transaction(
+            date,
+            amount,
+            category,
+            description,
+            account_id,
+            party
+        )
+        self._display_message("s-04")
+        self._clear_fields()
 
     def _initialize_title_label(self):
         txt_title = "Add new transaction"

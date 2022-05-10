@@ -11,7 +11,7 @@ error = {
     "e-10": "Please enter a category!",
     "e-11": "Please enter a description!",
     "e-12": "Please choose an account!",
-    "e-13": "Please enter a sender / receiver!",
+    "e-13": "Please enter a payer / receiver!",
     "e-14": "Saving settings failed!",
     "e-15": "Name should contain at least 3 characters!",
     "e-16": "Name should contain fewer than 50 characters!",
