@@ -110,10 +110,12 @@ class NewTransactionView:
 
         return valid
 
-    def _clear_fields(self):
+    def _reset_fields(self):
+        self._ent_date.set_date(date.today())
         self._ent_amount.delete(0, END)
         self._ent_category.delete(0, END)
         self._ent_description.delete(0, END)
+        self._var_account.set("Select an account")
         self._ent_party.delete(0, END)
 
     def _handle_submit(self):
@@ -139,7 +141,7 @@ class NewTransactionView:
             party
         )
         self._display_message("s-04")
-        self._clear_fields()
+        self._reset_fields()
 
     def _initialize_title_label(self):
         txt_title = "Add new transaction"
