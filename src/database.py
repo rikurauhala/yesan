@@ -63,7 +63,7 @@ def create_tables(connection):
     cursor.execute("""
         CREATE TABLE transactions (
             id TEXT PRIMARY KEY,
-            date INTEGER,
+            date TEXT,
             amount INTEGER,
             category TEXT,
             description TEXT,

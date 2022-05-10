@@ -46,13 +46,14 @@ sequenceDiagram
 
 ## User interface
 
-The application has a graphical user interface created with the `tkinter` module. The user interface consists of five relevant views that form a hierarchical structure:
+The application has a graphical user interface created with the `tkinter` module. The user interface consists of six relevant views that form a hierarchical structure:
 
 - Main view
   - Account view
     - New account view
   - Transaction view
     - New transaction view
+  - Settings view
 
 ## Project structure
 
@@ -95,7 +96,7 @@ CREATE TABLE accounts (
 
 CREATE TABLE transactions (
     id TEXT PRIMARY KEY,
-    date INTEGER,
+    date TEXT,
     amount INTEGER,
     category TEXT,
     description TEXT,
