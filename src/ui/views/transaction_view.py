@@ -23,8 +23,9 @@ class TransactionView:
         """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
-        self._data_tree = None
         self._buttons = ttk.Frame(master=self._frame)
+        self._data_frame = ttk.Frame(master=self._frame)
+        self._data_tree = None
         self._lbl_message = None
         self._var_message = StringVar(self._frame)
         self._message = Message(self._frame, self._var_message)
@@ -60,6 +61,16 @@ class TransactionView:
             sticky=constants.W
         )
 
+    def _initialize_data_frame(self):
+        self._initialize_data_tree()
+        self._initialize_scrollbar()
+        self._data_frame.grid(
+            row=1,
+            column=0,
+            padx=styles.PADDING,
+            pady=styles.PADDING
+        )
+
     def _initialize_data_tree(self):
         columns = (
             "date",
@@ -71,7 +82,7 @@ class TransactionView:
         )
 
         self._data_tree = ttk.Treeview(
-            master=self._frame,
+            master=self._data_frame,
             columns=columns,
             show="headings",
             height=20
@@ -97,25 +108,20 @@ class TransactionView:
 
         self._data_tree.tag_configure("negative", foreground=colors.NEGATIVE)
         self._data_tree.grid(
-            row=1,
-            column=0,
-            padx=styles.PADDING,
-            pady=styles.PADDING
+            row=0,
+            column=0
         )
-        self._initialize_scrollbar()
 
     def _initialize_scrollbar(self):
         scrollbar = ttk.Scrollbar(
-            self._frame,
+            self._data_frame,
             orient=constants.VERTICAL,
             command=self._data_tree.yview
         )
         self._data_tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(
-            row=1,
+            row=0,
             column=1,
-            padx=styles.PADDING,
-            pady=styles.PADDING,
             sticky="NS"
         )
 
@@ -223,5 +229,5 @@ class TransactionView:
 
     def _initialize(self):
         self._initialize_title_label()
-        self._initialize_data_tree()
+        self._initialize_data_frame()
         self._initialize_buttons()
