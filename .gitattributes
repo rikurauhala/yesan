@@ -1,0 +1,6 @@
+.env.default linguist-language=Shell
+.env.test linguist-language=Shell
+*.md linguist-detectable=true
+*.md linguist-language=Markdown
+*.md linguist-documentation=false
+
