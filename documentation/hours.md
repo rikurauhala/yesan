@@ -38,4 +38,5 @@ This document is used to keep track of hours that I have spent working on this p
 | 2022-05-08 |      1 | creating validator class to validate user input                                                           |
 | 2022-05-09 |      3 | refactoring the message system, improving the validation of user input                                    |
 | 2022-05-10 |      4 | refactoring input validation, writing documentation                                                       |
-| total      |     95 |                                                                                                           |
+| 2022-05-11 |      2 | making minor tweaks, writing documentation                                                                |
+| total      |     97 |                                                                                                           |
