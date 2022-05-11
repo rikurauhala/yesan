@@ -7,13 +7,13 @@ class SettingsService:
     def __init__(self):
         """Initializes a new instance of SettingsService."""
 
-    def import_settings(self):
+    def import_settings(self, default=False):
         """Imports settings from the .env file.
 
         Returns:
             List: Rows containing the contents of the env. file.
         """
-        return file_handler.import_settings()
+        return file_handler.import_settings(default)
 
     def export_settings(self, content):
         """Exports settings into the .env file.

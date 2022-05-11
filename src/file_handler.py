@@ -14,8 +14,9 @@ class FileHandler:
     def __init__(self):
         """Initializes a new instance of FileHandler."""
         dirname = os.path.dirname(__file__)
-        root_folder = os.path.join(dirname, "..")
-        self._env_file = os.path.join(root_folder, ".env")
+        self._root_folder = os.path.join(dirname, "..")
+        self._env_file = os.path.join(self._root_folder, ".env")
+        self._default_env_file = os.path.join(self._root_folder, ".env.default")
 
     def import_accounts(self):
         """Imports account data from a csv file.
@@ -119,14 +120,17 @@ class FileHandler:
                 writer.writerow(details)
         return True
 
-    def import_settings(self):
+    def import_settings(self, default=False):
         """Imports settings from the .env file.
 
         Returns:
             List: Rows containing the contents of the env. file.
         """
+        path = self._env_file
+        if default:
+            path = self._default_env_file
         config_lines = []
-        with open(self._env_file, "r", encoding="UTF8") as file:
+        with open(path, "r", encoding="UTF8") as file:
             lines = file.readlines()
             for line in lines:
                 config_lines.append(line)

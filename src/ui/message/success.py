@@ -6,4 +6,5 @@ success = {
     "s-05": "Accounts imported successfully!",
     "s-06": "Transactions imported successfully!",
     "s-07": "Settings saved successfully!",
+    "s-08": "Text field has been reset! Remember to save!",
 }

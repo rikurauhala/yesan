@@ -68,10 +68,11 @@ class SettingsView:
             sticky=constants.W
         )
 
-    def _initialize_text_field_content(self):
+    def _initialize_text_field_content(self, default=False):
+        self._text.delete("1.0", constants.END)
         self._text.tag_configure("comment", foreground=colors.COMMENT)
         no = 0
-        lines = self._settings_service.import_settings()
+        lines = self._settings_service.import_settings(default)
         for line in lines:
             no = no + 1
             self._text.insert(constants.END, line)
@@ -127,9 +128,28 @@ class SettingsView:
             padx=styles.PADDING_RIGHT
         )
 
+    def _handle_reset(self):
+        self._clear_message()
+        self._initialize_text_field_content(default=True)
+        self._display_message("s-08")
+
+    def _initialize_reset_button(self):
+        txt_reset = "↺ Reset"
+        btn_reset = ttk.Button(
+            master=self._buttons,
+            text=txt_reset,
+            command=self._handle_reset
+        )
+        btn_reset.grid(
+            row=0,
+            column=2,
+            padx=styles.PADDING_RIGHT
+        )
+
     def _initialize_buttons(self):
         self._initialize_back_button()
         self._initialize_save_button()
+        self._initialize_reset_button()
         self._buttons.grid(
             padx=styles.PADDING_MAIN,
             pady=styles.PADDING_MAIN,
