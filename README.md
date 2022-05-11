@@ -1,6 +1,8 @@
 ## About
 
-**Yesan** (예산, Korean for *budget*) is a personal finance application written in Python. The application has a graphical user interface and data is stored in an SQLite3 database. Work in progress!
+**Yesan** (예산, Korean for *budget*) is a personal finance application written in Python. The application has a graphical user interface created with the `tkinter` library. User data is stored in an SQLite3 database. 
+
+⚠️ Work in progress!
 
 ## Releases
 
