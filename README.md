@@ -42,6 +42,16 @@ $ poetry run invoke build
 ```bash
 # Run the application
 $ poetry run invoke start
+
+# There is also an option run a demonstration to see how the application works
+# with some pre-filled data. Execute these commands to run the app in a demo mode.
+# Then go to the account view and the transaction view and click "Import".
+
+# Make the file executable
+$ chmod +x demo.sh
+
+# Run the application
+$ ./demo.sh
 ```
 
 ### Testing
