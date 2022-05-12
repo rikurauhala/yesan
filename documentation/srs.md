@@ -19,35 +19,36 @@ The programming language used is Python and user data is stored in an SQLite dat
 All of the following functionality has been implemented. This list represents the current state of the application.
 
 - Main view
-  - Contains button [Accounts] for showing the account view
+  - Contains button `Accounts` for showing the account view
     - Account view
       - Contains a list of accounts and their balance
       - Displays net worth
-      - Contains button [« Back] for going back to the main view
-      - Contains button [+ New account] for showing the new account view
+      - Contains button `« Back` for going back to the main view
+      - Contains button `+ New account` for showing the new account view
           - New account view
             - Contains fields for account details
-            - Contains button [« Back] for going back to the account view
-            - Contains button [✔ Submit] for adding a new account 
-      - Contains button [↓ Import] for importing account data from a csv file
-      - Contains button [↑ Export] for exporting account data into a csv file
-  - Contains button [Transactions] for showing the transaction view
+            - Contains button `« Back` for going back to the account view
+            - Contains button `✔ Submit` for adding a new account 
+      - Contains button `↓ Import` for importing account data from a csv file
+      - Contains button `↑ Export` for exporting account data into a csv file
+  - Contains button `Transactions` for showing the transaction view
     - Transaction view
       - Contains a list of recent transactions
-      - Contains button [« Back] for going back to the main view
-      - Contains button [+ New transaction] for adding new transactions
+      - Contains button `« Back` for going back to the main view
+      - Contains button `+ New transaction` for adding new transactions
           - New transaction view
             - Contains fields for transaction details
-            - Contains button [« Back] for going back to the transaction view
-            - Contains button [✔ Submit] for adding a new transaction 
-      - Contains button [↓ Import] for importing transaction data from a csv file
-      - Contains button [↑ Export] for exporting transaction data into a csv file
-  - Contains button [Settings] for showing the settings view
+            - Contains button `« Back` for going back to the transaction view
+            - Contains button `✔ Submit` for adding a new transaction 
+      - Contains button `↓ Import` for importing transaction data from a csv file
+      - Contains button `↑ Export` for exporting transaction data into a csv file
+  - Contains button `Settings` for showing the settings view
     - Settings view
       - Contains a text field that contains the contents of the .env file
-      - Contains button [« Back] for going back to the main view
-      - Contains button [✔ Save] for saving the settings to the .env file
-  - Contains button [Quit] for exiting the application
+      - Contains button `« Back` for going back to the main view
+      - Contains button `✔ Save` for saving the settings to the .env file
+      - Contains button `↺ Reset` for starting over with the default settings
+  - Contains button `Quit` for exiting the application
 
 ### Secondary
 
