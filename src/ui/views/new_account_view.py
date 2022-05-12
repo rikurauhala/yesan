@@ -78,10 +78,10 @@ class NewAccountView:
         self._clear_message()
         name = self._ent_name.get()
         type = self._ent_type.get()
-        
+
         if not self._validate_input():
             return
-        
+
         if self._account_service.create_account(name, type):
             self._display_message("s-02")
             self._reset_fields()

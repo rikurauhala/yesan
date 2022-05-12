@@ -14,9 +14,9 @@ class FileHandler:
     def __init__(self):
         """Initializes a new instance of FileHandler."""
         dirname = os.path.dirname(__file__)
-        self._root_folder = os.path.join(dirname, "..")
-        self._env_file = os.path.join(self._root_folder, ".env")
-        self._default_env_file = os.path.join(self._root_folder, ".env.default")
+        self._root_dir = os.path.join(dirname, "..")
+        self._env_file = os.path.join(self._root_dir, ".env")
+        self._default_env_file = os.path.join(self._root_dir, ".env.default")
 
     def import_accounts(self):
         """Imports account data from a csv file.
