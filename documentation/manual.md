@@ -39,10 +39,6 @@ The application can be started by running the start command. Make sure that the 
 $ poetry run invoke start
 ```
 
-## Getting started
-
-Before running the application for the first time, you need to run few commands to make sure everything works as expected. First, run `poetry install` to install dependencies. Then, run `poetru run invoke init` to initialize the database. You are now ready to start using the application. Run `poetry run invoke start` to enter the graphical user interface.
-
 ## User interface
 
 This section contains screenshots of the application, captured on a machine running Cubbli Linux with the i3 window manager. Please note, that the application may look different depending on the operating system.
