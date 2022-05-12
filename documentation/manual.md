@@ -39,6 +39,32 @@ The application can be started by running the start command. Make sure that the 
 $ poetry run invoke start
 ```
 
+## Configuration
+
+The behavior of the application can be configured by changing the values contained in the .env file in the root directory of the project. Alternatively, changes can be made inside the program itself by entering the settings view and editing the values there. Default values are also stored in the .env.default file in case the user happens to rewrite the file in an unexpected way.
+
+```bash
+# This file contains the environment variables
+# that can be used to alter the behavior of the 
+# program. You may edit them on the .env file stored
+# in the root directory of the project, or using the
+# Settings menu inside the application itself.
+
+# All database and csv files are stored in the data
+# directory. Here you can edit the filenames.
+DATABASE_FILENAME="database.sqlite"
+ACCOUNTS_FILENAME="accounts.csv"
+TRANSACTIONS_FILENAME="transactions.csv"
+
+# These values are used for formatting all currency
+# that is printed in the application. You may change
+# these values to match your preferences or local
+# currency.
+THOUSANDS_SEPARATOR=" "
+DECIMAL_SEPARATOR=","
+CURRENCY_SYMBOL="€"
+```
+
 ## User interface
 
 This section contains screenshots of the application, captured on a machine running Cubbli Linux with the i3 window manager. Please note, that the application may look different depending on the operating system.
