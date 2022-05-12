@@ -1,5 +1,44 @@
 # User manual
 
+## Installing
+
+The application can be installed by running the following commands.
+
+```bash
+# Get the source code
+$ git clone git@github.com:rikurauhala/yesan.git
+
+# Change directory
+$ cd yesan
+
+# Install dependencies
+$ poetry install
+
+# Initialize the database
+$ poetry run invoke init
+```
+
+### Troubleshooting
+
+There are alternative ways to get the source code. You may also download the source code as a zip file from the repository main page or by getting the latest [release](https://github.com/rikurauhala/yesan/releases/).
+
+```bash
+# Get the source code over HTTPS
+$ git clone https://github.com/rikurauhala/yesan.git
+
+# Get the source code with GitHub cli
+$ gh repo clone rikurauhala/yesan
+```
+
+## Running
+
+The application can be started by running the start command. Make sure that the database has been initialized first!
+
+```bash
+# Run the application
+$ poetry run invoke start
+```
+
 ## Getting started
 
 Before running the application for the first time, you need to run few commands to make sure everything works as expected. First, run `poetry install` to install dependencies. Then, run `poetru run invoke init` to initialize the database. You are now ready to start using the application. Run `poetry run invoke start` to enter the graphical user interface.
