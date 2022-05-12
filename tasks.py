@@ -2,7 +2,7 @@ from invoke import task
 
 
 @task
-def init(ctx):
+def build(ctx):
     ctx.run("python3 src/database.py")
 
 

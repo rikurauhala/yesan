@@ -35,7 +35,7 @@ $ cd yesan
 $ poetry install
 
 # Initialize the database
-$ poetry run invoke init
+$ poetry run invoke build
 ```
 
 ### Running
