@@ -19,3 +19,8 @@ System testing of the application has been conducted manually, as it has a graph
 Several different configurations were tested by editing the .env file.
 
 Different inputs were tried to be inserted in the new account view and the new transaction view. Doing this also helped in the development process as it made more clear how input validation should work and what kind of input should be allowed.
+
+## Known issues
+
+- After importing accounts or transactions, the view does not refresh automatically. The user has to go to another view and go back to see the changes.
+- It may not be evident enough if the user has forgotten to run the build command to initialize database. The application should not crash but it only reminds the user after they are trying to add a new accounts and see the error message.
