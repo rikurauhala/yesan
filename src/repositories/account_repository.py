@@ -35,6 +35,8 @@ class AccountRepository:
             return True
         except IntegrityError:
             return False
+        except OperationalError:
+            return False
 
     def create_multiple(self, accounts):
         """Inserts multiple accounts in to the database.
