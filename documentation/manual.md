@@ -39,6 +39,20 @@ The application can be started by running the start command. Make sure that the 
 $ poetry run invoke start
 ```
 
+### Demo
+
+There is also an option run the application in a demonstration mode to see how it works with some pre-filled data. Execute the commands below to run the app in the demo mode. In practice this means the possibility to import some sample data to better inspect how the application handles and displays data.
+
+After launching the demo, go to the account view and the transaction view and click `↓ Import`.
+
+```bash
+# Make the file executable
+$ chmod +x demo.sh
+
+# Run the application
+$ ./demo.sh
+```
+
 ## Configuration
 
 The behavior of the application can be configured by changing the values contained in the .env file in the root directory of the project. Alternatively, changes can be made inside the program itself by entering the settings view and editing the values there. Default values are also stored in the .env.default file in case the user happens to rewrite the file in an unexpected way.
