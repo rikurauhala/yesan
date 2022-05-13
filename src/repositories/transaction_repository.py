@@ -1,4 +1,4 @@
-from sqlite3 import IntegrityError
+from sqlite3 import IntegrityError, OperationalError
 
 from database import get_database_connection
 
@@ -62,12 +62,15 @@ class TransactionRepository:
             List of Transaction objects.
         """
         cursor = self._connection.cursor()
-        cursor.execute("""
-            SELECT t.id, t.date, t.amount, t.category, t.description, a.name, t.party
-            FROM transactions AS t, accounts AS a
-            WHERE t.account_id = a.id
-            ORDER BY t.date DESC
-        """)
+        try:
+            cursor.execute("""
+                SELECT t.id, t.date, t.amount, t.category, t.description, a.name, t.party
+                FROM transactions AS t, accounts AS a
+                WHERE t.account_id = a.id
+                ORDER BY t.date DESC
+            """)
+        except OperationalError:
+            return []
 
         rows = cursor.fetchall()
 
@@ -153,7 +156,10 @@ class TransactionRepository:
             Integer: Net worth.
         """
         cursor = self._connection.cursor()
-        cursor.execute("SELECT SUM(amount) FROM transactions")
+        try:
+            cursor.execute("SELECT SUM(amount) FROM transactions")
+        except OperationalError:
+            return 0
         return cursor.fetchone()[0]
 
 

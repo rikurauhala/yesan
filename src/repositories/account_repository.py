@@ -1,4 +1,4 @@
-from sqlite3 import IntegrityError
+from sqlite3 import IntegrityError, OperationalError
 
 from database import get_database_connection
 
@@ -58,7 +58,10 @@ class AccountRepository:
             List of Account objects.
         """
         cursor = self._connection.cursor()
-        cursor.execute("SELECT * FROM accounts ORDER BY name")
+        try:
+            cursor.execute("SELECT * FROM accounts ORDER BY name")
+        except OperationalError:
+            return []
         rows = cursor.fetchall()
         return [Account(row["id"], row["name"], row["type"]) for row in rows]
 
@@ -69,7 +72,10 @@ class AccountRepository:
             List of account names.
         """
         cursor = self._connection.cursor()
-        cursor.execute("SELECT name FROM accounts ORDER BY name")
+        try:
+            cursor.execute("SELECT name FROM accounts ORDER BY name")
+        except OperationalError:
+            return []
         rows = cursor.fetchall()
         return [row["name"] for row in rows]
 
