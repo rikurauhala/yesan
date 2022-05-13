@@ -3,7 +3,7 @@ error = {
     "e-02": "Importing accounts failed!",
     "e-03": "Please enter name!",
     "e-04": "Please enter type!",
-    "e-05": "Failed to add a new account!",
+    "e-05": "Failed to add a new account! Did you forget to initialize the database?",
     "e-06": "Exporting transactions failed!",
     "e-07": "Importing transactions failed!",
     "e-08": "Please choose a correct date!",
