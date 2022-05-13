@@ -40,4 +40,5 @@ This document is used to keep track of hours that I have spent working on this p
 | 2022-05-10 |      4 | refactoring input validation, writing documentation                                                       |
 | 2022-05-11 |      2 | making minor tweaks, writing documentation                                                                |
 | 2022-05-12 |      4 | writing documentation, creating the demo script                                                           |
-| total      |    101 |                                                                                                           |
+| 2022-05-13 |      3 | writing documentation, fixing issues                                                                      |
+| total      |    104 |                                                                                                           |
