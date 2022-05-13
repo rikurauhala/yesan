@@ -3,5 +3,8 @@
 __pycache__
 htmlcov
 *.sqlite
+
+accounts.csv
 accounts-test.csv
+transactions.csv
 transactions-test.csv
