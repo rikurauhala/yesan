@@ -52,7 +52,7 @@ class TransactionRepository:
         created = 0
         for transaction in transactions:
             if self.create(transaction):
-                created = created + 1
+                created += 1
         return created
 
     def find_all(self):
