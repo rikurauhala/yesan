@@ -14,4 +14,8 @@ Most of the source code is covered by automated tests. User interface (directory
 
 ## System testing
 
-The application has been tested manually, as it has a graphical user interface.
+System testing of the application has been conducted manually, as it has a graphical user interface. The application was tested on a machine running the Cubbli Linux operating system. Installation was done following the instructions found in the user manual. Everything worked as expected and the application did not crash.
+
+Several different configurations were tested by editing the .env file.
+
+Different inputs were tried to be inserted in the new account view and the new transaction view. Doing this also helped in the development process as it made more clear how input validation should work and what kind of input should be allowed.
